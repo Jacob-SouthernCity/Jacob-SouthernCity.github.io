@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>Jacob Ma | ART141</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="glide-master/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="glide-master/dist/css/glide.theme.min.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <meta name="keywords" content="Jingze Ma, Jacob Ma, portfolio, ART141">
+    <meta name="description"
+        content="This page will show some work done by Jingze (Jacob) Ma in ART141. I have drawn Sketchbooks, exercises, and different prompts here. You can also see some of my projects which may draw your attention. Have fun!">
+
+    <style>
+        #header {
+            background-image: url(img/ART141_header.png);
+            padding-top: 0px;
+            margin-top: 0px;
+
+            position: relative;
+            z-index: 0;
+
+        }
+
+        #scroll-down {
+            position: relative;
+            height: 10vh;
+        }
+
+
+        .glide-img {
+            width: 100%;
+            height: auto;
+            opacity: 0.75;
+            transition: all 0.5s ease-in-out;
+
+            border-radius: 8px;
+        }
+
+        .glide-img:hover {
+            width: 100%;
+            height: auto;
+            opacity: 1;
+            transition: all 0.5s ease-in-out;
+        }
+
+        button {
+            text-shadow: 2px 2px #1d1d1f;
+            color: #ecebec;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #glide-description {
+            margin-top: 2%;
+            width: 80%;
+            font-family: 'Montserrat', sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: 2em;
+        }
+
+        #glide-div {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #glide-div-2 {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #glide-div-3 {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #page-1 {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        h1 {
+            position: absolute;
+            right: calc(50vw - 360px);
+            bottom: -150px;
+
+            font-family: 'Gochi Hand', cursive;
+            ;
+        }
+
+        .container div {
+            width: 450px;
+            height: 500px;
+            background-color: antiquewhite;
+            /* display: flex; */
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container #sketch1 {
+            height: 300px;
+        }
+
+        .container #course-des-1 {
+            height: 600px;
+        }
+
+        .container #course-des-2 {
+            height: 550px;
+        }
+
+        .container #project-2 {
+            height: 400px;
+        }
+
+        .container #clock-face {
+            height: 550px;
+        }
+
+        .container #exercise {
+            height: 320px;
+        }
+
+        #fixed-arrow {
+            position: fixed;
+        }
+
+        .item-box>img {
+            height: 100%;
+            width: auto;
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .item-box>.width-100 {
+            width: 100%;
+            height: auto;
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .item-box>.caption {
+            transition: all 1s ease-in-out 1s;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            width: 450px;
+            height: auto;
+
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #cdcdcd;
+
+            text-align: center;
+            padding-top: 30%;
+
+            font-size: 3em;
+
+            font-family: 'Montserrat-Light', sans-serif;
+
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .item-box:hover>.caption {
+            transition: all 1s ease-in-out;
+            opacity: 1.0;
+            z-index: 2;
+        }
+
+        .class-text {
+            text-decoration: none;
+            color: #ecebec;
+        }
+
+        #sketchbook-description {
+            margin-top: 2%;
+            width: 80%;
+            font-family: 'Gochi Hand', cursive;
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: 1.5em;
+        }
+
+        #course-des-1-text {
+            font-family: 'Montserrat', sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: 1.4em;
+        }
+
+        #course-des-2-text {
+            font-family: 'Montserrat', sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: 1.2em;
+        }
+
+        .item-box>.course-des {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+            width: 450px;
+            height: auto;
+
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #cdcdcd;
+
+            text-align: center;
+            padding-top: 30%;
+
+            font-size: 3em;
+
+            font-family: 'Montserrat-Light', sans-serif;
+
+            opacity: 1;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div id="nav">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="ITP104Page.html">ITP104</a></li>
+                <li><a href="#page_1">ART141</a></li>
+                <li><a href="LifePage.html">Life</a></li>
+                <li><a href="mailto:jingzema@usc.edu">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="page-1">
+        <div id="header">
+            <h1>ART141</h1>
+        </div>
+        <div class="scroll-down">
+            <img class="down-arrow" src="img/scrolldown.gif" alt="scroll-down">
+        </div>
+    </section>
+
+    <section id="page-2">
+
+        <h2>ART141 Overview</h2>
+
+        <div class="container">
+            <div id="sketch1" class="item-box">
+                <img class="width-100" src="img/ColorWheel.JPG" alt="ColorWheel">
+                <div class="caption">
+                    <a href="#page-3" class="class-text">Sketchbooks</a>
+                </div>
+            </div>
+
+            <div id="course-des-1" class="item-box">
+                <img src="img/art-des-background.jpeg" alt="ColorWheel">
+                <div class="course-des" id="course-des-1-text">
+                    <p> How is meaning and value produced through visual culture?
+                    </p>
+                    <p> What is visual
+                        literacy?
+                    </p>
+                    <p> How does a visual piece of art change its meaning over
+                        time?
+                    </p>
+                </div>
+            </div>
+
+            <div id="scavenger-hunt" class="item-box">
+                <img class="width-100" src="img/sca-1.jpg" alt="scavenger-hunt">
+                <div class="caption">
+                    <a href="#page-3" class="class-text"><br/>Scavenger<br/>Hunt</a>
+                </div>
+            </div>
+
+            <div id="course-des-2" class="item-box">
+                <img src="img/art-des-background-2.jpeg" alt="ColorWheel">
+                <div class="course-des" id="course-des-2-text">
+                    <p>I gained a working knowledge of how images, themes and subject matter
+                        emerge through the
+                        creative process and transform as contexts are re-defined.
+                    </p>
+                    <p>I also gained a broader knowledge of
+                        the
+                        historical and contemporary within visual practice and developed creative strategies of my own
+                        in
+                        response to class lectures, prompts and assignments.
+                    </p>
+                </div>
+            </div>
+
+            <div id="project-1" class="item-box">
+                <img class="width-100" src="img/Project1.jpg" alt="project-1">
+                <div class="caption">
+                    <a href="#page-3" class="class-text"><br/>Project1</a>
+                </div>
+            </div>
+
+            <div id="project-2" class="item-box">
+                <img src="img/Project2.jpg" alt="project-2">
+                <div class="caption">
+                    <a href="#page-3" class="class-text">Project2</a>
+                </div>
+            </div>
+
+            <div id="clock-face" class="item-box">
+                <img src="img/clock-face.jpg" alt="clock-face">
+                <div class="caption">
+                    <a href="#page-3" class="class-text"><br/><br/>Clock Face</a>
+                </div>
+            </div>
+
+            <div id="exercise" class="item-box">
+                <img class="width-100" src="img/Jacob_Ma_Sketchbook3.jpg" alt="Exercise">
+                <div class="caption">
+                    <a href="#page-3" class="class-text">Exercise</a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="last-page" id="page-3">
+        <h2>ART 141 Gallery</h2>
+        <div class="glide">
+
+            <div id="glide-div-3" class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/1.jpg" alt="Scavenger-1"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/2.jpg" alt="Scavenger-2"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/3.jpg" alt="Scavenger-3"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/4.jpg" alt="Scavenger-4"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/5.jpg" alt="Scavenger-5"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/6.jpg" alt="Scavenger-6"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/7.jpg" alt="Scavenger-7"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/8.jpg" alt="Sketchbook-1"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/9.jpeg" alt="Sketchbook-2"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/10.JPG" alt="Sketchbook-3"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/11.jpg" alt="Project1"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/12.jpg" alt="Project2-1"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/13.jpg" alt="Project2-2"></li>
+                    <li class="glide__slide"><img class="glide-img" src="img/ART141-Gallery/14.jpg" alt="clock-face"></li>
+                </ul>
+            </div>
+
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+            </div>
+        </div>
+
+        <div id="sketchbook-description">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;This class promotes both creative collaboration and the development of a personal
+                voice. It is understood through the experimental nature of this class and its subjects that learning
+                outcomes may shift and adjust to the self - directed needs and interests of each student as they
+                progress throughout the semester. This course has been designed to be appropriate and accessible for all
+                non-art majors and those who wish to expand their own creativity and understanding of visual production.
+            </p>
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;These are some of the sketchbook prompts drawn in class.
+            </p>
+        </div>
+
+        <div id="footer">
+            Jingze Ma, University of Southern California, 2021
+        </div>
+    </section>
+
+    <script src="smoothscroll/jquery.smoothscroll.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.js"></script>
+    <script src="panelsnap/lib/panelsnap.umd.js"></script>
+    <script src="smoothscroll/jquery.smoothscroll.min.js"></script>
+    <script src="glide-master/dist/glide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script src="https://unpkg.com/magic-grid/dist/magic-grid.min.js"></script>
+
+    <script>
+        new PanelSnap();
+    </script>
+    <script>
+        $(function () {
+            $('html').smoothScroll();
+        });
+    </script>
+    <script>
+        const config = {
+            type: "carousel",
+            startAt: 1,
+            perView: 4,
+            focusAt: "center",
+            autoplay: 800,
+            gap: 20,
+            hoverpause: true
+        }
+        new Glide('.glide', config).mount()
+    </script>
+
+    <script>
+        let magicGrid = new MagicGrid({
+            container: '.container',
+            animate: true,
+            gutter: 30,
+            static: true,
+            useMin: true
+        });
+
+        magicGrid.listen();
+    </script>
+</body>
+
+</html>
