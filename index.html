@@ -1,182 +1,314 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
 
 <head>
+    <title>Jacob Ma | Portfolio</title>
+    <link rel="stylesheet" href="main.css">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <meta name="keywords" content="Jingze Ma, Jacob Ma, portfolio">
+    <meta name="description"
+        content="Portfolio of Jingze(Jacob) Ma. This page is consisted of amateur photos and some artworks of mine. The photos will be photos of food, landscape, and artificial settings. You can see work from ITP104, ART141, and my daily photo or resume. Enjoy!">
 
-    <title>Jingze(Jacob) Ma | Student Page</title>
     <style>
-        body{
-            background-color: lightblue;
+        section {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+
+            background-image: url(img/Particles.png);
+            background-size: cover;
+            background-position: center;
+
         }
 
-        strong {
-            background-color: aqua;
-            color: royalblue;
-            border-style: solid;
+        #page_1 {
+            width: 100vw;
+            padding: 0px;
+            margin: 0px;
+            background-image: url(img/Particles.png);
+            background-size: cover;
+            background-position: center;
+
+            z-index: 0;
         }
 
-        img {
-            height: 200px;
-            width: auto;
+        #header {
+            display: flex;
+            flex-direction: column;
+
+            text-align: center;
+            color: #ecebec;
+            font-size: 4em;
+
+            background-image: none;
+
+            text-align: center;
+            line-height: normal;
+            text-shadow: none;
+
         }
 
-        #whole-page {
-            width: 950px;
+        #course_page {
+            width: calc(100vw - 230px);
+            margin-left: auto;
+            margin-right: auto;
+            padding: 50px;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        #Name_line {
+            padding: 0px;
+            margin: 0px;
+            font-family: 'Kanit', sans-serif;
+            height: 350px;
+            line-height: 560px;
+        }
+
+        #Port_line {
+            height: 350px;
+            font-family: 'Montserrat-Light', sans-serif;
+        }
+
+        #scroll_down {
+            position: relative;
+            height: 10vh;
+        }
+
+        .row-div {
+            display: flex;
+            flex-direction: row;
+            height: calc(45vh - 100px);
+            width: calc(80vw - 230px);
+            /* margin-bottom: 50px; */
+
             margin-left: auto;
             margin-right: auto;
         }
 
-        #first-section {
+        .class-box {
+            background-color: #3d3d3d;
+            overflow: hidden;
+
+            position: relative;
+            width: calc(40vw - 155px);
+            height: calc(45vh - 140px);
+            margin: 20px;
+
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 8px;
+        }
+
+        .caption {
+            transition: all 1s ease-in-out 1s;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #cdcdcd;
+
+            text-align: center;
+            padding-top: calc(22vh - 95px);
+
+            font-size: 3em;
+
+            font-family: 'Montserrat-Light', sans-serif;
+
+            opacity: 0;
+            border-radius: 8px;
+        }
+
+        .class-box:hover>.caption {
+            transition: all 1s ease-in-out;
+            opacity: 1.0;
+        }
+
+        .class-text {
+            text-decoration: none;
+            color: #cdcdcd;
+        }
+
+        .class-box>img {
+            height: 100%;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .class-box>.width-100 {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        #resume {
+            padding: 50px;
+            padding-right: 180px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+        }
+
+        #resume-des {
             display: flex;
+            flex-direction: row;
         }
 
-        #second-section {
-            display: flex;
+        #resume-context {
+            width: 25vw;
+            height: 75vh;
+            padding: 2.5vh;
+
+            font-family: 'Montserrat-Light', sans-serif;
+            font-size: 2em;
         }
 
-        #firstC-firstS {
-            width: 425px;
-            height: auto;
+        #resume-content {
+            width: calc(70vw - 230px);
+            height: 75vh;
+            padding: 2.5vh;
         }
 
-        #secondC-firstS {
-            width: 420px;
-            height: auto;
+        iframe {
+            width: calc(70vw - 230px);
+            height: 75vh;
+            border: none;
         }
 
-        .col {
-            margin: 0px;
-        }
-
-        #firstC-secondS {
-            width: 425px;
-            height: auto;
-        }
-
-        #secondC-secondS {
-            width: 425px;
-            height: auto;
-        }
-
-        @media (max-width: 767px) {
-            body {
-                width: auto;
-                background-color: lightblue;
-            }
-
-            #whole-page {
-                width: auto;
-                display: flex;
-                flex-direction: column;
-            }
-
-            #heading,
-            #second-section,
-            #first-section {
-                width: auto;
-                display: flex;
-                flex-direction: column;
-            }
-
-            #heading{
-                margin-left: 5%;
-            }
-
-            .col {
-                width: 80%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            hr {
-                border: 0;
-                clear: both;
-                display: block;
-                width: 90%;
-                height: 1px;
-                background-color: grey;
-            }
-
-            img {
-                width: 80%;
-                height: auto;
-                margin-left: 10%;
-                margin-right: 10%;
-            }
+        #down_arrow_2 {
+            position: absolute;
+            height: 10%;
+            top: 90%;
+            left: 48.5%;
         }
     </style>
 </head>
 
 <body>
-    <div id="whole-page">
-        <div id="heading">
-            <h1>Jingze (Jacob) Ma</h1>
-            <p><a href="mailto:jingzema@usc.edu">jingzema@usc.edu</a></p>
+
+    <nav>
+        <div id="nav">
+            <input type="checkbox" />
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+
+            <ul id="menu">
+                <li><a href="#page_1">Home</a></li>
+                <li><a href="ITP104Page.html">ITP104</a></li>
+                <li><a href="ART141Page.html">ART141</a></li>
+                <li><a href="LifePage.html">Life</a></li>
+                <li><a href="mailto:jingzema@usc.edu">Contact</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <hr>
-
-        <div id="first-section">
-            <div id="firstC-firstS" class="col">
-                <p>Favorite color: <strong>Aqua</strong></p>
-                <p>Favorite website: <a href="https://www.irasutoya.com" target="_blank">Free Japanese Anime
-                        Stickers</a></p>
-                <p>Favorite activity: Playing JRPGs</p>
-                <p><img src="img/p5r.jpg" alt="Persona5_Royal"></p>
+    <section id="page_1">
+        <div id="header">
+            <div id="Name_line">
+                <h1>Jacob Ma<br /></h1>
             </div>
-            <div id="secondC-firstS" class="col">
-                <p>Fall 2021 Classes:</p>
-                <ul>
-                    <li>ITP 104: Web Publishing</li>
-                    <li>ART 141: Creating and Understanding Visuals</li>
-                    <li>CTIN 190: Introduction to Interactive Entertainment</li>
-                    <li>CSCI 103: Introduction to Programming</li>
-                    <li>CSCI 170: Discrete Methods in Computer Science</li>
-                </ul>
+            <div id="Port_line">
+                <p id="Port_line_text">| Portfolio |</p>
             </div>
-        </div>
-
-        <hr>
-
-        <div id="second-section">
-            <div id="firstC-secondS" class="col">
-                <p>Completed Assignments: </p>
-                <ul>
-                    <li><a href="assignment_01/JingzeMa_Resume.html" target="_blank">Assignment 1</a></li>
-                    <li><a href="assignment_02/Interests_Page.html" target="_blank">Assignment 2</a></li>
-                    <li><a href="assignment_03/Interests_Page.html" target="_blank">Assignment 3</a></li>
-                    <li><a href="assignment_04/Calendar.html" target="_blank">Assignment 4</a></li>
-                    <li><a href="assignment_05/Interests_Page.html" target="_blank">Assignment 5</a></li>
-                    <li><a href="assignment_06/Interests_Page.html" target="_blank">Assignment 6</a></li>
-                    <li><a href="assignment_07/Proposal.html" target="_blank">Assignment 7</a></li>
-                    <li><a href="assignment_08/homePage.html" target="_blank">Assignment 8</a></li>
-                    <li><a href="assignment_09/homePage.html" target="_blank">Assignment 9</a></li>
-                    <li><a href="homePage.html" target="_blank">Final Project</a></li>
-                    <li><a href="final_summary/FinalSummary.html" target="_blank">FinalSummary</a></li>
-                </ul>
-            </div>
-
-            <div id="secondC-secondS" class="col">
-                <p>Completed Labs: </p>
-                <ul>
-                    <li><a href="lab_02/student_page_old.html" target="_blank">Lab 2: Student Page</a></li>
-                    <li><a href="lab_03/JingzeMa_Resume.html" target="_blank">Lab 3: Updated Resume</a></li>
-                    <li><a href="lab_04/student_page.html" target="_blank">Lab 4: Student Page Layout</a></li>
-                    <li><a href="lab_05/FormPage.html" target="_blank">Lab 5: Form Page</a></li>
-                    <li><a href="lab_06/PhotoGallery.html" target="_blank">Lab 6: Simple Photo Gallery</a></li>
-                    <li><a href="lab_07/Image_Puzzle.html" target="_blank">Lab 7: Image Puzzle</a></li>
-                    <li><a href="student_page.html" target="_blank">Lab 8: Responsive Student Page</a></li>
-                    <li><a href="lab_09/lab_09.html" target="_blank">Lab 9: Landing Page</a></li>
-                    <li><a href="lab_10/CSS_Effects.html" target="_blank">Lab 10: CSS Effects</a></li>
-                    <li><a href="lab_11/Image_Puzzle.html" target="_blank">Lab 11: JavaScript Plugin</a></li>
-                    <li><a href="lab_12/PhotoGallery.html" target="_blank">Lab 12: jQuery Photo Gallery</a></li>
-                </ul>
+            <div class="scroll_down">
+                <img class="down-arrow" src="img/scrolldown.gif" alt="scroll_down">
             </div>
         </div>
+    </section>
 
-    </div>
+    <section id="page_2">
+        <h2>Works</h2>
+        <div id="course_page">
+            <div id="r-1" class="row-div">
+
+                <div id="r1-c1" class="class-box">
+                    <img src="img/P5R_header.jpg" alt="ITP104">
+                    <div class="caption">
+                        <a href="ITP104Page.html" class="class-text">ITP104</a>
+                    </div>
+                </div>
+
+                <div id="r1-c2" class="class-box">
+                    <img src="img/ColorWheel.JPG" alt="ART141" class="width-100">
+                    <div class="caption">
+                        <a href="ART141Page.html" class="class-text">ART141</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="r-2" class="row-div">
+                <div id="r2-c1" class="class-box">
+                    <img src="img/Sunset.jpg" alt="Life" class="width-100">
+                    <div class="caption">
+                        <a href="LifePage.html" class="class-text">Life</a>
+                    </div>
+                </div>
+                <div id="r2-c2" class="class-box">
+                    <img src="img/Contact.JPG" alt="Contact" class="width-100">
+                    <div class="caption">
+                       <a href="mailto:jingzema@usc.edu" class="class-text">Contact</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll_down">
+                <img id="down_arrow_2" class="down_arrow" src="img/scrolldown.gif" alt="scroll_down">
+            </div>
+        </div>
+    </section>
+
+    <section class="last-page" id="resume">
+        <h2 id="resume_title">Resume</h2>
+        <div id="resume-div">
+            <div id="resume-des">
+
+                <div id="resume-context">
+                    <p>&nbsp;&nbsp;&nbsp;&nbsp;Welcome to my homepage!<br />
+                        <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;I am Jingze(Jacob) Ma, an international student from Nanjing, China. I
+                        am double majoring in computer science (games) and applied math, and love playing video game.
+                        Please feel free to check out my "works"!
+                    </p>
+                </div>
+
+                <div id="resume-content">
+                    <iframe src="img/Resume.pdf" name="resume"></iframe>
+                </div>
+
+            </div>
+        </div>
+        <div id="footer">
+            Jingze Ma, University of Southern California, 2021
+        </div>
+    </section>
+
+    <script src="smoothscroll/jquery.smoothscroll.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.js"></script>
+    <script src="panelsnap/lib/panelsnap.umd.js"></script>
+    <script src="smoothscroll/jquery.smoothscroll.min.js"></script>
+    <script>
+        new PanelSnap();
+    </script>
+    <script>
+        $(function () {
+            $('html').smoothScroll();
+        });
+    </script>
+
 </body>
 
 </html>
