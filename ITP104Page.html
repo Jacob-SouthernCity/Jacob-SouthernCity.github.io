@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>Jacob Ma | ITP104</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="glide-master/dist/css/glide.core.min.css">
+    <link rel="stylesheet" href="glide-master/dist/css/glide.theme.min.css">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+    <meta name="keywords" content="Jingze Ma, Jacob Ma, portfolio, ITP104">
+    <meta name="description"
+        content="This page will show some work done by Jingze (Jacob) Ma in ITP104, which will includes gif, photoes, and links to certain work pages. You can also will some work in details by clicking them.">
+
+    <style>
+        #header {
+            background-image: url(img/ITP104_header.png);
+            padding-top: 0px;
+            margin-top: 0px;
+
+            position: relative;
+            z-index: 0;
+
+        }
+
+        #scroll-down {
+            position: relative;
+            height: 10vh;
+        }
+
+
+        .glide-img {
+            width: 100%;
+            height: auto;
+            opacity: 0.5;
+            transition: all 0.5s ease-in-out;
+            border-radius: 8px;
+        }
+
+        .glide-img:hover {
+            width: 100%;
+            height: auto;
+            opacity: 1;
+            transition: all 0.5s ease-in-out;
+            border-radius: 8px;
+        }
+
+        button {
+            text-shadow: 2px 2px #1d1d1f;
+            color: #ecebec;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #glide-description {
+            margin-top: 2%;
+            width: 80%;
+            font-family: 'Montserrat', sans-serif;
+            margin-left: auto;
+            margin-right: auto;
+
+            font-size: 2em;
+        }
+
+        #glide-div {
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #page-2 {
+            padding-left: 50px;
+            width: calc(100vw - 230px);
+            min-height: calc(100vh - 50px);
+        }
+
+        #page-1 {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        h1{
+            position: absolute;
+            right: calc(50vw - 360px) ;
+            bottom: -150px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div id="nav">
+            <input type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+            <ul id="menu">
+                <li><a href="homePage.html">Home</a></li>
+                <li><a href="#page-1">ITP104</a></li>
+                <li><a href="ART141Page.html">ART141</a></li>
+                <li><a href="LifePage.html">Life</a></li>
+                <li><a href="mailto:jingzema@usc.edu">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="page-1">
+        <div id="header">
+            <h1>ITP104</h1>
+        </div>
+        <div class="scroll-down">
+            <img class="down-arrow" src="img/scrolldown.gif" alt="scroll-down">
+        </div>
+    </section>
+
+    <section class="last-page" id="page-2">
+        <h2>ITP 104 Gallery</h2>
+        <div class="glide">
+
+            <div id="glide-div" class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide"><a
+                            href="https://viterbi-web.usc.edu/~jingzema/itp104/lab_03/JingzeMa_Resume.html" target="_blank"><img
+                                class="glide-img" src="img/Resume_Page.jpg" alt="Resume"></a></li>
+                    <li class="glide__slide"><a
+                            href="https://viterbi-web.usc.edu/~jingzema/itp104/assignment_04/Calendar.html" target="_blank"><img
+                                class="glide-img" src="img/Calendar_Page.jpg" alt="Calender"></a></li>
+                    <li class="glide__slide"><a
+                            href="https://viterbi-web.usc.edu/~jingzema/itp104/lab_12/PhotoGallery.html" target="_blank"><img
+                                class="glide-img" src="img/PhotoGallery.jpg" alt="PhotoGallery"></a></li>
+                    <li class="glide__slide"><a
+                            href="https://viterbi-web.usc.edu/~jingzema/itp104/assignment_06/Interests_Page.html" target="_blank"><img
+                                class="glide-img" src="img/P5R_Gallery.jpg" alt="P5R"></a></li>
+                    <li class="glide__slide"><a
+                            href="https://viterbi-web.usc.edu/~jingzema/itp104/lab_10/CSS_Effects.html" target="_blank"><img
+                                class="glide-img" src="img/CSSEffect.jpg" alt="CSSEffect"></a></li>
+                    <li class="glide__slide"><a
+                            href="https://viterbi-web.usc.edu/~jingzema/itp104/lab_11/Image_Puzzle.html" target="_blank"><img
+                                class="glide-img" src="img/ImagePuzzle.jpg" alt="ImagePuzzle"></a></li>
+                </ul>
+            </div>
+
+            <div class="glide__arrows" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+            </div>
+        </div>
+        <div id="glide-description">
+            <p>&nbsp;&nbsp;&nbsp;&nbsp;These are some of the websites that are designed during ITP 104: Web Development.
+                This course helps and teaches me how to make and create great websites of my own. Please feel free to
+                click on and check these works.
+            </p>
+        </div>
+        <div id="footer">
+            Jingze Ma, University of Southern California, 2021
+        </div>
+    </section>
+
+    <script src="smoothscroll/jquery.smoothscroll.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.js"></script>
+    <script src="panelsnap/lib/panelsnap.umd.js"></script>
+    <script src="smoothscroll/jquery.smoothscroll.min.js"></script>
+    <script src="glide-master/dist/glide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <script>
+        new PanelSnap();
+    </script>
+    <script>
+        $(function () {
+            $('html').smoothScroll();
+        });
+    </script>
+    <script>
+        const config = {
+            type: "carousel",
+            startAt: 1,
+            perView: 2,
+            focusAt: "center",
+            autoplay: 1500,
+            gap: 20,
+            hoverpause: true
+        }
+        new Glide('.glide', config).mount()
+    </script>
+
+</body>
+
+</html>
