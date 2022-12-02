@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>MATH 407: Probability Theory</title>
+    <link href="/2022/10/22/MATH407/"/>
+    <url>/2022/10/22/MATH407/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><ul><li>Intructor: Dr. Sergey Lototsky</li><li>Objective: To learn the basics of probability so that you are prepared for statistics (math 408). Some particular topics to master are (a) Law of Large Numbers (LLN) (b) Central Limit Theorem (CLT) (c) Normal (Gaussian) distribution (d) Poisson approximation.</li></ul><p>I did not attend all the lectures (in fact, never go to lectures), thus don’t have a complete set of notes. I will try to fill in the gaps as I go along. However, I do have the Computer Project for this course, feel free to check it out.</p><h1 id="Syllabus"><a href="#Syllabus" class="headerlink" title="Syllabus"></a>Syllabus</h1><p>If you could not preview, download here: <a href="/img/MATH407/pdf/MATH407_Syllabus.pdf">MATH407_Syllabus.pdf</a></p><div class="row">    <embed src="/img/MATH407/pdf/MATH407_Syllabus.pdf" width="100%" height="550" type="application/pdf"></div><h1 id="Computer-Project"><a href="#Computer-Project" class="headerlink" title="Computer Project"></a>Computer Project</h1><p>If you could not preview, download here: <a href="/img/MATH07/pdf/MATH407_CP.pdf">MATH407_Notes.pdf</a></p><div class="row">    <embed src="/img/MATH407/pdf/MATH407_CP.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Notes</category>
+      
+      <category>2022 Fall</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MATH</tag>
+      
+      <tag>Notes</tag>
+      
+      <tag>MATH407</tag>
+      
+      <tag>2022 Fall</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>MATH 430: Thoery of Numbers</title>
     <link href="/2022/10/22/MATH430/"/>
     <url>/2022/10/22/MATH430/</url>
@@ -26,9 +59,9 @@
       
       <tag>Notes</tag>
       
-      <tag>MATH430</tag>
-      
       <tag>2022 Fall</tag>
+      
+      <tag>MATH430</tag>
       
     </tags>
     
