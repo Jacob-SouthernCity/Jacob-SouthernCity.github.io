@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>MATH 430: Thoery of Numbers</title>
+    <link href="/2022/12/02/MATH430/"/>
+    <url>/2022/12/02/MATH430/</url>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><ul><li>Intructor: Masoud Zargar</li><li>Course description: This is a course on (elementary) number theory, covering the basic problems with which this subject deals, as well as how it is related to other areas of mathematics. Throughout the course, I will also inspire some abstract mathematics that has been developed to generalize some related classical concepts. We will try to follow the first 9 chapters of the textbook, with some deviations into analytic number theory and very basic abstract algebra.</li></ul><p>This course is till in progress, but both up till now I think it’s a very good proof based course for beginners.</p><h1 id="Syllabus"><a href="#Syllabus" class="headerlink" title="Syllabus"></a>Syllabus</h1><p>If you could not preview, download here: <a href="/img/MATH430/pdf/MATH430_Syllabus.pdf">MATH430_Syllabus.pdf</a></p><div class="row">    <embed src="/img/MATH430/pdf/MATH430_Syllabus.pdf" width="100%" height="550" type="application/pdf"></div><h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><p>If you could not preview, download here: <a href="/img/MATH430/pdf/MATH430_Notes.pdf">MATH430_Notes.pdf</a></p><div class="row">    <embed src="/img/MATH430/pdf/MATH430_Notes.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>Notes</category>
+      
+      <category>2022 Fall</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MATH</tag>
+      
+      <tag>Notes</tag>
+      
+      <tag>2022 Fall</tag>
+      
+      <tag>MATH430</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>MATH 407: Probability Theory</title>
     <link href="/2022/10/22/MATH407/"/>
     <url>/2022/10/22/MATH407/</url>
@@ -29,39 +62,6 @@
       <tag>MATH407</tag>
       
       <tag>2022 Fall</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>MATH 430: Thoery of Numbers</title>
-    <link href="/2022/10/22/MATH430/"/>
-    <url>/2022/10/22/MATH430/</url>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h1><ul><li>Intructor: Masoud Zargar</li><li>Course description: This is a course on (elementary) number theory, covering the basic problems with which this subject deals, as well as how it is related to other areas of mathematics. Throughout the course, I will also inspire some abstract mathematics that has been developed to generalize some related classical concepts. We will try to follow the first 9 chapters of the textbook, with some deviations into analytic number theory and very basic abstract algebra.</li></ul><p>This course is till in progress, but both up till now I think it’s a very good proof based course for beginners.</p><h1 id="Syllabus"><a href="#Syllabus" class="headerlink" title="Syllabus"></a>Syllabus</h1><p>If you could not preview, download here: <a href="/img/MATH430/pdf/MATH430_Syllabus.pdf">MATH430_Syllabus.pdf</a></p><div class="row">    <embed src="/img/MATH430/pdf/MATH430_Syllabus.pdf" width="100%" height="550" type="application/pdf"></div><h1 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h1><p>If you could not preview, download here: <a href="/img/MATH430/pdf/MATH430_Notes.pdf">MATH430_Notes.pdf</a></p><div class="row">    <embed src="/img/MATH430/pdf/MATH430_Notes.pdf" width="100%" height="550" type="application/pdf"></div>]]></content>
-    
-    
-    <categories>
-      
-      <category>Notes</category>
-      
-      <category>2022 Fall</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>MATH</tag>
-      
-      <tag>Notes</tag>
-      
-      <tag>2022 Fall</tag>
-      
-      <tag>MATH430</tag>
       
     </tags>
     
