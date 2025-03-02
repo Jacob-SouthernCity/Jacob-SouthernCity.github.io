@@ -9,18 +9,32 @@ import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
+import TypewriterText from "../src/components/ui/TypewriterText";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
   const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
+  // Custom titles specific to this person's profile
+  const personalTitles = [
+    "Developer", 
+    "React Expert", 
+    "Next.js Specialist", 
+    "Full-Stack Engineer",
+    "Problem Solver",
+    "UX Enthusiast",
+    "JavaScript Wizard",
+    "Web Application Architect",
+    "Tech Innovator"
+  ];
+
   return (
     <section
       ref={ref}
       id="home"
-      className="mb-28 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="mb-24 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
     >
-      <div className="flex items-center justify-center mb-6">
+      <div className="flex items-center justify-center mb-4">
         <div className="relative">
           <motion.div
             initial={{ opacity: 0, scale: 0 }}
@@ -38,7 +52,7 @@ export default function Intro() {
               height="240"
               quality="95"
               priority={true}
-              className="h-48 w-48 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
+              className="h-44 w-44 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
             />
           </motion.div>
 
@@ -59,17 +73,21 @@ export default function Intro() {
       </div>
 
       <motion.div
-        className="mb-10 mt-6 flex flex-col items-center"
+        className="mb-10 mt-4 flex flex-col items-center"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="px-4 text-4xl font-bold leading-tight sm:text-6xl">
-          Ricardo <span className="text-gradient-teal">Developer</span>
+        <h1 className="px-4 text-4xl font-bold leading-tight sm:text-6xl flex flex-col items-center min-h-[2.4em] sm:min-h-[2em]">
+          <span>Ricardo</span>
+          <TypewriterText 
+            words={personalTitles} 
+            typingSpeed={80} 
+            deletingSpeed={40} 
+            className="text-gradient-teal mt-1 block"
+          />
         </h1>
-        <h2 className="mt-2 text-xl font-medium text-slate-700 dark:text-slate-300">
-          Full-Stack Developer with 8 years of experience
-        </h2>
-        <div className="mt-6 p-6 bg-gradient-subtle rounded-2xl shadow-lg max-w-[42rem]">
+        
+        <div className="mt-4 max-w-[42rem]">
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
             <span className="font-medium">React and Next.js specialist</span> with a background in{" "}
             <span className="font-medium">Accounting</span>. I build beautiful, responsive web applications 
