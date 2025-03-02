@@ -31,44 +31,48 @@ export default function Contact() {
     >
       <SectionHeading>Contact me</SectionHeading>
 
-      <p className="text-gray-700 -mt-6 dark:text-white/80">
+      <p className="text-slate-600 mt-6 mb-8 dark:text-slate-300 text-lg">
         Please contact me directly at{" "}
-        <a className="underline" href="mailto:example@gmail.com">
+        <a className="text-indigo-600 font-medium hover:underline dark:text-indigo-400" href="mailto:example@gmail.com">
           example@gmail.com
         </a>{" "}
         or through this form.
       </p>
 
-      <form
-        className="mt-10 flex flex-col dark:text-black"
-        action={async (formData) => {
-          const { data, error } = await sendEmail(formData);
+      <div className="bg-gradient-subtle p-6 rounded-2xl shadow-lg">
+        <form
+          className="flex flex-col dark:text-black"
+          action={async (formData) => {
+            const { data, error } = await sendEmail(formData);
 
-          if (error) {
-            toast.error(error);
-            return;
-          }
+            if (error) {
+              toast.error(error);
+              return;
+            }
 
-          toast.success("Email sent successfully!");
-        }}
-      >
-        <input
-          className="h-14 px-4 rounded-lg borderBlack dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="senderEmail"
-          type="email"
-          required
-          maxLength={500}
-          placeholder="Your email"
-        />
-        <textarea
-          className="h-52 my-3 rounded-lg borderBlack p-4 dark:bg-white dark:bg-opacity-80 dark:focus:bg-opacity-100 transition-all dark:outline-none"
-          name="message"
-          placeholder="Your message"
-          required
-          maxLength={5000}
-        />
-        <SubmitBtn />
-      </form>
+            toast.success("Email sent successfully!");
+          }}
+        >
+          <input
+            className="h-14 px-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-white dark:bg-opacity-90 dark:focus:bg-opacity-100 focus:border-indigo-500 outline-none transition-all shadow-sm"
+            name="senderEmail"
+            type="email"
+            required
+            maxLength={500}
+            placeholder="Your email"
+          />
+          <textarea
+            className="h-52 my-4 rounded-lg border border-slate-200 dark:border-slate-700 p-4 dark:bg-white dark:bg-opacity-90 dark:focus:bg-opacity-100 focus:border-indigo-500 outline-none transition-all shadow-sm"
+            name="message"
+            placeholder="Your message"
+            required
+            maxLength={5000}
+          />
+          <div className="flex justify-center">
+            <SubmitBtn />
+          </div>
+        </form>
+      </div>
     </motion.section>
   );
 }
