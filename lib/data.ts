@@ -1,12 +1,12 @@
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
-import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaPython } from "react-icons/fa";
-import { BiLogoTypescript, BiLogoJavascript, BiLogoPostgresql, BiLogoTailwindCss, BiLogoDjango } from "react-icons/bi";
-import { TbBrandNextjs, TbBrandMongodb, TbBrandFramerMotion } from "react-icons/tb";
-import { SiPrisma, SiRedux, SiGraphql, SiApollographql, SiExpress } from "react-icons/si";
+import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaPython, FaJava, FaAws, FaDocker, FaGithub, FaUnity } from "react-icons/fa";
+import { BiLogoTypescript, BiLogoJavascript, BiLogoPostgresql, BiLogoTailwindCss, BiLogoSpringBoot, BiLogoFirebase } from "react-icons/bi";
+import { TbBrandNextjs, TbBrandMongodb, TbBrandCpp, TbBrandCSharp, TbSql, TbBrandGolang } from "react-icons/tb";
+import { SiMysql, SiSqlite, SiExpress, SiTensorflow } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
-import corpcommentImg from "@/public/corpcomment.png";
-import rmtdevImg from "@/public/rmtdev.png";
+import lakeMinneImg from "@/public/corpcomment.png";
+import roamyImg from "@/public/rmtdev.png";
 import wordanalyticsImg from "@/public/wordanalytics.png";
 
 export const links = [
@@ -34,45 +34,61 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
+    title: "Yale University",
+    location: "New Haven, CT",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
+      "M.S. in Computer Science with courses in Building Distributed Systems, Database Systems, Full Stack Web Programming, and User Interface Design.",
     icon: React.createElement(LuGraduationCap),
-    date: "2019",
+    date: "Expected May 2025",
   },
   {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
+    title: "Software Engineer Volunteer",
+    location: "Silicon Valley Leadership Community",
     description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
+      "Developed and maintained the SVLC website using React. Conducted analysis comparing third-party databases, and built the SVLC forum with Firebase for real-time data management.",
     icon: React.createElement(CgWorkAlt),
-    date: "2019 - 2021",
+    date: "July 2024 - Oct 2024",
   },
   {
-    title: "Full-Stack Developer",
-    location: "Houston, TX",
+    title: "Software Engineer Intern",
+    location: "eBaoTech International, Ltd., Shanghai",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
-    icon: React.createElement(FaReact),
-    date: "2021 - present",
+      "Designed a pipeline for programming language translation using LLMs. Fine-tuned models including ChatGLM v2 with PyTorch and Hugging Face. Built insurance databases and trained models on AWS SageMaker.",
+    icon: React.createElement(CgWorkAlt),
+    date: "June 2023 - Aug 2023",
+  },
+  {
+    title: "Software Engineer Intern",
+    location: "nPlace, Ltd., Shanghai",
+    description:
+      "Developed adaptive downsampling for data sensor converters, reducing thread pressure while maintaining accuracy. Implemented Bresenham's algorithm in 3D and contributed to the Zaichang 3D scanning software.",
+    icon: React.createElement(CgWorkAlt),
+    date: "June 2022 - Aug 2022",
+  },
+  {
+    title: "University of Southern California",
+    location: "Los Angeles, CA",
+    description:
+      "B.S./B.A. Double Major in Computer Science (Games) and Computational and Applied Mathematics.",
+    icon: React.createElement(LuGraduationCap),
+    date: "May 2024",
   },
 ] as const;
 
 export const projectsData = [
   {
-    title: "CorpComment",
+    title: "Lake Minnewaska",
     description:
-      "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
-    imageUrl: corpcommentImg,
+      "A fishing simulator game developed in Unity. I served as the Gameplay and AI engineer, designing fishing mechanics, fish behavior AI using behavior trees, and key gameplay features.",
+    tags: ["Unity", "C#", "Game AI", "State Machines", "Behavior Trees", "Pathfinding"],
+    imageUrl: lakeMinneImg,
   },
   {
-    title: "rmtDev",
+    title: "Roamy Trip",
     description:
-      "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
-    imageUrl: rmtdevImg,
+      "A full-stack application for hotel discovery and travel planning with social features. Provides an interactive map showing hotel locations worldwide, with review sharing and friend connections.",
+    tags: ["React Native", "Expo", "Node.js", "Express", "Mobile Development"],
+    imageUrl: roamyImg,
   },
   {
     title: "Word Analytics",
@@ -85,6 +101,34 @@ export const projectsData = [
 
 export const skillsData = [
   {
+    name: "C++",
+    icon: React.createElement(TbBrandCpp),
+  },
+  {
+    name: "C#",
+    icon: React.createElement(TbBrandCSharp),
+  },
+  {
+    name: "C",
+    icon: React.createElement(CgWorkAlt),
+  },
+  {
+    name: "Java",
+    icon: React.createElement(FaJava),
+  },
+  {
+    name: "Go",
+    icon: React.createElement(TbBrandGolang),
+  },
+  {
+    name: "SQL",
+    icon: React.createElement(TbSql),
+  },
+  {
+    name: "JavaScript",
+    icon: React.createElement(BiLogoJavascript),
+  },
+  {
     name: "HTML",
     icon: React.createElement(FaHtml5),
   },
@@ -93,71 +137,47 @@ export const skillsData = [
     icon: React.createElement(FaCss3Alt),
   },
   {
-    name: "JavaScript",
-    icon: React.createElement(BiLogoJavascript),
-  },
-  {
-    name: "TypeScript",
-    icon: React.createElement(BiLogoTypescript),
+    name: "Python",
+    icon: React.createElement(FaPython),
   },
   {
     name: "React",
     icon: React.createElement(FaReact),
   },
   {
-    name: "Next.js",
-    icon: React.createElement(TbBrandNextjs),
+    name: "Spring Boot",
+    icon: React.createElement(BiLogoSpringBoot),
   },
   {
-    name: "Node.js",
-    icon: React.createElement(FaNodeJs),
+    name: "MySQL",
+    icon: React.createElement(SiMysql),
   },
   {
-    name: "Git",
-    icon: React.createElement(FaGitAlt),
+    name: "SQLite",
+    icon: React.createElement(SiSqlite),
   },
   {
-    name: "Tailwind",
-    icon: React.createElement(BiLogoTailwindCss),
+    name: "AWS",
+    icon: React.createElement(FaAws),
   },
   {
-    name: "Prisma",
-    icon: React.createElement(SiPrisma),
+    name: "GitHub",
+    icon: React.createElement(FaGithub),
   },
   {
-    name: "MongoDB",
-    icon: React.createElement(TbBrandMongodb),
+    name: "TensorFlow",
+    icon: React.createElement(SiTensorflow),
   },
   {
-    name: "Redux",
-    icon: React.createElement(SiRedux),
+    name: "Firebase",
+    icon: React.createElement(BiLogoFirebase),
   },
   {
-    name: "GraphQL",
-    icon: React.createElement(SiGraphql),
+    name: "Docker",
+    icon: React.createElement(FaDocker),
   },
   {
-    name: "Apollo",
-    icon: React.createElement(SiApollographql),
-  },
-  {
-    name: "Express",
-    icon: React.createElement(SiExpress),
-  },
-  {
-    name: "PostgreSQL",
-    icon: React.createElement(BiLogoPostgresql),
-  },
-  {
-    name: "Python",
-    icon: React.createElement(FaPython),
-  },
-  {
-    name: "Django",
-    icon: React.createElement(BiLogoDjango),
-  },
-  {
-    name: "Framer Motion",
-    icon: React.createElement(TbBrandFramerMotion),
+    name: "Unity",
+    icon: React.createElement(FaUnity),
   },
 ] as const;
