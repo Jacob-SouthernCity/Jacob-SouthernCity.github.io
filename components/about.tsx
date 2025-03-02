@@ -19,30 +19,25 @@ export default function About() {
     >
       <SectionHeading>About me</SectionHeading>
       <p className="mb-3">
-        After graduating with a degree in{" "}
-        <span className="font-medium">Accounting</span>, I decided to pursue my
-        passion for programming. I enrolled in a coding bootcamp and learned{" "}
-        <span className="font-medium">full-stack web development</span>.{" "}
-        <span className="italic">My favorite part of programming</span> is the
-        problem-solving aspect. I <span className="underline">love</span> the
-        feeling of finally figuring out a solution to a problem. My core stack
-        is{" "}
+        I am currently pursuing my Master's degree in{" "}
+        <span className="font-medium">Computer Science at Yale University</span>, after completing my dual degrees in{" "}
+        <span className="font-medium">Computer Science (Games) and Computational Mathematics at USC</span>.{" "}
+        <span className="italic">My passion lies at the intersection of</span> game development, 
+        artificial intelligence, and software engineering. I {" "}
+        <span className="underline">thrive</span> on solving complex technical challenges 
+        and designing systems that deliver engaging user experiences. My technical expertise includes{" "}
         <span className="font-medium">
-          React, Next.js, Node.js, and MongoDB
+          C++, Unity, C#, React, and various AI technologies
         </span>
-        . I am also familiar with TypeScript and Prisma. I am always looking to
-        learn new technologies. I am currently looking for a{" "}
-        <span className="font-medium">full-time position</span> as a software
-        developer.
+        . I'm constantly exploring new technologies and methodologies to enhance my skills as a developer.
       </p>
 
       <p>
-        <span className="italic">When I'm not coding</span>, I enjoy playing
-        video games, watching movies, and playing with my dog. I also enjoy{" "}
-        <span className="font-medium">learning new things</span>. I am currently
-        learning about{" "}
-        <span className="font-medium">history and philosophy</span>. I'm also
-        learning how to play the guitar.
+        <span className="italic">Beyond coding</span>, I enjoy playing and analyzing video games, 
+        exploring new technologies, and contributing to open-source projects. I'm particularly interested in{" "}
+        <span className="font-medium">game AI, procedural generation, and interactive storytelling</span>. 
+        My academic background in both computer science and mathematics gives me a unique perspective 
+        on problem-solving and system design.
       </p>
     </motion.section>
   );
