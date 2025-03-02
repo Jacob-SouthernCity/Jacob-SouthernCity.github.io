@@ -124,12 +124,12 @@ export default function Intro() {
         
         <div className="mt-4 max-w-[42rem]">
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-            <span className="font-medium">Computer Science graduate student at Yale University</span> with a background in{" "}
+            <span className="font-medium">MSCS student at Yale University</span> with a background in{" "}
             <span className="font-medium">Game Development and Mathematics</span>. I build innovative applications 
-            with a focus on user experience and performance. My core skills include <span className="font-medium text-indigo-600 dark:text-indigo-400">C++, Unity, React, and AI technologies</span>.
+            with a focus on user experience and performance. My core skills include <span className="font-medium text-indigo-600 dark:text-indigo-400">C++, Unity, React, and Next.js</span>.
           </p>
           <p className="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-            Currently pursuing my MS in Computer Science at Yale with research interests in game development, distributed systems, and artificial intelligence.
+            Currently actively looking for opportunities in software engineering and game development.
           </p>
         </div>
       </motion.div>

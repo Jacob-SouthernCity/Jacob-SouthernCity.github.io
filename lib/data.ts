@@ -5,9 +5,7 @@ import { BiLogoTypescript, BiLogoJavascript, BiLogoPostgresql, BiLogoTailwindCss
 import { TbBrandNextjs, TbBrandMongodb, TbBrandCpp, TbBrandCSharp, TbSql, TbBrandGolang } from "react-icons/tb";
 import { SiMysql, SiSqlite, SiExpress, SiTensorflow, SiPerforce, SiC } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
-import lakeMinneImg from "@/public/corpcomment.png";
-import roamyImg from "@/public/rmtdev.png";
-import wordanalyticsImg from "@/public/wordanalytics.png";
+import roamyImg from "@/public/roamy.jpg";
 
 export const links = [
   {
@@ -81,7 +79,7 @@ export const projectsData = [
     description:
       "A fishing simulator game developed in Unity. I served as the Gameplay and AI engineer, designing fishing mechanics, fish behavior AI using behavior trees, and key gameplay features.",
     tags: ["Unity", "C#", "Game AI", "Perforce"],
-    imageUrl: lakeMinneImg,
+    imageUrl: null,
     videoUrl: "https://video.cloudflare.steamstatic.com/store_trailers/257021477/movie480_vp9.webm?t=1716053340",
     links: [
       {
@@ -185,5 +183,17 @@ export const skillsData = [
   {
     name: "Perforce",
     icon: React.createElement(SiPerforce),
+  },
+  {
+    name: "Next.js",
+    icon: React.createElement(TbBrandNextjs),
+  },
+  {
+    name: "React Native",
+    icon: React.createElement(FaReact),
+  },
+  {
+    name: "Express",
+    icon: React.createElement(SiExpress),
   },
 ] as const;
