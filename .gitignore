@@ -1,40 +1,54 @@
-# Dependencies
-node_modules/
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Next.js build output
-.next/
-out/
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Production
-build/
+# Database
+*.db
 
-# System files
+# testing
+/coverage
+
+# storybook
+storybook-static
+*storybook.log
+
+# playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# next.js
+/.next
+/out
+
+# cache
+.swc/
+
+# production
+/build
+
+# misc
 .DS_Store
-.env
-.env.local
-.env.*.local
+*.pem
+Thumbs.db
 
-# Logs and temp files
+# debug
 npm-debug.log*
+pnpm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-tmp/
-temp/
 
-# Editor and IDE files
-.idea
-.vscode
-*.swp
-*.swo
-*.sublime-project
-*.sublime-workspace
+# local env files
+.env*.local
 
-# Coverage data
-coverage/
+# Sentry Config File
+.env.sentry-build-plugin
 
-# Optional: Ignore environment variables in production
-# Replace 'production' with your actual environment name if different
-# .env.production
+# local folder
+local
 
-# Optional: Ignore local database files
-# *.sqlite
+# vercel
+.vercel
