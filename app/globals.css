@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    --line-color: #e5e7eb;
+    --background-light: #f8fafc;
+    --background-dark: #0f172a;
+  }
+  html.dark {
+    --line-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-indigo-950/40;
+  }
+}
+
+@layer utilities {
+  .borderBlack {
+    @apply border border-black/10;
+  }
+  
+  .bg-gradient-custom {
+    @apply bg-gradient-to-r from-indigo-500 to-indigo-700;
+  }
+  
+  .bg-gradient-teal {
+    @apply bg-gradient-to-r from-teal-500 to-indigo-500;
+  }
+  
+  .bg-gradient-subtle {
+    @apply bg-gradient-to-br from-white to-indigo-50 dark:from-slate-900 dark:to-indigo-950;
+  }
+  
+  .bg-gradient-card {
+    @apply bg-gradient-to-br from-white to-slate-50 dark:from-slate-900 dark:to-indigo-950/50;
+  }
+  
+  .text-gradient-custom {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-indigo-600;
+  }
+  
+  .text-gradient-teal {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-indigo-500;
+  }
+  
+  .glow {
+    @apply shadow-[0_0_15px_rgba(99,102,241,0.5)];
+  }
+  
+  .glow-teal {
+    @apply shadow-[0_0_15px_rgba(20,184,166,0.5)];
+  }
+}
