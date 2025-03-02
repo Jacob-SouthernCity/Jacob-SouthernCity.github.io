@@ -58,7 +58,7 @@ export default function Intro() {
             className="glow rounded-full"
           >
             <Image
-              src="/jingzema.png"
+              src="/jingzema.jpg"
               alt="Jingze Ma portrait"
               width="240"
               height="240"
