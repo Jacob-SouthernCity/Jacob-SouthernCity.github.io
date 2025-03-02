@@ -9,7 +9,7 @@ import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
 import { useActiveSectionContext } from "@/context/active-section-context";
-import TypewriterText from "../src/components/ui/TypewriterText";
+import TypewriterText from "./TypewriterText";
 import { FiRefreshCw } from "react-icons/fi";
 
 export default function Intro() {
