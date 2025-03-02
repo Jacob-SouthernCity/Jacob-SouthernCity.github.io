@@ -14,6 +14,13 @@
   
   body {
     @apply bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-indigo-950/40;
+    cursor: none; /* Hide the default cursor when Blobity is active */
+  }
+  
+  /* Ensure clickable elements work well with Blobity */
+  a, button, [data-blobity] {
+    position: relative; /* This helps with magnetic behavior */
+    z-index: 1; /* Ensures elements are above background but below Blobity */
   }
 }
 

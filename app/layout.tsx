@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import ThemeSwitch from "@/components/theme-switch";
 import ThemeContextProvider from "@/context/theme-context";
 import { Toaster } from "react-hot-toast";
+import BlobityCursor from "@/components/BlobityCursor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -35,6 +36,13 @@ export default function RootLayout({
 
             <Toaster position="top-right" />
             <ThemeSwitch />
+            <BlobityCursor 
+              opacity={0.6} 
+              lightModeColor="rgb(150, 150, 170)" 
+              darkModeColor="rgb(100, 110, 140)" 
+              size={35} 
+              zIndex={9999} 
+            />
           </ActiveSectionContextProvider>
         </ThemeContextProvider>
       </body>
