@@ -3,7 +3,7 @@ import { CgWorkAlt } from "react-icons/cg";
 import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaPython, FaJava, FaAws, FaDocker, FaGithub, FaUnity } from "react-icons/fa";
 import { BiLogoTypescript, BiLogoJavascript, BiLogoPostgresql, BiLogoTailwindCss, BiLogoSpringBoot, BiLogoFirebase } from "react-icons/bi";
 import { TbBrandNextjs, TbBrandMongodb, TbBrandCpp, TbBrandCSharp, TbSql, TbBrandGolang } from "react-icons/tb";
-import { SiMysql, SiSqlite, SiExpress, SiTensorflow } from "react-icons/si";
+import { SiMysql, SiSqlite, SiExpress, SiTensorflow, SiPerforce, SiC } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
 import lakeMinneImg from "@/public/corpcomment.png";
 import roamyImg from "@/public/rmtdev.png";
@@ -80,8 +80,16 @@ export const projectsData = [
     title: "Lake Minnewaska",
     description:
       "A fishing simulator game developed in Unity. I served as the Gameplay and AI engineer, designing fishing mechanics, fish behavior AI using behavior trees, and key gameplay features.",
-    tags: ["Unity", "C#", "Game AI", "State Machines", "Behavior Trees", "Pathfinding"],
+    tags: ["Unity", "C#", "Game AI", "Perforce"],
     imageUrl: lakeMinneImg,
+    videoUrl: "https://video.cloudflare.steamstatic.com/store_trailers/257021477/movie480_vp9.webm?t=1716053340",
+    links: [
+      {
+        icon: "FaSteam",
+        url: "https://store.steampowered.com/app/2858430/Lake_Minnewaska/",
+        label: "View on Steam"
+      }
+    ]
   },
   {
     title: "Roamy Trip",
@@ -89,13 +97,7 @@ export const projectsData = [
       "A full-stack application for hotel discovery and travel planning with social features. Provides an interactive map showing hotel locations worldwide, with review sharing and friend connections.",
     tags: ["React Native", "Expo", "Node.js", "Express", "Mobile Development"],
     imageUrl: roamyImg,
-  },
-  {
-    title: "Word Analytics",
-    description:
-      "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
-    imageUrl: wordanalyticsImg,
+    links: []
   },
 ] as const;
 
@@ -110,7 +112,7 @@ export const skillsData = [
   },
   {
     name: "C",
-    icon: React.createElement(CgWorkAlt),
+    icon: React.createElement(SiC),
   },
   {
     name: "Java",
@@ -179,5 +181,9 @@ export const skillsData = [
   {
     name: "Unity",
     icon: React.createElement(FaUnity),
+  },
+  {
+    name: "Perforce",
+    icon: React.createElement(SiPerforce),
   },
 ] as const;
