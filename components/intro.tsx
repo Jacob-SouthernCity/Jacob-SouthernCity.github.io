@@ -34,13 +34,10 @@ export default function Intro() {
 
   // Custom titles specific to this person's profile
   const personalTitles = [
-    "Developer", 
-    "CS Graduate Student",
-    "Game Engineer",
-    "AI Enthusiast",
-    "Problem Solver",
-    "Full-Stack Engineer",
-    "Software Engineer"
+    "Software Engineer", 
+    "Game Developer",
+    "Yale CS Student",
+    "Traveler"
   ];
 
   return (
@@ -61,7 +58,7 @@ export default function Intro() {
             className="glow rounded-full"
           >
             <Image
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?fit=crop&w=368&h=368&q=100"
+              src="/jingzema.png"
               alt="Jingze Ma portrait"
               width="240"
               height="240"
@@ -156,7 +153,7 @@ export default function Intro() {
 
         <a
           className="bg-white p-4 text-slate-700 hover:text-indigo-600 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border border-slate-200 shadow-md dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:text-indigo-400"
-          href="https://linkedin.com"
+          href="https://www.linkedin.com/in/jingze-ma/"
           target="_blank"
         >
           <BsLinkedin className="text-xl" />
@@ -164,7 +161,7 @@ export default function Intro() {
 
         <a
           className="bg-white p-4 text-slate-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-indigo-600 active:scale-105 transition cursor-pointer border border-slate-200 shadow-md dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:text-indigo-400"
-          href="https://github.com"
+          href="https://github.com/Jacob-SouthernCity"
           target="_blank"
         >
           <FaGithubSquare className="text-xl" />
