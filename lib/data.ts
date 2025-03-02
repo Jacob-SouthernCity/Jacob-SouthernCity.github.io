@@ -34,28 +34,20 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Yale University",
-    location: "New Haven, CT",
+    title: "B.S. in Computer Science (Games)",
+    location: "University of Southern California, Los Angeles, CA",
     description:
-      "M.S. in Computer Science with courses in Building Distributed Systems, Database Systems, Full Stack Web Programming, and User Interface Design.",
+      "Specialized in game development with courses in Game Engine Architecture, Game Physics, Immersive Game Design, and AI for Games. Developed multiple game projects using Unity and Unreal Engine.",
     icon: React.createElement(LuGraduationCap),
-    date: "Expected May 2025",
+    date: "Aug 2020 - May 2024",
   },
   {
-    title: "Software Engineer Volunteer",
-    location: "Silicon Valley Leadership Community",
+    title: "B.A. in Computational and Applied Mathematics",
+    location: "University of Southern California, Los Angeles, CA",
     description:
-      "Developed and maintained the SVLC website using React. Conducted analysis comparing third-party databases, and built the SVLC forum with Firebase for real-time data management.",
-    icon: React.createElement(CgWorkAlt),
-    date: "July 2024 - Oct 2024",
-  },
-  {
-    title: "Software Engineer Intern",
-    location: "eBaoTech International, Ltd., Shanghai",
-    description:
-      "Designed a pipeline for programming language translation using LLMs. Fine-tuned models including ChatGLM v2 with PyTorch and Hugging Face. Built insurance databases and trained models on AWS SageMaker.",
-    icon: React.createElement(CgWorkAlt),
-    date: "June 2023 - Aug 2023",
+      "Focused on mathematical foundations and their applications to computer science, with coursework in Discrete Mathematics, Numerical Analysis, Machine Learning and Statistics.",
+    icon: React.createElement(LuGraduationCap),
+    date: "Aug 2020 - May 2024",
   },
   {
     title: "Software Engineer Intern",
@@ -66,12 +58,20 @@ export const experiencesData = [
     date: "June 2022 - Aug 2022",
   },
   {
-    title: "University of Southern California",
-    location: "Los Angeles, CA",
+    title: "Software Engineer Intern",
+    location: "eBaoTech International, Ltd., Shanghai",
     description:
-      "B.S./B.A. Double Major in Computer Science (Games) and Computational and Applied Mathematics.",
+      "Designed a pipeline for programming language translation using LLMs. Fine-tuned models including ChatGLM v2 with PyTorch and Hugging Face. Built insurance databases and trained models on AWS SageMaker.",
+    icon: React.createElement(CgWorkAlt),
+    date: "June 2023 - Aug 2023",
+  },
+  {
+    title: "M.S. in Computer Science",
+    location: "Yale University, New Haven, CT",
+    description:
+      "Pursuing advanced studies with courses in Building Distributed Systems, Database Systems, Full Stack Web Programming, and User Interface Design. Research focuses on game development techniques and artificial intelligence.",
     icon: React.createElement(LuGraduationCap),
-    date: "May 2024",
+    date: "Aug 2024 - May 2025 (Expected)",
   },
 ] as const;
 
