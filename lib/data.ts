@@ -67,9 +67,17 @@ export const experiencesData = [
     title: "M.S. in Computer Science",
     location: "Yale University, New Haven, CT",
     description:
-      "Pursuing advanced studies with courses in Building Distributed Systems, Database Systems, Full Stack Web Programming, and User Interface Design. Research focuses on game development techniques and artificial intelligence.",
+      "Pursued advanced studies with courses in Building Distributed Systems, Database Systems, Full Stack Web Programming, and User Interface Design. Research focused on game development techniques and artificial intelligence.",
     icon: React.createElement(LuGraduationCap),
-    date: "Aug 2024 - May 2025 (Expected)",
+    date: "Aug 2024 - May 2025",
+  },
+  {
+    title: "Associate Software Engineer",
+    location: "Vestmark Inc., Wakefield, MA",
+    description:
+      "Developing and maintaining financial software solutions as part of the Vestmark engineering team. Working on scalable systems and collaborating with cross-functional teams.",
+    icon: React.createElement(CgWorkAlt),
+    date: "June 2025 - Present",
   },
 ] as const;
 

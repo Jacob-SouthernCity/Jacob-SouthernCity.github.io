@@ -36,7 +36,7 @@ export default function Intro() {
   const personalTitles = [
     "Software Engineer", 
     "Game Developer",
-    "Yale CS Student",
+    "Yale MSCS",
     "Traveler"
   ];
 
@@ -124,12 +124,9 @@ export default function Intro() {
         
         <div className="mt-4 max-w-[42rem]">
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-            <span className="font-medium">MSCS student at Yale University</span> with a background in{" "}
+            Associate Software Engineer at Vestmark Inc. I graduated with a Master's degree in <span className="font-medium">Computer Science from Yale University</span>  with a background in{" "}
             <span className="font-medium">Game Development and Mathematics</span>. I build innovative applications 
-            with a focus on user experience and performance. My core skills include <span className="font-medium text-indigo-600 dark:text-indigo-400">C++, Unity, React, and Next.js</span>.
-          </p>
-          <p className="mt-3 text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-            Currently actively looking for opportunities in software engineering and game development.
+            with a focus on user experience and performance. My core skills include <span className="font-medium text-indigo-600 dark:text-indigo-400">Java, C++, Unity, React, and Next.js</span>.
           </p>
         </div>
       </motion.div>
