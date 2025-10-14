@@ -4,8 +4,6 @@ import React from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
-import { sendEmail } from "@/actions/sendEmail";
-import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
 
 export default function Contact() {
@@ -36,21 +34,15 @@ export default function Contact() {
         <a className="text-indigo-600 font-medium hover:underline dark:text-indigo-400" href="mailto:jingzema2001@gmail.com">
           jingzema2001@gmail.com
         </a>{" "}
-        or through this form.
+        . The contact form is currently disabled.
       </p>
 
       <div className="bg-gradient-subtle p-6 rounded-2xl shadow-lg">
         <form
           className="flex flex-col dark:text-black"
-          action={async (formData) => {
-            const { data, error } = await sendEmail(formData);
-
-            if (error) {
-              toast.error(error);
-              return;
-            }
-
-            toast.success("Email sent successfully!");
+          onSubmit={(e) => {
+            e.preventDefault();
+            toast("The contact form is temporarily disabled. Please email me directly.");
           }}
         >
           <input
@@ -60,6 +52,7 @@ export default function Contact() {
             required
             maxLength={500}
             placeholder="Your email"
+            disabled
           />
           <textarea
             className="h-52 my-4 rounded-lg border border-slate-200 dark:border-slate-700 p-4 dark:bg-white dark:bg-opacity-90 dark:focus:bg-opacity-100 focus:border-indigo-500 outline-none transition-all shadow-sm"
@@ -67,9 +60,16 @@ export default function Contact() {
             placeholder="Your message"
             required
             maxLength={5000}
+            disabled
           />
           <div className="flex justify-center">
-            <SubmitBtn />
+            <button
+              type="submit"
+              disabled
+              className="opacity-60 cursor-not-allowed bg-gray-300 text-gray-700 px-6 py-3 rounded-full dark:bg-gray-700 dark:text-gray-300"
+            >
+              Contact form disabled
+            </button>
           </div>
         </form>
       </div>
