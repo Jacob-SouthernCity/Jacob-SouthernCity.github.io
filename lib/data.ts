@@ -1,8 +1,8 @@
 import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
-import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs, FaGitAlt, FaPython, FaJava, FaAws, FaDocker, FaGithub, FaUnity } from "react-icons/fa";
-import { BiLogoTypescript, BiLogoJavascript, BiLogoPostgresql, BiLogoTailwindCss, BiLogoSpringBoot, BiLogoFirebase } from "react-icons/bi";
-import { TbBrandNextjs, TbBrandMongodb, TbBrandCpp, TbBrandCSharp, TbSql, TbBrandGolang } from "react-icons/tb";
+import { FaReact, FaHtml5, FaCss3Alt, FaPython, FaJava, FaAws, FaDocker, FaGithub, FaUnity } from "react-icons/fa";
+import { BiLogoJavascript, BiLogoSpringBoot, BiLogoFirebase } from "react-icons/bi";
+import { TbBrandNextjs, TbBrandCpp, TbBrandCSharp, TbSql, TbBrandGolang } from "react-icons/tb";
 import { SiMysql, SiSqlite, SiExpress, SiTensorflow, SiPerforce, SiC } from "react-icons/si";
 import { LuGraduationCap } from "react-icons/lu";
 import roamyImg from "@/public/roamy.jpg";

@@ -3,18 +3,14 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
 import { HiDownload } from "react-icons/hi";
 import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
-import { useActiveSectionContext } from "@/context/active-section-context";
 import TypewriterText from "./TypewriterText";
-import { FiRefreshCw } from "react-icons/fi";
 
 export default function Intro() {
   const { ref } = useSectionInView("Home", 0.5);
-  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
 
   // Define the different name versions
   const nameVersions = [
@@ -44,7 +40,7 @@ export default function Intro() {
     <section
       ref={ref}
       id="home"
-      className="mb-24 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="mb-24 max-w-200 text-center sm:mb-0 scroll-mt-[100rem]"
     >
       <div className="flex items-center justify-center mb-4">
         <div className="relative">
@@ -93,7 +89,7 @@ export default function Intro() {
           <div className="absolute right-4 top-2 z-10">
             <button 
               onClick={cycleNameVersion}
-              className="bg-indigo-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 p-1.5 rounded-full hover:bg-indigo-200 dark:hover:bg-slate-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 w-8 h-8 flex items-center justify-center text-sm font-medium"
+              className="bg-indigo-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 p-1.5 rounded-full hover:bg-indigo-200 dark:hover:bg-slate-600 transition-colors duration-200 focus:outline-hidden focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 w-8 h-8 flex items-center justify-center text-sm font-medium"
               title={`Currently: ${nameVersions[currentNameIndex].label}`}
             >
               {nameVersions[currentNameIndex].icon}
@@ -122,7 +118,7 @@ export default function Intro() {
           </h1>
         </div>
         
-        <div className="mt-4 max-w-[42rem]">
+        <div className="mt-4 max-w-2xl">
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
             Associate Software Engineer at Vestmark Inc. I graduated with a Master's degree in <span className="font-medium">Computer Science from Yale University</span>  with a background in{" "}
             <span className="font-medium">Game Development and Mathematics</span>. I build innovative applications 
@@ -140,7 +136,7 @@ export default function Intro() {
         }}
       >
         <a
-          className="group bg-gradient-teal text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition w-full sm:w-auto justify-center"
+          className="group bg-gradient-teal text-white px-7 py-3 flex items-center gap-2 rounded-full outline-hidden focus:scale-110 hover:scale-110 active:scale-105 transition w-full sm:w-auto justify-center"
           href="/CV.pdf"
           download
         >

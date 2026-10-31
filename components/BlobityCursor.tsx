@@ -3,6 +3,11 @@
 import { useEffect, useState } from 'react';
 import { useTheme } from '@/context/theme-context';
 
+interface BlobityInstance {
+  updateOptions: (options: Record<string, unknown>) => void;
+  destroy?: () => void;
+}
+
 interface BlobityCursorProps {
   opacity?: number;
   lightModeColor?: string;
@@ -19,11 +24,12 @@ const BlobityCursor = ({
   zIndex = 999,
 }: BlobityCursorProps) => {
   const { theme } = useTheme();
-  const [blobityInstance, setBlobityInstance] = useState<any>(null);
+  const [blobityInstance, setBlobityInstance] = useState<BlobityInstance | null>(null);
 
   // Effect to initialize Blobity
   useEffect(() => {
     // Load the Blobity script
+    let createdInstance: BlobityInstance | null = null;
     const script = document.createElement('script');
     script.src = 'https://cdn.blobity.gmrchk.com/by.js';
     script.async = true;
@@ -33,7 +39,6 @@ const BlobityCursor = ({
       if (typeof window.Blobity === 'function') {
         // Initialize Blobity with custom options
         const blobity = new window.Blobity({
-          color: theme === 'light' ? lightModeColor : darkModeColor,
           opacity: opacity,
           size: size,
           zIndex: zIndex, 
@@ -41,13 +46,13 @@ const BlobityCursor = ({
           focusableElements: '[data-blobity], a:not([data-no-blobity]), button:not([data-no-blobity]), [data-blobity-tooltip]',
           // Make the cursor slightly transparent
           magnetic: true,
-          dotColor: theme === 'light' ? 'rgba(100, 100, 110, 0.6)' : 'rgba(180, 180, 190, 0.6)',
           dotSize: 8,
           // Reduce magnetic pull strength a bit
           magnitudeMagneticForce: 0.5,
         });
 
         // Store the instance
+        createdInstance = blobity;
         setBlobityInstance(blobity);
       }
     };
@@ -57,11 +62,11 @@ const BlobityCursor = ({
     // Cleanup function
     return () => {
       // Clean up Blobity instance
-      if (blobityInstance) {
+      if (createdInstance) {
         try {
           // Attempt to clean up Blobity (if it provides a destroy method)
-          if (typeof blobityInstance.destroy === 'function') {
-            blobityInstance.destroy();
+          if (typeof createdInstance.destroy === 'function') {
+            createdInstance.destroy();
           }
         } catch (error) {
           console.error('Error cleaning up Blobity:', error);
@@ -99,7 +104,7 @@ const BlobityCursor = ({
 // Add TypeScript interface for the window object to recognize Blobity
 declare global {
   interface Window {
-    Blobity: any;
+    Blobity: new (options: Record<string, unknown>) => BlobityInstance;
   }
 }
 

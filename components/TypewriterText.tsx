@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 // Default professional titles
@@ -77,8 +77,10 @@ const TypewriterText: React.FC<TypewriterTextProps> = ({
     } 
     // Move to next word
     else if (isDeleting && currentText.length === 0) {
-      setIsDeleting(false);
-      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+      timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % words.length);
+      }, typingSpeed);
     }
     
     return () => clearTimeout(timeout);
