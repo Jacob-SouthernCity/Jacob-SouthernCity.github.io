@@ -1,50 +1,41 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Link from "next/link";
+import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import { HiDownload } from "react-icons/hi";
 import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
-import { useActiveSectionContext } from "@/context/active-section-context";
+import { contactLinks } from "@/lib/data";
 import TypewriterText from "./TypewriterText";
-import { FiRefreshCw } from "react-icons/fi";
+
+const personalTitles = ["Software Engineer", "Game Developer", "Traveler"];
+
+const nameVersions = [
+  { label: "Legal", name: "Jingze Ma", icon: "EN", lang: "en" },
+  { label: "English", name: "Jacob Ma", icon: "EN", lang: "en" },
+  { label: "Chinese", name: "马璟泽", icon: "中", lang: "zh-Hans" },
+  { label: "Japanese", name: "小島蓮や", icon: "あ", lang: "ja" },
+];
+
+const socialLinkClassName =
+  "bg-white p-4 text-slate-700 flex items-center gap-2 rounded-full border border-slate-200 shadow-md transition hover:scale-[1.15] hover:text-indigo-600 focus-visible:scale-[1.15] active:scale-105 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:text-indigo-400";
 
 export default function Intro() {
-  const { ref } = useSectionInView("Home", 0.5);
-  const { setActiveSection, setTimeOfLastClick } = useActiveSectionContext();
-
-  // Define the different name versions
-  const nameVersions = [
-    { label: "Legal", name: "Jingze Ma", icon: "EN" },
-    { label: "English", name: "Jacob Ma", icon: "EN" },
-    { label: "Chinese", name: "马璟泽", icon: "中" },
-    { label: "Japanese", name: "小島蓮や", icon: "あ" }
-  ];
-  
-  // State to track the current name version
+  const { ref } = useSectionInView("Home");
   const [currentNameIndex, setCurrentNameIndex] = useState(0);
-  
-  // Function to cycle through name versions
+  const currentName = nameVersions[currentNameIndex];
+
   const cycleNameVersion = () => {
     setCurrentNameIndex((prevIndex) => (prevIndex + 1) % nameVersions.length);
   };
-
-  // Custom titles specific to this person's profile
-  const personalTitles = [
-    "Software Engineer", 
-    "Game Developer",
-    "Yale MSCS",
-    "Traveler"
-  ];
 
   return (
     <section
       ref={ref}
       id="home"
-      className="mb-24 max-w-[50rem] text-center sm:mb-0 scroll-mt-[100rem]"
+      className="mb-24 max-w-200 text-center sm:mb-0 scroll-mt-[100rem]"
     >
       <div className="flex items-center justify-center mb-4">
         <div className="relative">
@@ -60,16 +51,17 @@ export default function Intro() {
             <Image
               src="/jingzema.jpg"
               alt="Jingze Ma portrait"
-              width="240"
-              height="240"
-              quality="95"
-              priority={true}
+              width={240}
+              height={240}
+              quality={95}
+              preload
               className="h-44 w-44 rounded-full object-cover border-[0.35rem] border-white shadow-xl"
             />
           </motion.div>
 
           <motion.span
             className="absolute bottom-0 right-0 text-5xl"
+            aria-hidden
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{
@@ -79,7 +71,9 @@ export default function Intro() {
               duration: 0.7,
             }}
           >
-            👋
+            <span className="inline-block origin-[70%_80%] motion-safe:animate-wave motion-safe:hover:animate-wave-once">
+              👋
+            </span>
           </motion.span>
         </div>
       </div>
@@ -91,12 +85,14 @@ export default function Intro() {
       >
         <div className="px-4 relative w-full">
           <div className="absolute right-4 top-2 z-10">
-            <button 
+            <button
+              type="button"
               onClick={cycleNameVersion}
-              className="bg-indigo-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 p-1.5 rounded-full hover:bg-indigo-200 dark:hover:bg-slate-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 w-8 h-8 flex items-center justify-center text-sm font-medium"
-              title={`Currently: ${nameVersions[currentNameIndex].label}`}
+              className="bg-indigo-100 dark:bg-slate-700 text-indigo-600 dark:text-indigo-300 p-1.5 rounded-full hover:bg-indigo-200 dark:hover:bg-slate-600 transition-colors duration-200 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-indigo-500 dark:focus-visible:ring-indigo-400 w-8 h-8 pointer-coarse:size-10 flex items-center justify-center text-sm font-medium"
+              title={`Currently: ${currentName.label}`}
+              aria-label={`Show my name in another language (currently ${currentName.label})`}
             >
-              {nameVersions[currentNameIndex].icon}
+              {currentName.icon}
             </button>
           </div>
           
@@ -104,13 +100,14 @@ export default function Intro() {
             <AnimatePresence mode="wait">
               <motion.span
                 key={currentNameIndex}
+                lang={currentName.lang}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.3 }}
                 className="block mb-1"
               >
-                {nameVersions[currentNameIndex].name}
+                {currentName.name}
               </motion.span>
             </AnimatePresence>
             <TypewriterText 
@@ -122,11 +119,14 @@ export default function Intro() {
           </h1>
         </div>
         
-        <div className="mt-4 max-w-[42rem]">
+        <div className="mt-4 max-w-2xl">
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-            Associate Software Engineer at Vestmark Inc. I graduated with a Master's degree in <span className="font-medium">Computer Science from Yale University</span>  with a background in{" "}
-            <span className="font-medium">Game Development and Mathematics</span>. I build innovative applications 
-            with a focus on user experience and performance. My core skills include <span className="font-medium text-indigo-600 dark:text-indigo-400">Java, C++, Unity, React, and Next.js</span>.
+            Software Engineer at <span className="font-medium">Smule</span>, building
+            across web, mobile, and platform. I hold a Master's in{" "}
+            <span className="font-medium">Computer Science from Yale</span> and a
+            background in <span className="font-medium">Game Development and Mathematics</span>{" "}
+            from USC. I enjoy shipping products people actually use, with a focus on
+            user experience and performance.
           </p>
         </div>
       </motion.div>
@@ -140,26 +140,30 @@ export default function Intro() {
         }}
       >
         <a
-          className="group bg-gradient-teal text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none focus:scale-110 hover:scale-110 active:scale-105 transition w-full sm:w-auto justify-center"
+          className="group bg-gradient-teal text-white px-7 py-3 flex items-center gap-2 rounded-full focus-visible:scale-110 hover:scale-110 active:scale-105 transition w-full sm:w-auto justify-center"
           href="/CV.pdf"
-          download
+          download="Jingze_Ma_Resume.pdf"
         >
-          Download CV{" "}
+          Download Resume{" "}
           <HiDownload className="opacity-70 group-hover:translate-y-1 transition" />
         </a>
 
         <a
-          className="bg-white p-4 text-slate-700 hover:text-indigo-600 flex items-center gap-2 rounded-full focus:scale-[1.15] hover:scale-[1.15] active:scale-105 transition cursor-pointer border border-slate-200 shadow-md dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:text-indigo-400"
-          href="https://www.linkedin.com/in/jingze-ma/"
+          className={socialLinkClassName}
+          href={contactLinks.linkedIn}
           target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn profile"
         >
           <BsLinkedin className="text-xl" />
         </a>
 
         <a
-          className="bg-white p-4 text-slate-700 flex items-center gap-2 text-[1.35rem] rounded-full focus:scale-[1.15] hover:scale-[1.15] hover:text-indigo-600 active:scale-105 transition cursor-pointer border border-slate-200 shadow-md dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:text-indigo-400"
-          href="https://github.com/Jacob-SouthernCity"
+          className={socialLinkClassName}
+          href={contactLinks.gitHub}
           target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub profile"
         >
           <FaGithubSquare className="text-xl" />
         </a>

@@ -1,107 +1,152 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { projectsData } from "@/lib/data";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
-import { FaSteam, FaGithub, FaLink, FaYoutube } from "react-icons/fa";
+import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { IoMdClose } from "react-icons/io";
+import type { ProjectData, ProjectVideo } from "@/lib/types";
 
-// Map of icon names to their components
-const iconMap: Record<string, React.ElementType> = {
-  FaSteam,
-  FaGithub,
-  FaLink,
-  FaYoutube
-};
+const desktopMediaClassName =
+  "absolute hidden md:block top-8 -right-40 w-113 rounded-t-lg shadow-2xl transition group-hover:scale-[1.04] group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2 group-hover:group-even:translate-x-3 group-hover:group-even:translate-y-3 group-hover:group-even:rotate-2 group-even:right-[initial] group-even:-left-40";
 
-// Update type to include the modular links property
-type ProjectProps = {
+function ProjectTrailer({
+  title,
+  video,
+  className,
+}: {
   title: string;
-  description: string;
-  tags: readonly string[];
-  imageUrl: any;
-  videoUrl?: string;
-  links?: readonly {
-    icon: string;
-    url: string;
-    label: string;
-  }[];
-};
+  video: ProjectVideo;
+  className: string;
+}) {
+  return (
+    <video
+      controls
+      playsInline
+      preload="none"
+      poster={video.poster}
+      aria-label={`${title} trailer`}
+      className={`aspect-video w-full bg-black object-cover ${className}`}
+    >
+      {video.sources.map(({ src, type }) => (
+        <source key={src} src={src} type={type} />
+      ))}
+      Your browser does not support HTML5 video.
+    </video>
+  );
+}
 
 export default function Project({
   title,
   description,
   tags,
   imageUrl,
-  videoUrl,
-  links = [],
-}: ProjectProps) {
+  video,
+  links,
+}: ProjectData) {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["0 1", "1.33 1"],
   });
-  const scaleProgess = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-  const opacityProgess = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
-  
-  // State for the fullscreen modal
+  const scaleProgress = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
+  const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const modalTriggerRef = useRef<HTMLElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const openModal = (event: MouseEvent<HTMLElement>) => {
+    modalTriggerRef.current = event.currentTarget;
+    setIsModalOpen(true);
+  };
+  const closeModal = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    if (!isModalOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsModalOpen(false);
+      if (event.key === "Tab") {
+        event.preventDefault();
+        closeButtonRef.current?.focus();
+      }
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    const modalTrigger = modalTriggerRef.current;
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+      modalTrigger?.focus();
+    };
+  }, [isModalOpen]);
+
+  const screenshotAlt = `${title} project screenshot`;
 
   return (
     <>
       <motion.div
         ref={ref}
         style={{
-          scale: scaleProgess,
-          opacity: opacityProgess,
+          scale: scaleProgress,
+          opacity: opacityProgress,
         }}
-        className="group mb-3 sm:mb-8 last:mb-0"
+        className="group mb-3 md:mb-8 last:mb-0"
       >
-        <section className="bg-gray-100 max-w-[42rem] border border-black/5 rounded-lg overflow-hidden sm:pr-8 relative sm:min-h-[20rem] hover:bg-gray-200 transition sm:group-even:pl-8 dark:text-white dark:bg-white/10 dark:hover:bg-white/20">
-          <div className="pt-4 pb-7 px-5 sm:pl-10 sm:pr-2 sm:pt-10 sm:max-w-[50%] flex flex-col h-full sm:group-even:ml-[18rem]">
+        <section className="max-w-2xl rounded-2xl border border-black/5 bg-white/60 shadow-sm backdrop-blur-sm overflow-hidden md:pr-8 relative md:min-h-80 transition-colors hover:bg-white/90 md:group-even:pl-8 dark:text-white dark:bg-white/5 dark:hover:bg-white/10 dark:border-white/10">
+          <div className="pt-4 pb-7 px-5 md:pl-10 md:pr-2 md:pt-10 md:max-w-[50%] flex flex-col h-full md:group-even:ml-72">
             <div className="flex items-center gap-2 flex-wrap">
               <h3 className="text-2xl font-semibold">{title}</h3>
-              {links.map((link, index) => {
-                const IconComponent = iconMap[link.icon] || FaLink;
-                return (
-                  <a 
-                    key={index}
-                    href={link.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
-                    title={link.label}
-                  >
-                    <IconComponent className="text-xl" />
-                  </a>
-                );
-              })}
+              {links.map(({ icon: LinkIcon, url, label }) => (
+                <a
+                  key={url}
+                  href={url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block rounded-full p-1 pointer-coarse:p-2.5 text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300 transition-colors"
+                  title={label}
+                  aria-label={`${title}: ${label}`}
+                >
+                  <LinkIcon className="text-xl" />
+                </a>
+              ))}
             </div>
-            
-            <p className="mt-2 leading-relaxed text-gray-700 dark:text-white/70">
+
+            <p className="mt-2 leading-relaxed text-slate-700 dark:text-white/70">
               {description}
             </p>
-            
-            {videoUrl && (
-              <div className="my-3 sm:hidden">
-                <video 
-                  src={videoUrl} 
-                  controls 
-                  className="w-full h-auto rounded-md shadow-md cursor-pointer"
-                  preload="metadata"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  Your browser does not support HTML5 video.
-                </video>
-              </div>
+
+            {video && (
+              <ProjectTrailer
+                title={title}
+                video={video}
+                className="my-3 rounded-md shadow-md md:hidden"
+              />
             )}
-            
-            <ul className="flex flex-wrap mt-4 gap-2 sm:mt-auto">
-              {tags.map((tag, index) => (
+
+            {!video && imageUrl && (
+              <button
+                type="button"
+                className="my-3 md:hidden"
+                onClick={openModal}
+                aria-label={`Enlarge ${title} screenshot`}
+              >
+                <Image
+                  src={imageUrl}
+                  alt={screenshotAlt}
+                  quality={95}
+                  className="w-full h-auto rounded-md shadow-md"
+                />
+              </button>
+            )}
+
+            <ul className="flex flex-wrap mt-4 gap-2 md:mt-auto">
+              {tags.map((tag) => (
                 <li
-                  className="bg-black/[0.7] px-3 py-1 text-[0.7rem] uppercase tracking-wider text-white rounded-full dark:text-white/70"
-                  key={index}
+                  className="rounded-full bg-slate-900/80 px-3 py-1 font-mono text-[0.7rem] uppercase tracking-wider text-white dark:bg-white/10 dark:text-slate-200"
+                  key={tag}
                 >
                   {tag}
                 </li>
@@ -109,101 +154,65 @@ export default function Project({
             </ul>
           </div>
 
-          {videoUrl ? (
-            <div 
-              className="absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl
-                transition 
-                group-hover:scale-[1.04]
-                group-hover:-translate-x-3
-                group-hover:translate-y-3
-                group-hover:-rotate-2
-                group-even:group-hover:translate-x-3
-                group-even:group-hover:translate-y-3
-                group-even:group-hover:rotate-2
-                group-even:right-[initial] group-even:-left-40"
-            >
-              <video 
-                src={videoUrl} 
-                controls 
-                className="w-full h-auto rounded-lg cursor-pointer"
-                preload="metadata"
-                onClick={() => setIsModalOpen(true)}
-              >
-                Your browser does not support HTML5 video.
-              </video>
+          {video ? (
+            <div className={desktopMediaClassName}>
+              <ProjectTrailer title={title} video={video} className="rounded-lg" />
             </div>
           ) : (
-            <div 
-              className="absolute hidden sm:block top-8 -right-40 w-[28.25rem] rounded-t-lg shadow-2xl
-                transition 
-                group-hover:scale-[1.04]
-                group-hover:-translate-x-3
-                group-hover:translate-y-3
-                group-hover:-rotate-2
-                group-even:group-hover:translate-x-3
-                group-even:group-hover:translate-y-3
-                group-even:group-hover:rotate-2
-                group-even:right-[initial] group-even:-left-40
-                cursor-pointer"
-              onClick={() => setIsModalOpen(true)}
-            >
-              <Image
-                src={imageUrl}
-                alt={`${title} project screenshot`}
-                quality={95}
-                className="w-full h-auto rounded-lg"
-              />
-            </div>
+            imageUrl && (
+              <button
+                type="button"
+                className={`${desktopMediaClassName} cursor-zoom-in`}
+                onClick={openModal}
+                aria-label={`Enlarge ${title} screenshot`}
+              >
+                <Image
+                  src={imageUrl}
+                  alt={screenshotAlt}
+                  quality={95}
+                  className="w-full h-auto rounded-lg"
+                />
+              </button>
+            )
           )}
         </section>
       </motion.div>
 
-      {/* Fullscreen Modal */}
       <AnimatePresence>
-        {isModalOpen && (
+        {isModalOpen && imageUrl && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-            onClick={() => setIsModalOpen(false)}
+            className="fixed inset-0 z-1001 flex items-center justify-center bg-black/80 p-4"
+            onClick={closeModal}
+            role="dialog"
+            aria-modal="true"
+            aria-label={screenshotAlt}
           >
             <motion.div
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="relative max-w-7xl max-h-[90vh] overflow-auto bg-white dark:bg-gray-800 rounded-lg shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-7xl max-h-[90dvh] overflow-auto bg-white dark:bg-slate-800 rounded-lg shadow-2xl"
+              onClick={(event) => event.stopPropagation()}
             >
               <button
-                className="absolute top-4 right-4 z-10 p-2 bg-white/10 backdrop-blur-sm rounded-full text-white hover:bg-white/20 transition-colors"
-                onClick={() => setIsModalOpen(false)}
+                type="button"
+                className="absolute top-4 right-4 z-10 p-2 bg-black/40 backdrop-blur-xs rounded-full text-white hover:bg-black/60 transition-colors"
+                ref={closeButtonRef}
+                onClick={closeModal}
+                aria-label="Close screenshot"
+                autoFocus
               >
                 <IoMdClose className="text-2xl" />
               </button>
-              
-              {videoUrl ? (
-                <video 
-                  src={videoUrl} 
-                  controls 
-                  autoPlay
-                  className="w-full h-auto max-h-[90vh]"
-                  preload="auto"
-                >
-                  Your browser does not support HTML5 video.
-                </video>
-              ) : (
-                <div className="relative w-full max-h-[90vh]">
-                  <Image
-                    src={imageUrl}
-                    alt={`${title} project screenshot`}
-                    quality={100}
-                    className="w-full h-auto object-contain"
-                    width={1200}
-                    height={800}
-                  />
-                </div>
-              )}
+              <Image
+                src={imageUrl}
+                alt={screenshotAlt}
+                quality={100}
+                className="w-full h-auto max-h-[90dvh] object-contain"
+              />
             </motion.div>
           </motion.div>
         )}

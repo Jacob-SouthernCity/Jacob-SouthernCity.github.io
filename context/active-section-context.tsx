@@ -1,17 +1,18 @@
 "use client";
 
+import type { Dispatch, ReactNode, SetStateAction } from "react";
 import type { SectionName } from "@/lib/types";
-import React, { useState, createContext, useContext } from "react";
+import { useMemo, useState, createContext, useContext } from "react";
 
 type ActiveSectionContextProviderProps = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 type ActiveSectionContextType = {
   activeSection: SectionName;
-  setActiveSection: React.Dispatch<React.SetStateAction<SectionName>>;
+  setActiveSection: Dispatch<SetStateAction<SectionName>>;
   timeOfLastClick: number;
-  setTimeOfLastClick: React.Dispatch<React.SetStateAction<number>>;
+  setTimeOfLastClick: Dispatch<SetStateAction<number>>;
 };
 
 export const ActiveSectionContext =
@@ -22,16 +23,18 @@ export default function ActiveSectionContextProvider({
 }: ActiveSectionContextProviderProps) {
   const [activeSection, setActiveSection] = useState<SectionName>("Home");
   const [timeOfLastClick, setTimeOfLastClick] = useState(0); // we need to keep track of this to disable the observer temporarily when user clicks on a link
+  const value = useMemo(
+    () => ({
+      activeSection,
+      setActiveSection,
+      timeOfLastClick,
+      setTimeOfLastClick,
+    }),
+    [activeSection, timeOfLastClick]
+  );
 
   return (
-    <ActiveSectionContext.Provider
-      value={{
-        activeSection,
-        setActiveSection,
-        timeOfLastClick,
-        setTimeOfLastClick,
-      }}
-    >
+    <ActiveSectionContext.Provider value={value}>
       {children}
     </ActiveSectionContext.Provider>
   );

@@ -1,10 +1,13 @@
 "use client";
 
-import React from "react";
 import SectionHeading from "./section-heading";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useSectionInView } from "@/lib/hooks";
-import toast from "react-hot-toast";
+import { contactLinks } from "@/lib/data";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
+
+const secondaryLinkClassName =
+  "flex items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 font-medium text-slate-700 shadow-md transition hover:scale-105 hover:text-indigo-600 focus-visible:scale-105 active:scale-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 dark:hover:text-indigo-400";
 
 export default function Contact() {
   const { ref } = useSectionInView("Contact");
@@ -13,7 +16,7 @@ export default function Contact() {
     <motion.section
       id="contact"
       ref={ref}
-      className="mb-20 sm:mb-28 w-[min(100%,38rem)] text-center"
+      className="mb-20 w-[min(100%,38rem)] scroll-mt-28 text-center sm:mb-28"
       initial={{
         opacity: 0,
       }}
@@ -27,51 +30,41 @@ export default function Contact() {
         once: true,
       }}
     >
-      <SectionHeading>Contact me</SectionHeading>
+      <SectionHeading>Get in touch</SectionHeading>
 
-      <p className="text-slate-600 mt-6 mb-8 dark:text-slate-300 text-lg">
-        Please contact me directly at{" "}
-        <a className="text-indigo-600 font-medium hover:underline dark:text-indigo-400" href="mailto:jingzema2001@gmail.com">
-          jingzema2001@gmail.com
-        </a>{" "}
-        . The contact form is currently disabled.
+      <p className="mt-6 mb-8 text-lg text-slate-600 dark:text-slate-300">
+        Whether it's a role, a project, or just to say hi, email is the best way
+        to reach me.
       </p>
 
-      <div className="bg-gradient-subtle p-6 rounded-2xl shadow-lg">
-        <form
-          className="flex flex-col dark:text-black"
-          onSubmit={(e) => {
-            e.preventDefault();
-            toast("The contact form is temporarily disabled. Please email me directly.");
-          }}
+      <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <a
+          className="bg-gradient-teal flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 font-medium text-white shadow-md transition hover:scale-105 focus-visible:scale-105 active:scale-100 sm:w-auto"
+          href={`mailto:${contactLinks.email}`}
         >
-          <input
-            className="h-14 px-4 rounded-lg border border-slate-200 dark:border-slate-700 dark:bg-white dark:bg-opacity-90 dark:focus:bg-opacity-100 focus:border-indigo-500 outline-none transition-all shadow-sm"
-            name="senderEmail"
-            type="email"
-            required
-            maxLength={500}
-            placeholder="Your email"
-            disabled
-          />
-          <textarea
-            className="h-52 my-4 rounded-lg border border-slate-200 dark:border-slate-700 p-4 dark:bg-white dark:bg-opacity-90 dark:focus:bg-opacity-100 focus:border-indigo-500 outline-none transition-all shadow-sm"
-            name="message"
-            placeholder="Your message"
-            required
-            maxLength={5000}
-            disabled
-          />
-          <div className="flex justify-center">
-            <button
-              type="submit"
-              disabled
-              className="opacity-60 cursor-not-allowed bg-gray-300 text-gray-700 px-6 py-3 rounded-full dark:bg-gray-700 dark:text-gray-300"
-            >
-              Contact form disabled
-            </button>
-          </div>
-        </form>
+          <FaEnvelope aria-hidden />
+          {contactLinks.email}
+        </a>
+        <div className="flex gap-4">
+          <a
+            className={secondaryLinkClassName}
+            href={contactLinks.linkedIn}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin aria-hidden />
+            LinkedIn
+          </a>
+          <a
+            className={secondaryLinkClassName}
+            href={contactLinks.gitHub}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub aria-hidden />
+            GitHub
+          </a>
+        </div>
       </div>
     </motion.section>
   );
