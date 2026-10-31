@@ -1,0 +1,140 @@
+# Places on the travel globe.
+#   region: optional grouping inside a country (a US state, or Kanto / Kansai / Kyushu in Japan)
+#   tags: born | lived | studied | worked | visited
+#   Places in trips.yaml get Visited automatically; places linked from experience.yaml get
+#   Studied or Worked automatically.
+#   coordinates: [latitude, longitude] and countryCode can be left out;
+#   run "npm run places:geocode" and they are filled in for you.
+
+# China
+- id: nanjing
+  name: Nanjing
+  region: Jiangsu
+  country: China
+  countryCode: CN
+  coordinates: [32.0603, 118.7969]
+  tags: [born]
+
+- id: shanghai
+  name: Shanghai
+  country: China
+  countryCode: CN
+  coordinates: [31.2304, 121.4737]
+
+# United States: homes, schools and work
+- id: los-angeles
+  name: Los Angeles
+  region: California
+  country: United States
+  countryCode: US
+  coordinates: [34.0522, -118.2437]
+  tags: [lived]
+  note: Home today
+
+- id: rochester
+  name: Rochester
+  region: New York
+  country: United States
+  countryCode: US
+  coordinates: [43.1566, -77.6088]
+
+- id: new-york
+  name: New York City
+  region: New York
+  country: United States
+  tags: [lived]
+  countryCode: US
+  coordinates: [40.7127, -74.006]
+
+- id: new-haven
+  name: New Haven
+  region: Connecticut
+  country: United States
+  countryCode: US
+  coordinates: [41.3083, -72.9279]
+
+- id: princeton
+  name: Princeton
+  region: New Jersey
+  country: United States
+  tags: [lived]
+  countryCode: US
+  coordinates: [40.3497, -74.6597]
+
+- id: boston
+  name: Boston
+  region: Massachusetts
+  country: United States
+  tags: [lived]
+  countryCode: US
+  coordinates: [42.3588, -71.0578]
+
+- id: wakefield
+  name: Wakefield
+  region: Massachusetts
+  country: United States
+  countryCode: US
+  coordinates: [42.5065, -71.0728]
+
+# United States: travel
+- {id: san-diego, name: San Diego, region: California, country: United States, countryCode: US, coordinates: [32.7157, -117.1638]}
+- {id: santa-barbara, name: Santa Barbara, region: California, country: United States, countryCode: US, coordinates: [34.4221, -119.7027]}
+- {id: san-luis-obispo, name: San Luis Obispo, region: California, country: United States, countryCode: US, coordinates: [35.2828, -120.6596]}
+- {id: big-sur, name: Big Sur, region: California, country: United States, countryCode: US, coordinates: [36.1437, -121.5646]}
+- {id: monterey, name: Monterey, region: California, country: United States, countryCode: US, coordinates: [36.6003, -121.8946]}
+- {id: carmel, name: Carmel-by-the-Sea, region: California, country: United States, countryCode: US, coordinates: [36.5553, -121.9233]}
+- {id: half-moon-bay, name: Half Moon Bay, region: California, country: United States, countryCode: US, coordinates: [37.4636, -122.4286]}
+- {id: san-francisco, name: San Francisco, region: California, country: United States, countryCode: US, coordinates: [37.7879, -122.4075]}
+- {id: yosemite, name: Yosemite National Park, region: California, country: United States, countryCode: US, coordinates: [37.8393, -119.5165]}
+- {id: orlando, name: Orlando, region: Florida, country: United States, countryCode: US, coordinates: [28.5421, -81.379]}
+- {id: atlanta, name: Atlanta, region: Georgia, country: United States, countryCode: US, coordinates: [33.7545, -84.3898]}
+- {id: brevard, name: Brevard, region: North Carolina, country: United States, countryCode: US, coordinates: [35.2334, -82.7343]}
+- {id: pigeon-forge, name: Pigeon Forge, region: Tennessee, country: United States, countryCode: US, coordinates: [35.7884, -83.5543]}
+- {id: great-smoky-mountains, name: Great Smoky Mountains National Park, region: Tennessee, country: United States, countryCode: US, coordinates: [35.6342, -83.4024]}
+- {id: las-vegas, name: Las Vegas, region: Nevada, country: United States, countryCode: US, coordinates: [36.1674, -115.1484]}
+- {id: zion, name: Zion National Park, region: Utah, country: United States, countryCode: US, coordinates: [37.3222, -113.0048]}
+- {id: arches, name: Arches National Park, region: Utah, country: United States, countryCode: US, coordinates: [38.7265, -109.563]}
+- {id: bryce-canyon, name: Bryce Canyon National Park, region: Utah, country: United States, countryCode: US, coordinates: [37.5708, -112.1856]}
+- {id: albuquerque, name: Albuquerque, region: New Mexico, country: United States, countryCode: US, coordinates: [35.0841, -106.651]}
+- {id: bisti-badlands, name: Bisti Badlands, region: New Mexico, country: United States, countryCode: US, coordinates: [36.2685, -108.2283]}
+- {id: santa-fe, name: Santa Fe, region: New Mexico, country: United States, countryCode: US, coordinates: [35.6876, -105.9385]}
+- {id: white-sands, name: White Sands National Park, region: New Mexico, country: United States, countryCode: US, coordinates: [32.7642, -106.3312]}
+- {id: las-cruces, name: Las Cruces, region: New Mexico, country: United States, countryCode: US, coordinates: [32.314, -106.7798]}
+- {id: carlsbad, name: Carlsbad, region: New Mexico, country: United States, countryCode: US, coordinates: [32.4257, -104.2376]}
+
+- {id: philadelphia, name: Philadelphia, region: Pennsylvania, country: United States, countryCode: US, coordinates: [39.9527, -75.1635]}
+- {id: washington-dc, name: Washington, region: District of Columbia, country: United States, countryCode: US, coordinates: [38.8951, -77.0364]}
+- {id: denver, name: Denver, region: Colorado, country: United States, countryCode: US, coordinates: [39.7392, -104.9849]}
+- {id: rocky-mountain, name: Rocky Mountain National Park, region: Colorado, country: United States, countryCode: US, coordinates: [40.3554, -105.7177]}
+- {id: jackson, name: Jackson, region: Wyoming, country: United States, countryCode: US, coordinates: [43.48, -110.7618]}
+- {id: grand-teton, name: Grand Teton National Park, region: Wyoming, country: United States, countryCode: US, coordinates: [43.8106, -110.6488]}
+- {id: yellowstone, name: Yellowstone National Park, region: Wyoming, country: United States, countryCode: US, coordinates: [44.6201, -110.5607]}
+
+# Japan
+- {id: tokyo, name: Tokyo, region: Kanto, country: Japan, countryCode: JP, coordinates: [35.6769, 139.7639]}
+- {id: yokohama, name: Yokohama, region: Kanto, country: Japan, countryCode: JP, coordinates: [35.4503, 139.6344]}
+- {id: kamakura, name: Kamakura, region: Kanto, country: Japan, countryCode: JP, coordinates: [35.3193, 139.547]}
+- {id: hakone, name: Hakone, region: Kanto, country: Japan, countryCode: JP, coordinates: [35.2324, 139.1069]}
+- {id: higashiizu, name: Higashiizu, region: Chubu, country: Japan, countryCode: JP, coordinates: [34.7728, 139.0412]}
+- {id: lake-kawaguchi, name: Lake Kawaguchi, region: Chubu, country: Japan, countryCode: JP, coordinates: [35.5131, 138.7448]}
+- {id: lake-yamanaka, name: Lake Yamanaka, region: Chubu, country: Japan, countryCode: JP, coordinates: [35.4187, 138.8768]}
+- {id: nagoya, name: Nagoya, region: Chubu, country: Japan, countryCode: JP, coordinates: [35.1851, 136.8998]}
+- {id: osaka, name: Osaka, region: Kansai, country: Japan, countryCode: JP, coordinates: [34.6938, 135.5015]}
+- {id: arima-onsen, name: Arima Onsen, region: Kansai, country: Japan, countryCode: JP, coordinates: [34.7993, 135.2463]}
+- {id: kobe, name: Kobe, region: Kansai, country: Japan, countryCode: JP, coordinates: [34.6932, 135.1944]}
+- {id: kyoto, name: Kyoto, region: Kansai, country: Japan, countryCode: JP, coordinates: [35.0116, 135.7681]}
+- {id: uji, name: Uji, region: Kansai, country: Japan, countryCode: JP, coordinates: [34.8851, 135.7996]}
+- {id: nara, name: Nara, region: Kansai, country: Japan, countryCode: JP, coordinates: [34.6845, 135.8048]}
+- {id: fukuoka, name: Fukuoka, region: Kyushu, country: Japan, countryCode: JP, coordinates: [33.5899, 130.4018]}
+- {id: hita, name: Hita, region: Kyushu, country: Japan, countryCode: JP, coordinates: [33.3212, 130.9411]}
+- {id: beppu, name: Beppu, region: Kyushu, country: Japan, countryCode: JP, coordinates: [33.2846, 131.4913]}
+- {id: yufuin, name: Yufuin, region: Kyushu, country: Japan, countryCode: JP, coordinates: [33.2625, 131.355]}
+- {id: aso, name: Aso, region: Kyushu, country: Japan, countryCode: JP, coordinates: [32.9525, 131.1215]}
+- {id: kumamoto, name: Kumamoto, region: Kyushu, country: Japan, countryCode: JP, coordinates: [32.8034, 130.7083]}
+- {id: hitoyoshi, name: Hitoyoshi, region: Kyushu, country: Japan, countryCode: JP, coordinates: [32.2336, 130.7676]}
+- {id: kagoshima, name: Kagoshima, region: Kyushu, country: Japan, countryCode: JP, coordinates: [31.5968, 130.5572]}
+- {id: ibusuki, name: Ibusuki, region: Kyushu, country: Japan, countryCode: JP, coordinates: [31.2528, 130.6333]}
+- {id: karatsu, name: Karatsu, region: Kyushu, country: Japan, countryCode: JP, coordinates: [33.4149, 130.0052]}
+- {id: nagasaki, name: Nagasaki, region: Kyushu, country: Japan, countryCode: JP, coordinates: [32.7502, 129.8781]}
+- {id: unzen, name: Unzen, region: Kyushu, country: Japan, countryCode: JP, coordinates: [32.8351, 130.1877]}
+- {id: kitakyushu, name: Kitakyushu, region: Kyushu, country: Japan, countryCode: JP, coordinates: [33.8237, 130.891]}

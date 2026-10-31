@@ -1,4 +1,5 @@
 import { ImageResponse } from "next/og";
+import { loadContent } from "@/lib/content/load";
 
 export const alt = "Jingze Ma, Software Engineer";
 export const size = {
@@ -7,7 +8,17 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const { profile, experiences } = await loadContent();
+  const currentRole = experiences.find((item) => item.kind === "work" && item.end === null);
+  const schools = [
+    ...new Set(
+      experiences
+        .filter((item) => item.kind === "education")
+        .map((item) => item.shortName ?? item.organization)
+    ),
+  ];
+
   return new ImageResponse(
     (
       <div
@@ -22,7 +33,7 @@ export default function OpengraphImage() {
           color: "#f8fafc",
         }}
       >
-        <div style={{ fontSize: 88, fontWeight: 700 }}>Jingze Ma</div>
+        <div style={{ fontSize: 88, fontWeight: 700 }}>{profile.name}</div>
         <div
           style={{
             marginTop: 16,
@@ -32,10 +43,12 @@ export default function OpengraphImage() {
             color: "transparent",
           }}
         >
-          Software Engineer
+          {currentRole?.title ?? profile.titles[0]}
         </div>
         <div style={{ marginTop: 40, fontSize: 30, color: "#cbd5e1" }}>
-          Web, mobile and platform at Smule · Yale MSCS · USC CS (Games)
+          {[currentRole && `${currentRole.title} at ${currentRole.organization}`, ...schools]
+            .filter(Boolean)
+            .join(" · ")}
         </div>
         <div style={{ marginTop: "auto", fontSize: 26, color: "#94a3b8" }}>
           majingze.com

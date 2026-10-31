@@ -7,23 +7,34 @@ import { HiDownload } from "react-icons/hi";
 import { BsLinkedin } from "react-icons/bs";
 import { FaGithubSquare } from "react-icons/fa";
 import { useSectionInView } from "@/lib/hooks";
-import { contactLinks } from "@/lib/data";
-import TypewriterText from "./TypewriterText";
+import type { ReactNode } from "react";
+import type { Profile } from "@/lib/content/schema";
+import TypewriterText from "./typewriter-text";
 
-const personalTitles = ["Software Engineer", "Game Developer", "Traveler"];
-
-const nameVersions = [
-  { label: "Legal", name: "Jingze Ma", icon: "EN", lang: "en" },
-  { label: "English", name: "Jacob Ma", icon: "EN", lang: "en" },
-  { label: "Chinese", name: "马璟泽", icon: "中", lang: "zh-Hans" },
-  { label: "Japanese", name: "小島蓮や", icon: "あ", lang: "ja" },
-];
+function renderBold(text: string): ReactNode[] {
+  return text
+    .split(/\*\*(.+?)\*\*/g)
+    .map((part, index) =>
+      index % 2 === 1 ? (
+        <span key={index} className="font-medium">
+          {part}
+        </span>
+      ) : (
+        part
+      )
+    );
+}
 
 const socialLinkClassName =
   "bg-white p-4 text-slate-700 flex items-center gap-2 rounded-full border border-slate-200 shadow-md transition hover:scale-[1.15] hover:text-indigo-600 focus-visible:scale-[1.15] active:scale-105 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:text-indigo-400";
 
-export default function Intro() {
+type IntroProps = {
+  profile: Profile;
+};
+
+export default function Intro({ profile }: IntroProps) {
   const { ref } = useSectionInView("Home");
+  const { nameVersions, contact, resume } = profile;
   const [currentNameIndex, setCurrentNameIndex] = useState(0);
   const currentName = nameVersions[currentNameIndex];
 
@@ -50,7 +61,7 @@ export default function Intro() {
           >
             <Image
               src="/jingzema.jpg"
-              alt="Jingze Ma portrait"
+              alt={`${profile.name} portrait`}
               width={240}
               height={240}
               quality={95}
@@ -92,7 +103,7 @@ export default function Intro() {
               title={`Currently: ${currentName.label}`}
               aria-label={`Show my name in another language (currently ${currentName.label})`}
             >
-              {currentName.icon}
+              {currentName.badge}
             </button>
           </div>
           
@@ -111,7 +122,7 @@ export default function Intro() {
               </motion.span>
             </AnimatePresence>
             <TypewriterText 
-              words={personalTitles} 
+              words={profile.titles} 
               typingSpeed={80} 
               deletingSpeed={40} 
               className="text-gradient-teal mt-1 block"
@@ -121,12 +132,7 @@ export default function Intro() {
         
         <div className="mt-4 max-w-2xl">
           <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
-            Software Engineer at <span className="font-medium">Smule</span>, building
-            across web, mobile, and platform. I hold a Master's in{" "}
-            <span className="font-medium">Computer Science from Yale</span> and a
-            background in <span className="font-medium">Game Development and Mathematics</span>{" "}
-            from USC. I enjoy shipping products people actually use, with a focus on
-            user experience and performance.
+            {renderBold(profile.bio)}
           </p>
         </div>
       </motion.div>
@@ -141,8 +147,8 @@ export default function Intro() {
       >
         <a
           className="group bg-gradient-teal text-white px-7 py-3 flex items-center gap-2 rounded-full focus-visible:scale-110 hover:scale-110 active:scale-105 transition w-full sm:w-auto justify-center"
-          href="/CV.pdf"
-          download="Jingze_Ma_Resume.pdf"
+          href={resume.file}
+          download={resume.downloadName}
         >
           Download Resume{" "}
           <HiDownload className="opacity-70 group-hover:translate-y-1 transition" />
@@ -150,7 +156,7 @@ export default function Intro() {
 
         <a
           className={socialLinkClassName}
-          href={contactLinks.linkedIn}
+          href={contact.linkedIn}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="LinkedIn profile"
@@ -160,7 +166,7 @@ export default function Intro() {
 
         <a
           className={socialLinkClassName}
-          href={contactLinks.gitHub}
+          href={contact.gitHub}
           target="_blank"
           rel="noopener noreferrer"
           aria-label="GitHub profile"

@@ -1,5 +1,5 @@
 import { useActiveSectionContext } from "@/context/active-section-context";
-import { useEffect, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useSyncExternalStore, type RefObject } from "react";
 import { useInView } from "react-intersection-observer";
 import type { SectionName } from "./types";
 
@@ -29,4 +29,32 @@ const getCurrentMonthIndex = () => {
 
 export function useCurrentMonthIndex() {
   return useSyncExternalStore(subscribeToNothing, getCurrentMonthIndex, () => null);
+}
+
+const measureWidth = (element: HTMLElement) => element.getBoundingClientRect().width;
+
+export function useElementMeasure(
+  ref: RefObject<HTMLElement | null>,
+  measure: (element: HTMLElement) => number
+) {
+  const subscribe = useCallback(
+    (onChange: () => void) => {
+      const element = ref.current;
+      if (!element) return () => {};
+      const observer = new ResizeObserver(onChange);
+      observer.observe(element);
+      return () => observer.disconnect();
+    },
+    [ref]
+  );
+
+  return useSyncExternalStore(
+    subscribe,
+    () => (ref.current ? Math.round(measure(ref.current)) : 0),
+    () => 0
+  );
+}
+
+export function useElementWidth(ref: RefObject<HTMLElement | null>) {
+  return useElementMeasure(ref, measureWidth);
 }

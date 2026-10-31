@@ -1,0 +1,46 @@
+# Skill groups. icon must be one of the names in lib/icons.ts.
+
+- title: Languages
+  skills:
+    - { name: TypeScript, icon: typescript }
+    - { name: JavaScript, icon: javascript }
+    - { name: Swift, icon: swift }
+    - { name: Kotlin, icon: kotlin }
+    - { name: Java, icon: java }
+    - { name: C++, icon: cpp }
+    - { name: C#, icon: csharp }
+    - { name: C, icon: c }
+    - { name: Go, icon: go }
+    - { name: Python, icon: python }
+    - { name: Dart, icon: dart }
+    - { name: SQL, icon: sql }
+
+- title: Web & Mobile
+  skills:
+    - { name: React, icon: react }
+    - { name: Next.js, icon: nextjs }
+    - { name: Node.js, icon: nodejs }
+    - { name: Express, icon: express }
+    - { name: SwiftUI, icon: apple }
+    - { name: Android, icon: android }
+    - { name: Flutter, icon: flutter }
+    - { name: React Native, icon: react }
+    - { name: HTML, icon: html }
+    - { name: CSS, icon: css }
+
+- title: Backend, Data & ML
+  skills:
+    - { name: Spring Boot, icon: springboot }
+    - { name: MySQL, icon: mysql }
+    - { name: SQLite, icon: sqlite }
+    - { name: Firebase, icon: firebase }
+    - { name: AWS, icon: aws }
+    - { name: Docker, icon: docker }
+    - { name: PyTorch, icon: pytorch }
+    - { name: TensorFlow, icon: tensorflow }
+
+- title: Games & Tools
+  skills:
+    - { name: Unity, icon: unity }
+    - { name: Perforce, icon: perforce }
+    - { name: GitHub, icon: github }

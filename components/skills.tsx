@@ -1,7 +1,8 @@
 "use client";
 
 import SectionHeading from "./section-heading";
-import { skillGroupsData } from "@/lib/data";
+import type { SkillGroup } from "@/lib/content/schema";
+import { icons } from "@/lib/icons";
 import { useSectionInView } from "@/lib/hooks";
 import { motion } from "motion/react";
 
@@ -40,7 +41,11 @@ const fadeInAnimationVariants = {
   }),
 };
 
-export default function Skills() {
+type SkillsProps = {
+  skillGroups: readonly SkillGroup[];
+};
+
+export default function Skills({ skillGroups }: SkillsProps) {
   const { ref } = useSectionInView("Skills");
 
   return (
@@ -51,7 +56,7 @@ export default function Skills() {
     >
       <SectionHeading>My skills</SectionHeading>
       <div className="grid gap-5 sm:grid-cols-2">
-        {skillGroupsData.map((group, index) => (
+        {skillGroups.map((group, index) => (
           <motion.div
             className="rounded-2xl border border-black/5 bg-white/60 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
             key={group.title}
@@ -67,18 +72,21 @@ export default function Skills() {
               {group.title}
             </h3>
             <motion.ul className="flex flex-wrap gap-2" variants={chipListVariants}>
-              {group.skills.map((skill) => (
+              {group.skills.map((skill) => {
+                const SkillIcon = icons[skill.icon];
+                return (
                 <motion.li
                   variants={chipVariants}
                   className="flex items-center gap-2 rounded-full bg-linear-to-br from-indigo-50 to-teal-50 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:from-indigo-100 hover:to-teal-100 dark:from-indigo-900/30 dark:to-teal-900/20 dark:text-slate-200"
                   key={skill.name}
                 >
                   <span className="text-base text-indigo-600 dark:text-indigo-300" aria-hidden>
-                    {skill.icon}
+                    <SkillIcon />
                   </span>
                   {skill.name}
                 </motion.li>
-              ))}
+                );
+              })}
             </motion.ul>
           </motion.div>
         ))}

@@ -25,11 +25,14 @@ npm run build
 
 ## Editing content
 
-All site content lives in [`lib/data.ts`](lib/data.ts):
+All content lives in YAML files under [`content/`](content/): profile, experience, projects, skills and places. See [content/README.md](content/README.md) for how to edit them, including from the GitHub website. The build validates every file and fails with a clear message if something is wrong.
 
-- `experiencesData` drives the experience chart and timeline. Dates are `"YYYY-MM"`; use `end: null` for a current role.
-- `projectsData` drives the project cards. Images go in `public/` and are imported at the top of the file.
-- `skillGroupsData` drives the skills section.
-- `contactLinks` holds the email, LinkedIn and GitHub links used across the page.
+To add a place to the travel globe without looking up coordinates, add its name and country to `content/places.yaml` and run:
 
-The downloadable resume is `public/CV.pdf`.
+```bash
+npm run places:geocode
+```
+
+## GitHub Pages
+
+This repository is also served at jacob-southerncity.github.io. The `docs/` folder holds a redirect page to www.majingze.com; GitHub Pages should be set to deploy from the `main` branch, `/docs` folder.

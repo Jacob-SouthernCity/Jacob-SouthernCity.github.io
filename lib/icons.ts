@@ -1,0 +1,76 @@
+import type { IconType } from "react-icons";
+import {
+  FaApple,
+  FaAws,
+  FaCss3Alt,
+  FaDocker,
+  FaGithub,
+  FaHtml5,
+  FaJava,
+  FaLink,
+  FaPython,
+  FaReact,
+  FaSteam,
+  FaUnity,
+  FaYoutube,
+} from "react-icons/fa";
+import { BiLogoFirebase, BiLogoJavascript, BiLogoSpringBoot } from "react-icons/bi";
+import { TbBrandCpp, TbBrandCSharp, TbBrandGolang, TbBrandNextjs, TbSql } from "react-icons/tb";
+import {
+  SiAndroid,
+  SiC,
+  SiDart,
+  SiExpress,
+  SiFlutter,
+  SiKotlin,
+  SiMysql,
+  SiNodedotjs,
+  SiPerforce,
+  SiPytorch,
+  SiSqlite,
+  SiSwift,
+  SiTensorflow,
+  SiTypescript,
+} from "react-icons/si";
+
+export const icons = {
+  android: SiAndroid,
+  apple: FaApple,
+  aws: FaAws,
+  c: SiC,
+  cpp: TbBrandCpp,
+  csharp: TbBrandCSharp,
+  css: FaCss3Alt,
+  dart: SiDart,
+  docker: FaDocker,
+  express: SiExpress,
+  firebase: BiLogoFirebase,
+  flutter: SiFlutter,
+  github: FaGithub,
+  go: TbBrandGolang,
+  html: FaHtml5,
+  java: FaJava,
+  javascript: BiLogoJavascript,
+  kotlin: SiKotlin,
+  link: FaLink,
+  mysql: SiMysql,
+  nextjs: TbBrandNextjs,
+  nodejs: SiNodedotjs,
+  perforce: SiPerforce,
+  python: FaPython,
+  pytorch: SiPytorch,
+  react: FaReact,
+  springboot: BiLogoSpringBoot,
+  sql: TbSql,
+  sqlite: SiSqlite,
+  steam: FaSteam,
+  swift: SiSwift,
+  tensorflow: SiTensorflow,
+  typescript: SiTypescript,
+  unity: FaUnity,
+  youtube: FaYoutube,
+} satisfies Record<string, IconType>;
+
+type IconName = keyof typeof icons;
+
+export const iconNames = Object.keys(icons) as [IconName, ...IconName[]];

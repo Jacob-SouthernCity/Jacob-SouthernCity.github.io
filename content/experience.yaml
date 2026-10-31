@@ -1,0 +1,122 @@
+# Work and education. The site sorts entries by start date, newest first.
+#   kind:  work | education
+#   start/end: "YYYY-MM"; use end: null for a current role
+#   place: optional id from places.yaml; the travel map then marks it Worked or Studied
+
+- id: smule
+  kind: work
+  title: Software Engineer
+  organization: Smule
+  description: >-
+    Full-time engineer working across Smule's products: building features for
+    the smule.com web app and the Smule Sing apps on iOS and Android, and
+    supporting the backend services behind them.
+  start: "2026-07"
+  end: null
+
+- id: smule-intern
+  kind: work
+  title: Machine Learning Engineer Intern
+  organization: Smule
+  description: >-
+    Joined Smule as a machine learning engineering intern before converting to
+    a full-time software engineering role.
+  start: "2026-04"
+  end: "2026-07"
+
+- id: vestmark
+  kind: work
+  title: Associate Software Engineer
+  organization: Vestmark Inc.
+  shortName: Vestmark
+  location: Wakefield, MA
+  place: wakefield
+  description: >-
+    Built backend APIs for portfolio rebalancing and related features on
+    VestmarkONE, Vestmark's wealth management platform.
+  start: "2025-06"
+  end: "2026-01"
+
+- id: yale
+  kind: education
+  title: M.S. in Computer Science
+  organization: Yale University
+  shortName: Yale
+  location: New Haven, CT
+  place: new-haven
+  gpa: 4.0/4.0
+  description: >-
+    Coursework in Building Distributed Systems, Database Systems, Full Stack Web
+    Programming, and User Interface Design.
+  start: "2024-08"
+  end: "2025-05"
+
+- id: ebaotech
+  kind: work
+  title: Software Engineer Intern
+  organization: eBaoTech International, Ltd.
+  shortName: eBaoTech
+  location: Shanghai
+  place: shanghai
+  description: >-
+    Designed a pipeline for programming language translation using LLMs.
+    Fine-tuned models including ChatGLM v2 with PyTorch and Hugging Face. Built
+    insurance databases and trained models on AWS SageMaker.
+  start: "2023-06"
+  end: "2023-08"
+
+- id: nplace
+  kind: work
+  title: Software Engineer Intern
+  organization: nPlace, Ltd.
+  shortName: nPlace
+  location: Shanghai
+  place: shanghai
+  description: >-
+    Developed adaptive downsampling for data sensor converters, reducing thread
+    pressure while maintaining accuracy. Implemented Bresenham's algorithm in 3D
+    and contributed to the Zaichang 3D scanning software.
+  start: "2022-06"
+  end: "2022-08"
+
+- id: usc-cs
+  kind: education
+  title: B.S. in Computer Science (Games)
+  organization: University of Southern California
+  shortName: USC
+  location: Los Angeles, CA
+  place: los-angeles
+  gpa: 3.94/4.00
+  description: >-
+    Graduated Summa Cum Laude. Game development coursework in Game Engines, Game
+    Physics, Immersive Game Design, and AI for Games.
+  start: "2021-08"
+  end: "2024-05"
+
+- id: usc-math
+  kind: education
+  title: B.A. in Computational and Applied Mathematics
+  organization: University of Southern California
+  shortName: USC
+  location: Los Angeles, CA
+  place: los-angeles
+  gpa: 3.94/4.00
+  description: >-
+    Second major alongside Computer Science, with coursework in Numerical
+    Analysis, Machine Learning, Statistics, and Linear Algebra.
+  start: "2021-08"
+  end: "2024-05"
+
+- id: rochester
+  kind: education
+  title: B.S. in Computer Science
+  organization: University of Rochester
+  shortName: Rochester
+  location: Rochester, NY
+  place: rochester
+  gpa: 4.0/4.0
+  description: >-
+    Took Introduction to Computer Science (CSC 171) and Data Structures and
+    Algorithms (CSC 172), both taught in Java, before transferring to USC.
+  start: "2020-08"
+  end: "2021-07"

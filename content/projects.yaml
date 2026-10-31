@@ -1,0 +1,55 @@
+# Project cards, shown in this order.
+#   image: a file in public/, e.g. /projects/my-app.jpg (its size is read automatically)
+#   video: optional trailer with a poster image and one or more sources
+#   links[].icon: one of the names in lib/icons.ts, e.g. github, steam, youtube, link
+
+- title: PSN README Card
+  description: >-
+    A live PlayStation Network trophy card for GitHub profiles. A small
+    serverless function on Vercel renders trophy level, trophy counts, PS Plus
+    status, and recent games as an SVG that READMEs embed like any image.
+  tags: [TypeScript, Serverless, Vercel, SVG]
+  image: /projects/psn-readme-card.svg
+  links:
+    - icon: github
+      url: https://github.com/Jacob-SouthernCity/psn-readme-card
+      label: View on GitHub
+
+- title: Kazumi TV
+  description: >-
+    An Android TV and Google TV port of the open-source Kazumi anime app. Adds
+    full remote-control focus navigation, D-pad browsing of comments, a TV
+    launcher banner, and network fallbacks, while leaving phone and desktop
+    behaviour unchanged.
+  tags: [Flutter, Dart, Android TV, Open Source]
+  image: /projects/kazumi-tv.jpg
+  links:
+    - icon: github
+      url: https://github.com/Jacob-SouthernCity/Kazumi-TV
+      label: View on GitHub
+
+- title: Lake Minnewaska
+  description: >-
+    A fishing simulator game developed in Unity with a team of 30. I served as
+    the Gameplay and AI engineer, designing fishing mechanics, fish behavior AI
+    using behavior trees, and key gameplay features.
+  tags: [Unity, C#, Game AI, Perforce]
+  video:
+    poster: https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2858430/ss_b64849a46d7e3fd5891ff4658fb9e93fd38eac52.600x338.jpg
+    sources:
+      - src: https://video.cloudflare.steamstatic.com/store_trailers/257021477/movie480_vp9.webm?t=1716053340
+        type: video/webm
+      - src: https://video.akamai.steamstatic.com/store_trailers/2858430/697149/652e1e7e6375970ec2e96042fd54b79f12ef1f20/1750948128/hls_264_master.m3u8?t=1716053340
+        type: application/vnd.apple.mpegurl
+  links:
+    - icon: steam
+      url: https://store.steampowered.com/app/2858430/Lake_Minnewaska/
+      label: View on Steam
+
+- title: Roamy Trip
+  description: >-
+    A full-stack application for hotel discovery and travel planning with social
+    features. Provides an interactive map showing hotel locations worldwide, with
+    review sharing and friend connections.
+  tags: [React Native, Expo, Node.js, Express, Mobile Development]
+  image: /projects/roamy-trip.jpg

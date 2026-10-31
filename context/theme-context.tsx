@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { ThemeProvider, useTheme as useNextTheme } from "next-themes";
+import { prefersReducedMotion } from "@/lib/motion";
 
 type Theme = "light" | "dark";
 
@@ -62,10 +63,7 @@ export function useTheme() {
       setTheme(nextTheme);
     };
 
-    const prefersReducedMotion = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    if (!document.startViewTransition || prefersReducedMotion) {
+    if (!document.startViewTransition || prefersReducedMotion()) {
       switchTheme();
       return;
     }

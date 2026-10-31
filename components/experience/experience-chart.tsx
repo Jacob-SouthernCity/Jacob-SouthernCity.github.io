@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, type RefObject } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import {
   AnimatePresence,
@@ -11,8 +11,8 @@ import {
 } from "motion/react";
 import { FiMaximize2, FiMinus, FiPlus } from "react-icons/fi";
 import { formatDateRange, monthLabel, toMonthIndex } from "@/lib/dates";
-import { useCurrentMonthIndex } from "@/lib/hooks";
-import type { ExperienceData } from "@/lib/types";
+import { useCurrentMonthIndex, useElementWidth } from "@/lib/hooks";
+import type { Experience } from "@/lib/content/schema";
 import { experienceKindStyles } from "./experience-kind";
 
 const MAX_PX_PER_MONTH = 96;
@@ -23,7 +23,7 @@ const ZOOM_STEP = 2;
 const EASE = [0.4, 0, 0.2, 1] as const;
 
 type ExperienceChartProps = {
-  items: readonly ExperienceData[];
+  items: readonly Experience[];
   onSelect: (id: string) => void;
 };
 
@@ -33,7 +33,7 @@ type Domain = {
   presentEnd: number;
 };
 
-function buildDomain(items: readonly ExperienceData[], currentMonth: number | null): Domain {
+function buildDomain(items: readonly Experience[], currentMonth: number | null): Domain {
   const latestKnownMonth = Math.max(...items.map((item) => toMonthIndex(item.end ?? item.start)));
   const presentEnd = Math.max(currentMonth ?? latestKnownMonth, latestKnownMonth) + 1;
   const startYear = Math.floor(Math.min(...items.map((item) => toMonthIndex(item.start))) / 12);
@@ -46,20 +46,6 @@ function buildDomain(items: readonly ExperienceData[], currentMonth: number | nu
     end: Math.max(endYear, startYear + 1) * 12,
     presentEnd,
   };
-}
-
-function useElementWidth(ref: RefObject<HTMLElement | null>) {
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-    const observer = new ResizeObserver(([entry]) => setWidth(entry.contentRect.width));
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, [ref]);
-
-  return width;
 }
 
 function clamp(value: number, min: number, max: number) {
