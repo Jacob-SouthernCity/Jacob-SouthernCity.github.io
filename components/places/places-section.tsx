@@ -7,14 +7,13 @@ import Globe, { type GlobeArc, type GlobeMarker, type GlobeSelection } from "./g
 import PlaceList from "./place-list";
 import TripList from "./trip-list";
 import SelectionCard from "./selection-card";
-import { tagStyles } from "./place-tags";
+import { TagFilterChips, tagStyles, type TagFilter } from "./place-tags";
 import { angularDistance, centroid, type LatLng } from "@/lib/geo";
 import { useSectionInView } from "@/lib/hooks";
 import { prefersReducedMotion } from "@/lib/motion";
-import { placeTags, type Place, type PlaceTag, type Trip } from "@/lib/content/schema";
+import { placeTags, type Place, type Trip } from "@/lib/content/schema";
 
 type View = "places" | "trips";
-type TagFilter = "all" | PlaceTag;
 type Selection =
   | { kind: "place"; id: string }
   | { kind: "trip"; id: string }
@@ -56,13 +55,8 @@ export default function PlacesSection({ places, trips }: PlacesSectionProps) {
 
   const placesById = useMemo(() => new Map(places.map((place) => [place.id, place])), [places]);
 
-  const tagOptions = useMemo<FilterOption<TagFilter>[]>(
-    () => [
-      { value: "all", label: "All" },
-      ...placeTags
-        .filter((tag) => places.some((place) => place.tags.includes(tag)))
-        .map((tag) => ({ value: tag, label: tagStyles[tag].label, dotClassName: tagStyles[tag].dot })),
-    ],
+  const availableTags = useMemo(
+    () => placeTags.filter((tag) => places.some((place) => place.tags.includes(tag))),
     [places]
   );
 
@@ -84,7 +78,6 @@ export default function PlacesSection({ places, trips }: PlacesSectionProps) {
   );
 
   const markers = useMemo<GlobeMarker[]>(() => {
-    const shown = view === "places" ? filteredPlaces : places;
     const emphasized = new Set(
       selection?.kind === "place"
         ? [selection.id]
@@ -92,6 +85,7 @@ export default function PlacesSection({ places, trips }: PlacesSectionProps) {
           ? selection.ids
           : (selectedTrip?.places ?? [])
     );
+    const shown = view === "places" ? filteredPlaces : places;
     return shown.map((place) => ({
       id: place.id,
       location: place.coordinates,
@@ -147,7 +141,7 @@ export default function PlacesSection({ places, trips }: PlacesSectionProps) {
   };
 
   return (
-    <section id="places" ref={ref} className="mb-28 w-full max-w-5xl scroll-mt-28 sm:mb-40">
+    <section id="places" ref={ref} className="mb-24 w-full max-w-5xl scroll-mt-28 sm:mb-32">
       <SectionHeading>Places I&apos;ve been</SectionHeading>
 
       <p className="-mt-2 mb-6 text-center font-mono text-sm text-slate-500 tabular-nums dark:text-slate-400">
@@ -196,10 +190,8 @@ export default function PlacesSection({ places, trips }: PlacesSectionProps) {
           {view === "places" ? (
             <>
               <div className="mb-4">
-                <FilterTabs
-                  label="Filter places"
-                  layoutId="places-filter"
-                  options={tagOptions}
+                <TagFilterChips
+                  tags={availableTags}
                   value={tagFilter}
                   onChange={(value) => {
                     setTagFilter(value);

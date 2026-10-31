@@ -24,7 +24,7 @@ If something is wrong (a date like `2024-8`, an unknown icon, a place id that do
 
 - **New job:** add an entry to the top of `experience.yaml` and set `end: null`. Set `end` on the previous role.
 - **New trip:** add the places you visited to `places.yaml` (`id`, `name`, `country`, and optionally `region`), run `npm run places:geocode` to fill in coordinates and country codes, then add the trip to `trips.yaml` with its months and place ids in order. Places on a trip show as Visited automatically, unless they already have another tag (a home or school stays Lived or Studied).
-- **New place outside a trip:** add it to `places.yaml` with `tags` (born, lived, studied, worked, visited), then geocode it the same way.
+- **New place outside a trip:** add it to `places.yaml` with `tags` (lived, studied, worked, visited), then geocode it the same way.
 - **Link a role to the map:** give the experience entry `place: <place id>`. The map then shows it as Worked or Studied.
 - **New project image:** put the file in `public/projects/` and reference it as `/projects/<file>`. Its size is read automatically.
 - **New icon:** icons come from `lib/icons.ts`; add one there if the name you want is missing.

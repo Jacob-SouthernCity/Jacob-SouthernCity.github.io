@@ -46,7 +46,6 @@
 
   --animate-wave: wave 2.4s ease-in-out 0.6s 2;
   --animate-wave-once: wave-again 1.2s ease-in-out;
-  --animate-gradient-pan: gradient-pan 6s ease-in-out infinite alternate;
   --animate-drift: drift 22s ease-in-out infinite alternate;
   --animate-drift-slow: drift 30s ease-in-out -8s infinite alternate-reverse;
 
@@ -62,11 +61,6 @@
     0%, 100% { rotate: 0deg; }
     20%, 60% { rotate: 14deg; }
     40%, 80% { rotate: -8deg; }
-  }
-
-  @keyframes gradient-pan {
-    from { background-position: 0% 50%; }
-    to { background-position: 100% 50%; }
   }
 
   @keyframes drift {
@@ -98,8 +92,12 @@
   @apply bg-linear-to-r from-teal-500 to-indigo-500;
 }
 
-@utility text-gradient-teal {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-teal-400 via-indigo-500 to-teal-400 bg-size-[200%_auto] motion-safe:animate-gradient-pan;
+@utility surface {
+  @apply border border-slate-200/80 bg-white shadow-sm dark:border-white/10 dark:bg-slate-900;
+}
+
+@utility surface-glass {
+  @apply border border-black/5 bg-white/60 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5;
 }
 
 @utility glow {

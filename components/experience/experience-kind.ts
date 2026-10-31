@@ -15,14 +15,14 @@ export const experienceKindStyles: Record<ExperienceKind, ExperienceKindStyle> =
   work: {
     label: "Work",
     icon: FaBriefcase,
-    bar: "bg-linear-to-r from-indigo-500 to-indigo-400",
+    bar: "bg-indigo-500",
     dot: "bg-indigo-500",
     accentText: "text-indigo-600 dark:text-indigo-300",
   },
   education: {
     label: "Education",
     icon: LuGraduationCap,
-    bar: "bg-linear-to-r from-teal-500 to-teal-400",
+    bar: "bg-teal-500",
     dot: "bg-teal-500",
     accentText: "text-teal-700 dark:text-teal-300",
   },

@@ -1,6 +1,6 @@
 # Places on the travel globe.
-#   region: optional grouping inside a country (a US state, or Kanto / Kansai / Kyushu in Japan)
-#   tags: born | lived | studied | worked | visited
+#   region: optional grouping inside a country (a US state or Chinese province, or Hokkaido / Kanto / Kansai / Kyushu in Japan)
+#   tags: lived | studied | worked | visited  (homes, including where you were born, are lived)
 #   Places in trips.yaml get Visited automatically; places linked from experience.yaml get
 #   Studied or Worked automatically.
 #   coordinates: [latitude, longitude] and countryCode can be left out;
@@ -13,13 +13,16 @@
   country: China
   countryCode: CN
   coordinates: [32.0603, 118.7969]
-  tags: [born]
+  tags: [lived]
+  note: Hometown
 
 - id: shanghai
   name: Shanghai
+  region: Shanghai
   country: China
   countryCode: CN
   coordinates: [31.2304, 121.4737]
+  tags: [lived]
 
 # United States: homes, schools and work
 - id: los-angeles
@@ -52,6 +55,7 @@
   country: United States
   countryCode: US
   coordinates: [41.3083, -72.9279]
+  tags: [lived]
 
 - id: princeton
   name: Princeton
@@ -75,6 +79,7 @@
   country: United States
   countryCode: US
   coordinates: [42.5065, -71.0728]
+  tags: [lived]
 
 # United States: travel
 - {id: san-diego, name: San Diego, region: California, country: United States, countryCode: US, coordinates: [32.7157, -117.1638]}
@@ -110,6 +115,17 @@
 - {id: grand-teton, name: Grand Teton National Park, region: Wyoming, country: United States, countryCode: US, coordinates: [43.8106, -110.6488]}
 - {id: yellowstone, name: Yellowstone National Park, region: Wyoming, country: United States, countryCode: US, coordinates: [44.6201, -110.5607]}
 
+- {id: anchorage, name: Anchorage, region: Alaska, country: United States, countryCode: US, coordinates: [61.2163, -149.8949]}
+- {id: matanuska-glacier, name: Matanuska Glacier, region: Alaska, country: United States, countryCode: US, coordinates: [61.6053, -147.5508]}
+- {id: fairbanks, name: Fairbanks, region: Alaska, country: United States, countryCode: US, coordinates: [64.8378, -147.7167]}
+- {id: chena-hot-springs, name: Chena Hot Springs, region: Alaska, country: United States, countryCode: US, coordinates: [65.0531, -146.0556]}
+- {id: north-pole, name: North Pole, region: Alaska, country: United States, countryCode: US, coordinates: [64.751, -147.3493]}
+- {id: arctic-circle, name: Arctic Circle, region: Alaska, country: United States, countryCode: US, coordinates: [66.5577, -150.7983]}
+- {id: honolulu, name: Honolulu, region: Hawaii, country: United States, countryCode: US, coordinates: [21.3045, -157.8557]}
+- {id: wailea, name: Wailea, region: Hawaii, country: United States, countryCode: US, coordinates: [20.6872, -156.439]}
+- {id: hana, name: Hana, region: Hawaii, country: United States, countryCode: US, coordinates: [20.7671, -155.9908]}
+- {id: waikoloa, name: Waikoloa, region: Hawaii, country: United States, countryCode: US, coordinates: [19.9469, -155.7874]}
+
 # Japan
 - {id: tokyo, name: Tokyo, region: Kanto, country: Japan, countryCode: JP, coordinates: [35.6769, 139.7639]}
 - {id: yokohama, name: Yokohama, region: Kanto, country: Japan, countryCode: JP, coordinates: [35.4503, 139.6344]}
@@ -138,3 +154,16 @@
 - {id: nagasaki, name: Nagasaki, region: Kyushu, country: Japan, countryCode: JP, coordinates: [32.7502, 129.8781]}
 - {id: unzen, name: Unzen, region: Kyushu, country: Japan, countryCode: JP, coordinates: [32.8351, 130.1877]}
 - {id: kitakyushu, name: Kitakyushu, region: Kyushu, country: Japan, countryCode: JP, coordinates: [33.8237, 130.891]}
+- {id: hakodate, name: Hakodate, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [41.7688, 140.729]}
+- {id: noboribetsu, name: Noboribetsu, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [42.4128, 141.1065]}
+- {id: lake-toya, name: Lake Toya, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [42.602, 140.8957]}
+- {id: sapporo, name: Sapporo, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [43.0619, 141.3543]}
+- {id: kushiro, name: Kushiro, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [42.985, 144.382]}
+- {id: lake-mashu, name: Lake Mashu, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [43.5789, 144.517]}
+- {id: lake-kussharo, name: Lake Kussharo, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [43.6166, 144.3105]}
+- {id: lake-akan, name: Lake Akan, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [43.456, 144.0992]}
+- {id: abashiri, name: Abashiri, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [44.0206, 144.2732]}
+- {id: biei, name: Biei, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [43.5882, 142.4669]}
+- {id: furano, name: Furano, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [43.3423, 142.3835]}
+- {id: otaru, name: Otaru, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [43.1907, 140.9946]}
+- {id: jozankei, name: Jozankei, region: Hokkaido, country: Japan, countryCode: JP, coordinates: [42.977, 141.1589]}

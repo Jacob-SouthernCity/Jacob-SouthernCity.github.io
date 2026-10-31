@@ -1,6 +1,18 @@
 # Trips, newest first. places: place ids from places.yaml, in the order visited.
 # start/end: "YYYY-MM". Every place listed here shows as Visited on the globe.
 
+- id: hawaii-2026
+  name: Hawaiian islands
+  start: "2026-03"
+  end: "2026-03"
+  places: [honolulu, wailea, hana, wailea, waikoloa, honolulu]
+
+- id: hokkaido-winter-2025
+  name: Winter in Hokkaido
+  start: "2025-12"
+  end: "2026-01"
+  places: [tokyo, hakodate, noboribetsu, lake-toya, sapporo, kushiro, lake-mashu, lake-kussharo, lake-akan, abashiri, sapporo, biei, furano, sapporo, otaru, jozankei, tokyo]
+
 - id: rockies-yellowstone-2026
   name: Rockies, Tetons and Yellowstone
   start: "2026-05"
@@ -54,3 +66,9 @@
   start: "2024-03"
   end: "2024-03"
   places: [tokyo, yokohama, kamakura, hakone, higashiizu, lake-kawaguchi, lake-yamanaka]
+
+- id: alaska-winter-2022
+  name: Alaska in winter
+  start: "2022-12"
+  end: "2022-12"
+  places: [anchorage, matanuska-glacier, fairbanks, chena-hot-springs, north-pole, arctic-circle]

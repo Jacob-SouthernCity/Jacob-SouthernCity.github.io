@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <header className="z-999 relative">
       <motion.div
-        className="fixed top-0 left-1/2 h-22 w-full rounded-none border border-white/40 bg-linear-to-r from-indigo-50 to-white shadow-lg shadow-black/3 backdrop-blur-[0.5rem] sm:top-6 sm:h-18 sm:w-[30rem] sm:rounded-full dark:from-slate-950 dark:to-indigo-950/70 dark:border-black/40"
+        className="fixed top-0 left-1/2 h-22 w-full rounded-none border border-white/40 bg-white/80 shadow-lg shadow-black/3 backdrop-blur-[0.5rem] sm:top-6 sm:h-18 sm:w-[30rem] sm:rounded-full dark:bg-slate-950/75 dark:border-black/40"
         initial={{ y: -100, x: "-50%", opacity: 0 }}
         animate={{ y: 0, x: "-50%", opacity: 1 }}
         aria-hidden

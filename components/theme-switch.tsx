@@ -12,7 +12,7 @@ export default function ThemeSwitch() {
   return (
     <button
       type="button"
-      className="fixed bottom-5 right-5 w-14 h-14 bg-linear-to-br from-white to-indigo-50 backdrop-blur-[0.5rem] border border-indigo-100 shadow-lg rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:from-slate-900 dark:to-indigo-950 dark:border-indigo-500/20 glow"
+      className="fixed bottom-5 right-5 w-14 h-14 bg-white/80 backdrop-blur-[0.5rem] border border-indigo-100 shadow-lg rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-slate-900/80 dark:border-white/10"
       onClick={(event) => {
         const { left, top, width, height } =
           event.currentTarget.getBoundingClientRect();

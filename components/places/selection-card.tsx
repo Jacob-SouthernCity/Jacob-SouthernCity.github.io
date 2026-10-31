@@ -16,7 +16,7 @@ type SelectionCardProps = {
 };
 
 const cardClassName =
-  "rounded-2xl border border-black/5 bg-white/60 p-4 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5";
+  "surface-glass rounded-2xl p-4";
 
 function DatedRow({ label, start, end }: { label: string; start: YearMonth; end: YearMonth | null }) {
   return (

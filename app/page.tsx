@@ -1,7 +1,6 @@
 import Experience from "@/components/experience/experience-section";
 import Intro from "@/components/intro";
 import Projects from "@/components/projects";
-import SectionDivider from "@/components/section-divider";
 import Skills from "@/components/skills";
 import Places from "@/components/places/places-section";
 import Contact from "@/components/contact";
@@ -18,10 +17,9 @@ export default async function Home() {
         dangerouslySetInnerHTML={{ __html: serializeJsonLd(buildPersonJsonLd(content)) }}
       />
       <Intro profile={content.profile} />
-      <SectionDivider />
+      <Experience experiences={content.experiences} />
       <Projects projects={content.projects} />
       <Skills skillGroups={content.skillGroups} />
-      <Experience experiences={content.experiences} />
       <Places places={content.places} trips={content.trips} />
       <Contact contact={content.profile.contact} />
     </main>

@@ -70,7 +70,7 @@ export default function FilterTabs<Value extends string>({
       </div>
       <div
         className={clsx(
-          "mx-auto flex w-fit max-w-full flex-wrap justify-center gap-1 border border-black/5 bg-white/60 p-1 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5",
+          "mx-auto flex w-fit max-w-full flex-wrap justify-center gap-1 surface-glass p-1",
           layout ? "rounded-3xl" : "rounded-full"
         )}
         style={layout ? { maxWidth: layout.maxWidth } : undefined}

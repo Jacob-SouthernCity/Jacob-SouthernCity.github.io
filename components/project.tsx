@@ -98,7 +98,7 @@ export default function Project({
         }}
         className="group mb-3 md:mb-8 last:mb-0"
       >
-        <section className="max-w-2xl rounded-2xl border border-black/5 bg-white/60 shadow-sm backdrop-blur-sm overflow-hidden md:pr-8 relative md:min-h-80 transition-colors hover:bg-white/90 md:group-even:pl-8 dark:text-white dark:bg-white/5 dark:hover:bg-white/10 dark:border-white/10">
+        <section className="surface max-w-2xl rounded-2xl overflow-hidden md:pr-8 relative md:min-h-80 transition-shadow hover:shadow-lg md:group-even:pl-8 dark:text-white">
           <div className="pt-4 pb-7 px-5 md:pl-10 md:pr-2 md:pt-10 md:max-w-[50%] flex flex-col h-full md:group-even:ml-72">
             <div className="flex items-center gap-2 flex-wrap">
               <h3 className="text-2xl font-semibold">{title}</h3>

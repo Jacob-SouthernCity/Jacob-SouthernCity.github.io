@@ -1,8 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
+import { FiChevronDown } from "react-icons/fi";
 import { formatDateRange } from "@/lib/dates";
+import { useIsHydrated, useMediaQuery } from "@/lib/hooks";
 import type { Experience } from "@/lib/content/schema";
 import { experienceKindStyles } from "./experience-kind";
 
@@ -16,12 +19,25 @@ export function experienceElementId(id: string) {
 }
 
 export default function ExperienceList({ items, highlightedId }: ExperienceListProps) {
+  const isHydrated = useIsHydrated();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const [expanded, setExpanded] = useState<Readonly<Record<string, boolean>>>({});
+  const openByDefault = isHydrated ? isDesktop : true;
+  const [revealedId, setRevealedId] = useState(highlightedId);
+
+  if (highlightedId !== revealedId) {
+    setRevealedId(highlightedId);
+    if (highlightedId) setExpanded((current) => ({ ...current, [highlightedId]: true }));
+  }
+
   return (
     <ol className="relative ms-4 mt-12 space-y-6 border-s-2 border-slate-200 sm:ms-5 dark:border-white/10">
       <AnimatePresence mode="popLayout">
         {items.map((item) => {
           const style = experienceKindStyles[item.kind];
           const Icon = style.icon;
+          const isOpen = expanded[item.id] ?? openByDefault;
+          const detailsId = `${experienceElementId(item.id)}-details`;
 
           return (
             <motion.li
@@ -43,34 +59,61 @@ export default function ExperienceList({ items, highlightedId }: ExperienceListP
               </span>
               <article
                 className={clsx(
-                  "rounded-2xl border bg-white/60 p-5 shadow-sm backdrop-blur-sm transition-[box-shadow,border-color] duration-500 sm:p-6 dark:bg-white/5",
+                  "rounded-2xl border bg-white p-5 shadow-sm transition-[box-shadow,border-color] duration-500 sm:p-6 dark:bg-slate-900",
                   highlightedId === item.id
                     ? "border-indigo-400 shadow-lg shadow-indigo-500/20 dark:border-indigo-400"
-                    : "border-black/5 dark:border-white/10"
+                    : "border-slate-200/80 dark:border-white/10"
                 )}
               >
-                <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                  <h3 className="font-semibold">
-                    {item.title}
-                  </h3>
-                  <span className="shrink-0 self-start rounded-full bg-slate-100 px-3 py-1 font-mono text-xs font-medium tabular-nums text-slate-600 dark:bg-white/10 dark:text-slate-300">
-                    {formatDateRange(item.start, item.end)}
-                  </span>
-                </div>
-                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
-                  <p className={`text-sm font-medium ${style.accentText}`}>
-                    {item.organization}
-                    {item.location && `, ${item.location}`}
-                  </p>
-                  {item.gpa && (
-                    <span className="rounded-full border border-slate-200 px-2 py-0.5 font-mono text-xs text-slate-600 tabular-nums dark:border-white/15 dark:text-slate-300">
-                      GPA {item.gpa}
+                <h3>
+                  <button
+                    type="button"
+                    onClick={() => setExpanded((current) => ({ ...current, [item.id]: !isOpen }))}
+                    aria-expanded={isOpen}
+                    aria-controls={detailsId}
+                    className="group -m-2 flex w-[calc(100%+1rem)] items-start gap-3 rounded-xl p-2 text-left outline-none focus-visible:outline-2 focus-visible:outline-indigo-500"
+                  >
+                    <span className="block min-w-0 flex-1">
+                      <span className="block font-semibold">{item.title}</span>
+                      <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                        <span className={`text-sm font-medium ${style.accentText}`}>
+                          {item.organization}
+                          {item.location && `, ${item.location}`}
+                        </span>
+                        {item.gpa && (
+                          <span className="rounded-full border border-slate-200 px-2 py-0.5 font-mono text-xs text-slate-600 tabular-nums dark:border-white/15 dark:text-slate-300">
+                            GPA {item.gpa}
+                          </span>
+                        )}
+                      </span>
+                      <span className="mt-1 block font-mono text-xs text-slate-500 tabular-nums sm:hidden dark:text-slate-400">
+                        {formatDateRange(item.start, item.end)}
+                      </span>
                     </span>
+                    <span className="hidden shrink-0 rounded-full bg-slate-100 px-3 py-1 font-mono text-xs font-medium text-slate-600 tabular-nums sm:block dark:bg-white/10 dark:text-slate-300">
+                      {formatDateRange(item.start, item.end)}
+                    </span>
+                    <FiChevronDown
+                      className={`mt-1 shrink-0 text-slate-400 transition-[rotate,color] duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200 ${isOpen ? "rotate-180" : ""}`}
+                      aria-hidden
+                    />
+                  </button>
+                </h3>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="details"
+                      id={detailsId}
+                      className={clsx("overflow-hidden", !isHydrated && "max-md:hidden")}
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                    >
+                      <p className="pt-3 leading-relaxed text-slate-700 dark:text-white/75">{item.description}</p>
+                    </motion.div>
                   )}
-                </div>
-                <p className="mt-2 leading-relaxed text-slate-700 dark:text-white/75">
-                  {item.description}
-                </p>
+                </AnimatePresence>
               </article>
             </motion.li>
           );
