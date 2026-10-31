@@ -2,6 +2,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
 @theme {
   --color-indigo-50: #eef2ff;
   --color-indigo-100: #e0e7ff;
@@ -38,6 +43,37 @@
   --color-slate-800: #1e293b;
   --color-slate-900: #0f172a;
   --color-slate-950: #020617;
+
+  --animate-wave: wave 2.4s ease-in-out 0.6s 2;
+  --animate-wave-once: wave-again 1.2s ease-in-out;
+  --animate-gradient-pan: gradient-pan 6s ease-in-out infinite alternate;
+  --animate-drift: drift 22s ease-in-out infinite alternate;
+  --animate-drift-slow: drift 30s ease-in-out -8s infinite alternate-reverse;
+
+  @keyframes wave {
+    0%, 60%, 100% { rotate: 0deg; }
+    10%, 30% { rotate: 14deg; }
+    20% { rotate: -8deg; }
+    40% { rotate: -4deg; }
+    50% { rotate: 10deg; }
+  }
+
+  @keyframes wave-again {
+    0%, 100% { rotate: 0deg; }
+    20%, 60% { rotate: 14deg; }
+    40%, 80% { rotate: -8deg; }
+  }
+
+  @keyframes gradient-pan {
+    from { background-position: 0% 50%; }
+    to { background-position: 100% 50%; }
+  }
+
+  @keyframes drift {
+    from { translate: 0 0; scale: 1; }
+    50% { translate: 4rem 2rem; scale: 1.08; }
+    to { translate: -3rem 3rem; scale: 0.95; }
+  }
 }
 
 /*
@@ -54,7 +90,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-slate-200, currentcolor);
   }
 }
 
@@ -62,12 +98,8 @@
   @apply bg-linear-to-r from-teal-500 to-indigo-500;
 }
 
-@utility bg-gradient-subtle {
-  @apply bg-linear-to-br from-white to-indigo-50 dark:from-slate-900 dark:to-indigo-950;
-}
-
 @utility text-gradient-teal {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-teal-400 to-indigo-500;
+  @apply bg-clip-text text-transparent bg-linear-to-r from-teal-400 via-indigo-500 to-teal-400 bg-size-[200%_auto] motion-safe:animate-gradient-pan;
 }
 
 @utility glow {
@@ -75,23 +107,13 @@
 }
 
 @layer base {
-  html {
-    --line-color: #e5e7eb;
-    --background-light: #f8fafc;
-    --background-dark: #0f172a;
-  }
-  html.dark {
-    --line-color: rgba(255, 255, 255, 0.2);
-  }
-  
   body {
     @apply bg-linear-to-br from-slate-50 to-slate-100 dark:from-slate-950 dark:to-indigo-950/40;
-    cursor: none; /* Hide the default cursor when Blobity is active */
   }
-  
-  /* Ensure clickable elements work well with Blobity */
-  a, button, [data-blobity] {
-    position: relative; /* This helps with magnetic behavior */
-    z-index: 1; /* Ensures elements are above background but below Blobity */
-  }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }

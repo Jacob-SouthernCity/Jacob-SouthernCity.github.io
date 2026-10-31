@@ -1,11 +1,27 @@
-import React from "react";
-import { CgWorkAlt } from "react-icons/cg";
-import { FaReact, FaHtml5, FaCss3Alt, FaPython, FaJava, FaAws, FaDocker, FaGithub, FaUnity } from "react-icons/fa";
+import { createElement } from "react";
+import { FaReact, FaHtml5, FaCss3Alt, FaPython, FaJava, FaAws, FaDocker, FaGithub, FaUnity, FaApple, FaSteam } from "react-icons/fa";
 import { BiLogoJavascript, BiLogoSpringBoot, BiLogoFirebase } from "react-icons/bi";
 import { TbBrandNextjs, TbBrandCpp, TbBrandCSharp, TbSql, TbBrandGolang } from "react-icons/tb";
-import { SiMysql, SiSqlite, SiExpress, SiTensorflow, SiPerforce, SiC } from "react-icons/si";
-import { LuGraduationCap } from "react-icons/lu";
+import {
+  SiMysql,
+  SiSqlite,
+  SiExpress,
+  SiTensorflow,
+  SiPerforce,
+  SiC,
+  SiSwift,
+  SiKotlin,
+  SiFlutter,
+  SiDart,
+  SiTypescript,
+  SiNodedotjs,
+  SiPytorch,
+  SiAndroid,
+} from "react-icons/si";
 import roamyImg from "@/public/roamy.jpg";
+import kazumiTvImg from "@/public/kazumi-tv.jpg";
+import psnCardImg from "@/public/psn-card.svg";
+import type { ExperienceData, ProjectData } from "./types";
 
 export const links = [
   {
@@ -30,72 +46,179 @@ export const links = [
   },
 ] as const;
 
-export const experiencesData = [
+export const contactLinks = {
+  email: "jingzema2001@gmail.com",
+  linkedIn: "https://www.linkedin.com/in/jingze-ma/",
+  gitHub: "https://github.com/Jacob-SouthernCity",
+} as const;
+
+export const experiencesData: readonly ExperienceData[] = [
   {
-    title: "B.S. in Computer Science (Games)",
-    location: "University of Southern California, Los Angeles, CA",
+    id: "smule",
+    kind: "work",
+    title: "Software Engineer",
+    organization: "Smule",
     description:
-      "Specialized in game development with courses in Game Engine Architecture, Game Physics, Immersive Game Design, and AI for Games. Developed multiple game projects using Unity and Unreal Engine.",
-    icon: React.createElement(LuGraduationCap),
-    date: "Aug 2020 - May 2024",
+      "Full-time engineer working across Smule's products: building features for the smule.com web app and the Smule Sing apps on iOS and Android, and supporting the backend services behind them.",
+    start: "2026-07",
+    end: null,
   },
   {
-    title: "B.A. in Computational and Applied Mathematics",
-    location: "University of Southern California, Los Angeles, CA",
+    id: "smule-intern",
+    kind: "work",
+    title: "Machine Learning Engineer Intern",
+    organization: "Smule",
     description:
-      "Focused on mathematical foundations and their applications to computer science, with coursework in Discrete Mathematics, Numerical Analysis, Machine Learning and Statistics.",
-    icon: React.createElement(LuGraduationCap),
-    date: "Aug 2020 - May 2024",
+      "Joined Smule as a machine learning engineering intern before converting to a full-time software engineering role.",
+    start: "2026-04",
+    end: "2026-07",
   },
   {
+    id: "vestmark",
+    kind: "work",
+    title: "Associate Software Engineer",
+    organization: "Vestmark Inc.",
+    shortName: "Vestmark",
+    location: "Wakefield, MA",
+    description:
+      "Built backend APIs for portfolio rebalancing and related features on VestmarkONE, Vestmark's wealth management platform.",
+    start: "2025-06",
+    end: "2026-01",
+  },
+  {
+    id: "yale",
+    kind: "education",
+    title: "M.S. in Computer Science",
+    organization: "Yale University",
+    shortName: "Yale",
+    location: "New Haven, CT",
+    gpa: "4.0/4.0",
+    description:
+      "Coursework in Building Distributed Systems, Database Systems, Full Stack Web Programming, and User Interface Design.",
+    start: "2024-08",
+    end: "2025-05",
+  },
+  {
+    id: "ebaotech",
+    kind: "work",
     title: "Software Engineer Intern",
-    location: "nPlace, Ltd., Shanghai",
-    description:
-      "Developed adaptive downsampling for data sensor converters, reducing thread pressure while maintaining accuracy. Implemented Bresenham's algorithm in 3D and contributed to the Zaichang 3D scanning software.",
-    icon: React.createElement(CgWorkAlt),
-    date: "June 2022 - Aug 2022",
-  },
-  {
-    title: "Software Engineer Intern",
-    location: "eBaoTech International, Ltd., Shanghai",
+    organization: "eBaoTech International, Ltd.",
+    shortName: "eBaoTech",
+    location: "Shanghai",
     description:
       "Designed a pipeline for programming language translation using LLMs. Fine-tuned models including ChatGLM v2 with PyTorch and Hugging Face. Built insurance databases and trained models on AWS SageMaker.",
-    icon: React.createElement(CgWorkAlt),
-    date: "June 2023 - Aug 2023",
+    start: "2023-06",
+    end: "2023-08",
   },
   {
-    title: "M.S. in Computer Science",
-    location: "Yale University, New Haven, CT",
+    id: "nplace",
+    kind: "work",
+    title: "Software Engineer Intern",
+    organization: "nPlace, Ltd.",
+    shortName: "nPlace",
+    location: "Shanghai",
     description:
-      "Pursued advanced studies with courses in Building Distributed Systems, Database Systems, Full Stack Web Programming, and User Interface Design. Research focused on game development techniques and artificial intelligence.",
-    icon: React.createElement(LuGraduationCap),
-    date: "Aug 2024 - May 2025",
+      "Developed adaptive downsampling for data sensor converters, reducing thread pressure while maintaining accuracy. Implemented Bresenham's algorithm in 3D and contributed to the Zaichang 3D scanning software.",
+    start: "2022-06",
+    end: "2022-08",
   },
   {
-    title: "Associate Software Engineer",
-    location: "Vestmark Inc., Wakefield, MA",
+    id: "usc-cs",
+    kind: "education",
+    title: "B.S. in Computer Science (Games)",
+    organization: "University of Southern California",
+    shortName: "USC",
+    location: "Los Angeles, CA",
+    gpa: "3.94/4.00",
     description:
-      "Developing and maintaining financial software solutions as part of the Vestmark engineering team. Working on scalable systems and collaborating with cross-functional teams.",
-    icon: React.createElement(CgWorkAlt),
-    date: "June 2025 - Present",
+      "Graduated Summa Cum Laude. Game development coursework in Game Engines, Game Physics, Immersive Game Design, and AI for Games.",
+    start: "2021-08",
+    end: "2024-05",
   },
-] as const;
+  {
+    id: "usc-math",
+    kind: "education",
+    title: "B.A. in Computational and Applied Mathematics",
+    organization: "University of Southern California",
+    shortName: "USC",
+    location: "Los Angeles, CA",
+    gpa: "3.94/4.00",
+    description:
+      "Second major alongside Computer Science, with coursework in Numerical Analysis, Machine Learning, Statistics, and Linear Algebra.",
+    start: "2021-08",
+    end: "2024-05",
+  },
+  {
+    id: "rochester",
+    kind: "education",
+    title: "B.S. in Computer Science",
+    organization: "University of Rochester",
+    shortName: "Rochester",
+    location: "Rochester, NY",
+    gpa: "4.0/4.0",
+    description:
+      "Took Introduction to Computer Science (CSC 171) and Data Structures and Algorithms (CSC 172), both taught in Java, before transferring to USC.",
+    start: "2020-08",
+    end: "2021-07",
+  },
+];
 
-export const projectsData = [
+export const projectsData: readonly ProjectData[] = [
+  {
+    title: "PSN README Card",
+    description:
+      "A live PlayStation Network trophy card for GitHub profiles. A small serverless function on Vercel renders trophy level, trophy counts, PS Plus status, and recent games as an SVG that READMEs embed like any image.",
+    tags: ["TypeScript", "Serverless", "Vercel", "SVG"],
+    imageUrl: psnCardImg,
+    links: [
+      {
+        icon: FaGithub,
+        url: "https://github.com/Jacob-SouthernCity/psn-readme-card",
+        label: "View on GitHub",
+      },
+    ],
+  },
+  {
+    title: "Kazumi TV",
+    description:
+      "An Android TV and Google TV port of the open-source Kazumi anime app. Adds full remote-control focus navigation, D-pad browsing of comments, a TV launcher banner, and network fallbacks, while leaving phone and desktop behaviour unchanged.",
+    tags: ["Flutter", "Dart", "Android TV", "Open Source"],
+    imageUrl: kazumiTvImg,
+    links: [
+      {
+        icon: FaGithub,
+        url: "https://github.com/Jacob-SouthernCity/Kazumi-TV",
+        label: "View on GitHub",
+      },
+    ],
+  },
   {
     title: "Lake Minnewaska",
     description:
-      "A fishing simulator game developed in Unity. I served as the Gameplay and AI engineer, designing fishing mechanics, fish behavior AI using behavior trees, and key gameplay features.",
+      "A fishing simulator game developed in Unity with a team of 30. I served as the Gameplay and AI engineer, designing fishing mechanics, fish behavior AI using behavior trees, and key gameplay features.",
     tags: ["Unity", "C#", "Game AI", "Perforce"],
     imageUrl: null,
-    videoUrl: "https://video.cloudflare.steamstatic.com/store_trailers/257021477/movie480_vp9.webm?t=1716053340",
+    video: {
+      poster:
+        "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2858430/ss_b64849a46d7e3fd5891ff4658fb9e93fd38eac52.600x338.jpg",
+      sources: [
+        {
+          src: "https://video.cloudflare.steamstatic.com/store_trailers/257021477/movie480_vp9.webm?t=1716053340",
+          type: "video/webm",
+        },
+        {
+          src: "https://video.akamai.steamstatic.com/store_trailers/2858430/697149/652e1e7e6375970ec2e96042fd54b79f12ef1f20/1750948128/hls_264_master.m3u8?t=1716053340",
+          type: "application/vnd.apple.mpegurl",
+        },
+      ],
+    },
     links: [
       {
-        icon: "FaSteam",
+        icon: FaSteam,
         url: "https://store.steampowered.com/app/2858430/Lake_Minnewaska/",
-        label: "View on Steam"
-      }
-    ]
+        label: "View on Steam",
+      },
+    ],
   },
   {
     title: "Roamy Trip",
@@ -103,105 +226,62 @@ export const projectsData = [
       "A full-stack application for hotel discovery and travel planning with social features. Provides an interactive map showing hotel locations worldwide, with review sharing and friend connections.",
     tags: ["React Native", "Expo", "Node.js", "Express", "Mobile Development"],
     imageUrl: roamyImg,
-    links: []
+    links: [],
   },
-] as const;
+];
 
-export const skillsData = [
+export const skillGroupsData = [
   {
-    name: "C++",
-    icon: React.createElement(TbBrandCpp),
+    title: "Languages",
+    skills: [
+      { name: "TypeScript", icon: createElement(SiTypescript) },
+      { name: "JavaScript", icon: createElement(BiLogoJavascript) },
+      { name: "Swift", icon: createElement(SiSwift) },
+      { name: "Kotlin", icon: createElement(SiKotlin) },
+      { name: "Java", icon: createElement(FaJava) },
+      { name: "C++", icon: createElement(TbBrandCpp) },
+      { name: "C#", icon: createElement(TbBrandCSharp) },
+      { name: "C", icon: createElement(SiC) },
+      { name: "Go", icon: createElement(TbBrandGolang) },
+      { name: "Python", icon: createElement(FaPython) },
+      { name: "Dart", icon: createElement(SiDart) },
+      { name: "SQL", icon: createElement(TbSql) },
+    ],
   },
   {
-    name: "C#",
-    icon: React.createElement(TbBrandCSharp),
+    title: "Web & Mobile",
+    skills: [
+      { name: "React", icon: createElement(FaReact) },
+      { name: "Next.js", icon: createElement(TbBrandNextjs) },
+      { name: "Node.js", icon: createElement(SiNodedotjs) },
+      { name: "Express", icon: createElement(SiExpress) },
+      { name: "SwiftUI", icon: createElement(FaApple) },
+      { name: "Android", icon: createElement(SiAndroid) },
+      { name: "Flutter", icon: createElement(SiFlutter) },
+      { name: "React Native", icon: createElement(FaReact) },
+      { name: "HTML", icon: createElement(FaHtml5) },
+      { name: "CSS", icon: createElement(FaCss3Alt) },
+    ],
   },
   {
-    name: "C",
-    icon: React.createElement(SiC),
+    title: "Backend, Data & ML",
+    skills: [
+      { name: "Spring Boot", icon: createElement(BiLogoSpringBoot) },
+      { name: "MySQL", icon: createElement(SiMysql) },
+      { name: "SQLite", icon: createElement(SiSqlite) },
+      { name: "Firebase", icon: createElement(BiLogoFirebase) },
+      { name: "AWS", icon: createElement(FaAws) },
+      { name: "Docker", icon: createElement(FaDocker) },
+      { name: "PyTorch", icon: createElement(SiPytorch) },
+      { name: "TensorFlow", icon: createElement(SiTensorflow) },
+    ],
   },
   {
-    name: "Java",
-    icon: React.createElement(FaJava),
-  },
-  {
-    name: "Go",
-    icon: React.createElement(TbBrandGolang),
-  },
-  {
-    name: "SQL",
-    icon: React.createElement(TbSql),
-  },
-  {
-    name: "JavaScript",
-    icon: React.createElement(BiLogoJavascript),
-  },
-  {
-    name: "HTML",
-    icon: React.createElement(FaHtml5),
-  },
-  {
-    name: "CSS",
-    icon: React.createElement(FaCss3Alt),
-  },
-  {
-    name: "Python",
-    icon: React.createElement(FaPython),
-  },
-  {
-    name: "React",
-    icon: React.createElement(FaReact),
-  },
-  {
-    name: "Spring Boot",
-    icon: React.createElement(BiLogoSpringBoot),
-  },
-  {
-    name: "MySQL",
-    icon: React.createElement(SiMysql),
-  },
-  {
-    name: "SQLite",
-    icon: React.createElement(SiSqlite),
-  },
-  {
-    name: "AWS",
-    icon: React.createElement(FaAws),
-  },
-  {
-    name: "GitHub",
-    icon: React.createElement(FaGithub),
-  },
-  {
-    name: "TensorFlow",
-    icon: React.createElement(SiTensorflow),
-  },
-  {
-    name: "Firebase",
-    icon: React.createElement(BiLogoFirebase),
-  },
-  {
-    name: "Docker",
-    icon: React.createElement(FaDocker),
-  },
-  {
-    name: "Unity",
-    icon: React.createElement(FaUnity),
-  },
-  {
-    name: "Perforce",
-    icon: React.createElement(SiPerforce),
-  },
-  {
-    name: "Next.js",
-    icon: React.createElement(TbBrandNextjs),
-  },
-  {
-    name: "React Native",
-    icon: React.createElement(FaReact),
-  },
-  {
-    name: "Express",
-    icon: React.createElement(SiExpress),
+    title: "Games & Tools",
+    skills: [
+      { name: "Unity", icon: createElement(FaUnity) },
+      { name: "Perforce", icon: createElement(SiPerforce) },
+      { name: "GitHub", icon: createElement(FaGithub) },
+    ],
   },
 ] as const;

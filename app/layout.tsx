@@ -1,49 +1,77 @@
+import type { ReactNode } from "react";
+import type { Metadata, Viewport } from "next";
 import Header from "@/components/header";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import ActiveSectionContextProvider from "@/context/active-section-context";
 import Footer from "@/components/footer";
 import ThemeSwitch from "@/components/theme-switch";
 import ThemeContextProvider from "@/context/theme-context";
-import { Toaster } from "react-hot-toast";
-import BlobityCursor from "@/components/BlobityCursor";
+import MotionProvider from "@/components/motion-provider";
+import ScrollProgress from "@/components/scroll-progress";
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
-export const metadata = {
-  title: "Jingze Ma | Personal Portfolio",
-  description: "Jingze Ma is a software engineer and game developer.",
+const siteDescription =
+  "Jingze (Jacob) Ma is a software engineer at Smule working across web, mobile, and platform, with a background in game development.";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://www.majingze.com"),
+  title: "Jingze Ma | Software Engineer",
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "Jingze Ma | Software Engineer",
+    description: siteDescription,
+    url: "/",
+    siteName: "Jingze Ma",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jingze Ma | Software Engineer",
+    description: siteDescription,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#f8fafc" },
+    { media: "(prefers-color-scheme: dark)", color: "#020617" },
+  ],
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth!" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} scroll-smooth! motion-reduce:scroll-auto!`}
+      suppressHydrationWarning
+    >
       <body
-        className={`${inter.className} bg-gray-50 text-gray-950 relative pt-28 sm:pt-36 dark:bg-gray-900 dark:text-gray-50/90`}
+        className="relative pt-28 font-sans text-slate-950 antialiased sm:pt-36 dark:text-slate-50/90"
       >
-        <div className="bg-[#fbe2e3] absolute -top-24 -z-10 right-44 h-125 w-125 rounded-full blur-[10rem] sm:w-275 dark:bg-[#946263]"></div>
-        <div className="bg-[#dbd7fb] absolute -top-4 -z-10 -left-140 h-125 w-200 rounded-full blur-[10rem] sm:w-275 md:-left-132 lg:-left-112 xl:-left-60 2xl:-left-20 dark:bg-[#676394]"></div>
+        <div className="absolute -top-24 right-44 -z-10 h-125 w-125 rounded-full bg-indigo-200/70 blur-[10rem] sm:w-275 dark:bg-indigo-800/40 motion-safe:animate-drift" aria-hidden></div>
+        <div className="absolute -top-4 -left-140 -z-10 h-125 w-200 rounded-full bg-teal-100/80 blur-[10rem] sm:w-275 md:-left-132 lg:-left-112 xl:-left-60 2xl:-left-20 dark:bg-teal-900/30 motion-safe:animate-drift-slow" aria-hidden></div>
 
         <ThemeContextProvider>
-          <ActiveSectionContextProvider>
-            <Header />
-            {children}
-            <Footer />
+          <MotionProvider>
+            <ActiveSectionContextProvider>
+              <ScrollProgress />
+              <Header />
+              {children}
+              <Footer />
 
-            <Toaster position="top-right" />
-            <ThemeSwitch />
-            <BlobityCursor 
-              opacity={0.6} 
-              lightModeColor="rgb(150, 150, 170)" 
-              darkModeColor="rgb(100, 110, 140)" 
-              size={35} 
-              zIndex={9999} 
-            />
-          </ActiveSectionContextProvider>
+              <ThemeSwitch />
+            </ActiveSectionContextProvider>
+          </MotionProvider>
         </ThemeContextProvider>
       </body>
     </html>
