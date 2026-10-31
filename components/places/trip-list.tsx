@@ -6,6 +6,7 @@ import { motion } from "motion/react";
 import { formatDateRange } from "@/lib/dates";
 import { flagEmoji } from "@/lib/geo";
 import type { Place, Trip } from "@/lib/content/schema";
+import { useI18n } from "../i18n-provider";
 
 const TRIPS_SHOWN_PER_YEAR = 2;
 
@@ -35,6 +36,7 @@ type TripCardProps = {
 function TripCard({ trip, placesById, selected, onSelect }: TripCardProps) {
   const stops = trip.places.map((id) => placesById.get(id)).filter((place) => place !== undefined);
   const countryCodes = [...new Set(stops.map((place) => place.countryCode))];
+  const { locale, t } = useI18n();
 
   return (
     <button
@@ -51,12 +53,12 @@ function TripCard({ trip, placesById, selected, onSelect }: TripCardProps) {
       <span className="flex items-start justify-between gap-3">
         <span className="font-semibold">{trip.name}</span>
         <span className="shrink-0 font-mono text-xs text-slate-500 tabular-nums dark:text-slate-400">
-          {formatDateRange(trip.start, trip.end)}
+          {formatDateRange(trip.start, trip.end, locale)}
         </span>
       </span>
       <span className="mt-1 flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
         <span aria-hidden>{countryCodes.map(flagEmoji).join(" ")}</span>
-        {stops.length} {stops.length === 1 ? "stop" : "stops"}
+        {t.places.stops(stops.length)}
       </span>
       <span
         className={clsx(
@@ -72,6 +74,7 @@ function TripCard({ trip, placesById, selected, onSelect }: TripCardProps) {
 
 export default function TripList({ trips, placesById, selectedId, onSelect }: TripListProps) {
   const [expandedYears, setExpandedYears] = useState<ReadonlySet<string>>(new Set());
+  const { t } = useI18n();
 
   const toggleYear = (year: string) => {
     setExpandedYears((current) => {
@@ -102,7 +105,7 @@ export default function TripList({ trips, placesById, selectedId, onSelect }: Tr
                 {year}
               </span>
               <span className="text-xs text-slate-500 dark:text-slate-400">
-                {yearTrips.length} {yearTrips.length === 1 ? "trip" : "trips"}
+                {t.places.tripCount(yearTrips.length)}
               </span>
             </h3>
             <ol className="space-y-3">
@@ -124,7 +127,7 @@ export default function TripList({ trips, placesById, selectedId, onSelect }: Tr
                 aria-expanded={isExpanded}
                 className="mt-2 rounded-full px-3 py-1.5 text-sm font-medium text-slate-500 transition-colors hover:bg-slate-900/5 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-white"
               >
-                {isExpanded ? "Show fewer" : `Show ${hiddenCount} more from ${year}`}
+                {isExpanded ? t.places.showFewerTrips : t.places.showMoreTrips(hiddenCount, year)}
               </button>
             )}
           </motion.section>

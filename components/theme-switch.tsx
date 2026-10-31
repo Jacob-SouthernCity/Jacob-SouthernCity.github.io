@@ -2,23 +2,28 @@
 
 import { useTheme } from "@/context/theme-context";
 import { BsMoon, BsSun } from "react-icons/bs";
+import { useI18n } from "./i18n-provider";
+
+export const floatingButtonClassName =
+  "flex size-14 items-center justify-center rounded-full border border-indigo-100 bg-white/80 shadow-lg backdrop-blur-[0.5rem] transition-all hover:scale-[1.15] active:scale-105 dark:border-white/10 dark:bg-slate-900/80";
 
 const iconClassName =
   "absolute text-2xl transition-[rotate,scale,opacity] duration-500 ease-out";
 
 export default function ThemeSwitch() {
   const { toggleTheme } = useTheme();
+  const { t } = useI18n();
 
   return (
     <button
       type="button"
-      className="fixed bottom-5 right-5 w-14 h-14 bg-white/80 backdrop-blur-[0.5rem] border border-indigo-100 shadow-lg rounded-full flex items-center justify-center hover:scale-[1.15] active:scale-105 transition-all dark:bg-slate-900/80 dark:border-white/10"
+      className={`relative ${floatingButtonClassName}`}
       onClick={(event) => {
         const { left, top, width, height } =
           event.currentTarget.getBoundingClientRect();
         toggleTheme({ x: left + width / 2, y: top + height / 2 });
       }}
-      aria-label="Toggle dark mode"
+      aria-label={t.theme.toggle}
     >
       <BsSun
         className={`${iconClassName} text-teal-500 dark:-rotate-90 dark:scale-0 dark:opacity-0`}

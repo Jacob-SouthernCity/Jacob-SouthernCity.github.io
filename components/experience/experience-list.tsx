@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { FiChevronDown } from "react-icons/fi";
 import { formatDateRange } from "@/lib/dates";
 import { useIsHydrated, useMediaQuery } from "@/lib/hooks";
+import { useI18n } from "../i18n-provider";
 import type { Experience } from "@/lib/content/schema";
 import { experienceKindStyles } from "./experience-kind";
 
@@ -20,6 +21,7 @@ export function experienceElementId(id: string) {
 
 export default function ExperienceList({ items, highlightedId }: ExperienceListProps) {
   const isHydrated = useIsHydrated();
+  const { locale, t } = useI18n();
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [expanded, setExpanded] = useState<Readonly<Record<string, boolean>>>({});
   const openByDefault = isHydrated ? isDesktop : true;
@@ -78,7 +80,7 @@ export default function ExperienceList({ items, highlightedId }: ExperienceListP
                       <span className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
                         <span className={`text-sm font-medium ${style.accentText}`}>
                           {item.organization}
-                          {item.location && `, ${item.location}`}
+                          {item.location && `${t.separator}${item.location}`}
                         </span>
                         {item.gpa && (
                           <span className="rounded-full border border-slate-200 px-2 py-0.5 font-mono text-xs text-slate-600 tabular-nums dark:border-white/15 dark:text-slate-300">
@@ -87,11 +89,11 @@ export default function ExperienceList({ items, highlightedId }: ExperienceListP
                         )}
                       </span>
                       <span className="mt-1 block font-mono text-xs text-slate-500 tabular-nums sm:hidden dark:text-slate-400">
-                        {formatDateRange(item.start, item.end)}
+                        {formatDateRange(item.start, item.end, locale)}
                       </span>
                     </span>
                     <span className="hidden shrink-0 rounded-full bg-slate-100 px-3 py-1 font-mono text-xs font-medium text-slate-600 tabular-nums sm:block dark:bg-white/10 dark:text-slate-300">
-                      {formatDateRange(item.start, item.end)}
+                      {formatDateRange(item.start, item.end, locale)}
                     </span>
                     <FiChevronDown
                       className={`mt-1 shrink-0 text-slate-400 transition-[rotate,color] duration-300 group-hover:text-slate-700 dark:group-hover:text-slate-200 ${isOpen ? "rotate-180" : ""}`}

@@ -5,8 +5,10 @@ import { cache } from "react";
 import sharp from "sharp";
 import { parse } from "yaml";
 import { z } from "zod";
+import { defaultLocale, localeInfo, type Locale } from "../i18n/config";
 import {
   experienceSchema,
+  localeOverlaySchema,
   placeSchema,
   placeTags,
   profileSchema,
@@ -14,12 +16,15 @@ import {
   skillGroupSchema,
   tripSchema,
   type Experience,
+  type LocaleOverlay,
   type Place,
   type PlaceSource,
   type PlaceTag,
+  type Profile,
   type ProjectSource,
   type ResolvedImage,
   type SiteContent,
+  type SkillGroup,
   type Trip,
 } from "./schema";
 
@@ -146,7 +151,16 @@ function resolvePlaces(sources: PlaceSource[], experiences: Experience[], trips:
   });
 }
 
-export const loadContent = cache(async (): Promise<SiteContent> => {
+type Sources = {
+  profile: Profile;
+  experiences: Experience[];
+  projects: ProjectSource[];
+  skillGroups: SkillGroup[];
+  places: PlaceSource[];
+  trips: Trip[];
+};
+
+const loadSources = cache(async (): Promise<Sources> => {
   const errors: string[] = [];
   const collect = <T,>(promise: Promise<T>) =>
     promise.catch((error: Error) => {
@@ -154,7 +168,7 @@ export const loadContent = cache(async (): Promise<SiteContent> => {
       return null;
     });
 
-  const [profile, experiences, projectSources, skillGroups, placeSources, trips] = await Promise.all([
+  const [profile, experiences, projects, skillGroups, places, trips] = await Promise.all([
     collect(readContent("profile.yaml", profileSchema)),
     collect(readContent("experience.yaml", z.array(experienceSchema))),
     collect(readContent("projects.yaml", z.array(projectSchema))),
@@ -162,15 +176,7 @@ export const loadContent = cache(async (): Promise<SiteContent> => {
     collect(readContent("places.yaml", z.array(placeSchema))),
     collect(readContent("trips.yaml", z.array(tripSchema))),
   ]);
-  if (
-    errors.length > 0 ||
-    !profile ||
-    !experiences ||
-    !projectSources ||
-    !skillGroups ||
-    !placeSources ||
-    !trips
-  ) {
+  if (errors.length > 0 || !profile || !experiences || !projects || !skillGroups || !places || !trips) {
     throw new Error(errors.join("\n\n"));
   }
 
@@ -179,12 +185,88 @@ export const loadContent = cache(async (): Promise<SiteContent> => {
     throw new ContentError("profile.yaml", `resume file "${profile.resume.file}" was not found in public/.`);
   });
 
+  return { profile, experiences, projects, skillGroups, places, trips };
+});
+
+function assertKnownKeys(file: string, section: string, keys: Iterable<string>, known: Iterable<string>) {
+  const knownKeys = new Set(known);
+  const unknown = [...keys].filter((key) => !knownKeys.has(key));
+  if (unknown.length > 0) {
+    throw new ContentError(
+      file,
+      `${section} has translations for ${unknown.map((key) => `"${key}"`).join(", ")}, which no longer exist in the English content.`
+    );
+  }
+}
+
+function assertSameLength(file: string, field: string, translated: readonly string[] | undefined, expected: number) {
+  if (translated && translated.length !== expected) {
+    throw new ContentError(file, `${field} has ${translated.length} entries but the English content has ${expected}.`);
+  }
+}
+
+function applyOverlay(sources: Sources, overlay: LocaleOverlay, file: string): Sources {
+  const { profile, experiences, projects, skillGroups, places, trips } = sources;
+  assertKnownKeys(file, "experience", Object.keys(overlay.experience), experiences.map((item) => item.id));
+  assertKnownKeys(file, "projects", Object.keys(overlay.projects), projects.map((item) => item.title));
+  assertKnownKeys(file, "skills", Object.keys(overlay.skills), skillGroups.map((group) => group.title));
+  assertKnownKeys(file, "places", Object.keys(overlay.places), places.map((place) => place.id));
+  assertKnownKeys(file, "regions", Object.keys(overlay.regions), places.flatMap((place) => place.region ?? []));
+  assertKnownKeys(file, "countries", Object.keys(overlay.countries), places.map((place) => place.country));
+  assertKnownKeys(file, "trips", Object.keys(overlay.trips), trips.map((trip) => trip.id));
+  assertSameLength(file, "profile → nameVersionLabels", overlay.profile.nameVersionLabels, profile.nameVersions.length);
+  assertSameLength(file, "profile → titles", overlay.profile.titles, profile.titles.length);
+  for (const project of projects) {
+    assertSameLength(file, `projects → ${project.title} → linkLabels`, overlay.projects[project.title]?.linkLabels, project.links.length);
+  }
+
+  const { nameVersionLabels, ...profileText } = overlay.profile;
+  return {
+    profile: {
+      ...profile,
+      ...profileText,
+      nameVersions: profile.nameVersions.map((version, index) => ({
+        ...version,
+        label: nameVersionLabels?.[index] ?? version.label,
+      })),
+    },
+    experiences: experiences.map((item) => ({ ...item, ...overlay.experience[item.id] })),
+    projects: projects.map(({ links, ...project }) => {
+      const { linkLabels, ...projectText } = overlay.projects[project.title] ?? {};
+      return {
+        ...project,
+        ...projectText,
+        links: links.map((link, index) => ({ ...link, label: linkLabels?.[index] ?? link.label })),
+      };
+    }),
+    skillGroups: skillGroups.map((group) => ({ ...group, title: overlay.skills[group.title] ?? group.title })),
+    places: places.map((place) => ({
+      ...place,
+      ...overlay.places[place.id],
+      region: place.region && (overlay.regions[place.region] ?? place.region),
+      country: overlay.countries[place.country] ?? place.country,
+    })),
+    trips: trips.map((trip) => ({ ...trip, name: overlay.trips[trip.id] ?? trip.name })),
+  };
+}
+
+export const loadContent = cache(async (locale: Locale = defaultLocale): Promise<SiteContent> => {
+  const englishSources = await loadSources();
+  const overlayFile = `locales/${locale}.yaml`;
+  const sources =
+    locale === defaultLocale
+      ? englishSources
+      : applyOverlay(englishSources, await readContent(overlayFile, localeOverlaySchema), overlayFile);
+  const { profile, experiences, projects, skillGroups, places, trips } = sources;
+  const htmlLang = localeInfo[locale].htmlLang;
+
   return {
     profile,
+    displayName: profile.nameVersions.find((version) => version.lang === htmlLang)?.name ?? profile.name,
     experiences,
-    projects: await Promise.all(projectSources.map(resolveProject)),
+    projects: await Promise.all(projects.map(resolveProject)),
     skillGroups,
-    places: resolvePlaces(placeSources, experiences, trips),
+    places: resolvePlaces(places, experiences, trips),
     trips: [...trips].sort((a, b) => b.start.localeCompare(a.start)),
   };
 });

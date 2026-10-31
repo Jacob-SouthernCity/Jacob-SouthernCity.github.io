@@ -1,0 +1,213 @@
+# Simplified Chinese translations, shown at /zh.
+# Only translated fields live here; anything missing falls back to the English content.
+# Keys are ids from the English files (project and skill groups use their English title).
+# The build fails if a key no longer exists in the English content.
+# Keep each text on one line: YAML's folded blocks (>-) put spaces between lines.
+
+profile:
+  nameVersionLabels: [法定姓名, 英文名, 中文名, 日文名]
+  titles: [软件工程师, 游戏开发者, 旅行者]
+  bio: "**Smule** 软件工程师，工作横跨 Web、移动端和平台。拥有**耶鲁大学计算机科学**硕士学位，本科就读于南加州大学，主修**游戏开发与数学**。我喜欢打造真正有人在用的产品，注重用户体验和性能。"
+
+experience:
+  smule:
+    title: 软件工程师
+    description: "全职工程师，参与 Smule 的各条产品线：为 smule.com 网页端以及 iOS 和 Android 上的Smule Sing 应用开发功能，并支持其背后的后端服务。"
+  smule-intern:
+    title: 机器学习工程师实习生
+    description: 以机器学习工程实习生的身份加入 Smule，之后转为全职软件工程师。
+  vestmark:
+    title: 助理软件工程师
+    location: 马萨诸塞州韦克菲尔德
+    description: 为 Vestmark 的财富管理平台 VestmarkONE 开发投资组合再平衡及相关功能的后端 API。
+  yale:
+    title: 计算机科学硕士
+    organization: 耶鲁大学
+    shortName: 耶鲁
+    location: 康涅狄格州纽黑文
+    description: 修读分布式系统构建、数据库系统、全栈 Web 编程和用户界面设计等课程。
+  ebaotech:
+    title: 软件工程师实习生
+    organization: 易保网络技术
+    shortName: 易保
+    location: 上海
+    description: "设计了基于大语言模型的编程语言翻译流程。使用 PyTorch 和 Hugging Face 微调 ChatGLM v2 等模型，搭建保险数据库，并在 AWS SageMaker 上训练模型。"
+  nplace:
+    title: 软件工程师实习生
+    location: 上海
+    description: "为数据传感器转换器开发自适应降采样，在保证精度的同时降低线程压力。实现了三维 Bresenham 算法，并参与 Zaichang 3D 扫描软件的开发。"
+  usc-cs:
+    title: 计算机科学（游戏方向）学士
+    organization: 南加州大学
+    shortName: 南加大
+    location: 加利福尼亚州洛杉矶
+    description: 以最优等成绩（Summa Cum Laude）毕业。游戏开发方向课程包括游戏引擎、游戏物理、沉浸式游戏设计和游戏人工智能。
+  usc-math:
+    title: 计算与应用数学学士
+    organization: 南加州大学
+    shortName: 南加大
+    location: 加利福尼亚州洛杉矶
+    description: 与计算机科学并行的第二专业，课程包括数值分析、机器学习、统计学和线性代数。
+  rochester:
+    title: 计算机科学学士
+    organization: 罗切斯特大学
+    shortName: 罗切斯特
+    location: 纽约州罗切斯特
+    description: 转学至南加州大学之前，修读了计算机科学导论（CSC 171）和数据结构与算法（CSC 172），两门课均以 Java 授课。
+
+projects:
+  PSN README Card:
+    description: "为 GitHub 个人主页制作的 PlayStation Network 实时奖杯卡片。部署在 Vercel 上的一个小型无服务器函数将奖杯等级、奖杯数量、PS Plus 会员状态和最近游玩的游戏渲染成 SVG，README 可以像普通图片一样嵌入。"
+    linkLabels: [在 GitHub 上查看]
+  Kazumi TV:
+    description: "开源动漫应用 Kazumi 的 Android TV 与 Google TV 移植版。新增完整的遥控器焦点导航、方向键浏览评论、TV 启动器横幅以及网络回退方案，同时保持手机和桌面端的行为不变。"
+    linkLabels: [在 GitHub 上查看]
+  Lake Minnewaska:
+    description: "一款由 30 人团队使用 Unity 开发的钓鱼模拟游戏。我担任玩法与 AI 工程师，负责设计钓鱼机制、基于行为树的鱼类行为 AI 以及核心玩法功能。"
+    linkLabels: [在 Steam 上查看]
+  Roamy Trip:
+    description: "一款集酒店发现、旅行规划和社交功能于一体的全栈应用。通过交互式地图展示全球酒店位置，支持分享点评和添加好友。"
+
+skills:
+  Languages: 编程语言
+  "Web & Mobile": Web 与移动端
+  "Backend, Data & ML": 后端、数据与机器学习
+  "Games & Tools": 游戏与工具
+
+places:
+  nanjing: { name: 南京, note: 家乡 }
+  shanghai: { name: 上海 }
+  los-angeles: { name: 洛杉矶, note: 现居地 }
+  rochester: { name: 罗切斯特 }
+  new-york: { name: 纽约 }
+  new-haven: { name: 纽黑文 }
+  princeton: { name: 普林斯顿 }
+  boston: { name: 波士顿 }
+  wakefield: { name: 韦克菲尔德 }
+  san-diego: { name: 圣地亚哥 }
+  santa-barbara: { name: 圣巴巴拉 }
+  san-luis-obispo: { name: 圣路易斯奥比斯波 }
+  big-sur: { name: 大苏尔 }
+  monterey: { name: 蒙特雷 }
+  carmel: { name: 卡梅尔 }
+  half-moon-bay: { name: 半月湾 }
+  san-francisco: { name: 旧金山 }
+  yosemite: { name: 优胜美地国家公园 }
+  orlando: { name: 奥兰多 }
+  atlanta: { name: 亚特兰大 }
+  brevard: { name: 布雷瓦德 }
+  pigeon-forge: { name: 鸽子谷 }
+  great-smoky-mountains: { name: 大烟山国家公园 }
+  las-vegas: { name: 拉斯维加斯 }
+  zion: { name: 锡安国家公园 }
+  arches: { name: 拱门国家公园 }
+  bryce-canyon: { name: 布莱斯峡谷国家公园 }
+  albuquerque: { name: 阿尔伯克基 }
+  bisti-badlands: { name: 比斯蒂荒地 }
+  santa-fe: { name: 圣塔菲 }
+  white-sands: { name: 白沙国家公园 }
+  las-cruces: { name: 拉斯克鲁塞斯 }
+  carlsbad: { name: 卡尔斯巴德 }
+  philadelphia: { name: 费城 }
+  washington-dc: { name: 华盛顿 }
+  denver: { name: 丹佛 }
+  rocky-mountain: { name: 落基山国家公园 }
+  jackson: { name: 杰克逊 }
+  grand-teton: { name: 大提顿国家公园 }
+  yellowstone: { name: 黄石国家公园 }
+  anchorage: { name: 安克雷奇 }
+  matanuska-glacier: { name: 马塔努斯卡冰川 }
+  fairbanks: { name: 费尔班克斯 }
+  chena-hot-springs: { name: 珍娜温泉 }
+  north-pole: { name: 北极镇 }
+  arctic-circle: { name: 北极圈 }
+  honolulu: { name: 檀香山 }
+  wailea: { name: 威雷亚 }
+  hana: { name: 哈纳 }
+  waikoloa: { name: 威可洛亚 }
+  tokyo: { name: 东京 }
+  yokohama: { name: 横滨 }
+  kamakura: { name: 镰仓 }
+  hakone: { name: 箱根 }
+  higashiizu: { name: 东伊豆 }
+  lake-kawaguchi: { name: 河口湖 }
+  lake-yamanaka: { name: 山中湖 }
+  nagoya: { name: 名古屋 }
+  osaka: { name: 大阪 }
+  arima-onsen: { name: 有马温泉 }
+  kobe: { name: 神户 }
+  kyoto: { name: 京都 }
+  uji: { name: 宇治 }
+  nara: { name: 奈良 }
+  fukuoka: { name: 福冈 }
+  hita: { name: 日田 }
+  beppu: { name: 别府 }
+  yufuin: { name: 由布院 }
+  aso: { name: 阿苏 }
+  kumamoto: { name: 熊本 }
+  hitoyoshi: { name: 人吉 }
+  kagoshima: { name: 鹿儿岛 }
+  ibusuki: { name: 指宿 }
+  karatsu: { name: 唐津 }
+  nagasaki: { name: 长崎 }
+  unzen: { name: 云仙 }
+  kitakyushu: { name: 北九州 }
+  hakodate: { name: 函馆 }
+  noboribetsu: { name: 登别 }
+  lake-toya: { name: 洞爷湖 }
+  sapporo: { name: 札幌 }
+  kushiro: { name: 钏路 }
+  lake-mashu: { name: 摩周湖 }
+  lake-kussharo: { name: 屈斜路湖 }
+  lake-akan: { name: 阿寒湖 }
+  abashiri: { name: 网走 }
+  biei: { name: 美瑛 }
+  furano: { name: 富良野 }
+  otaru: { name: 小樽 }
+  jozankei: { name: 定山溪 }
+
+regions:
+  Jiangsu: 江苏
+  Shanghai: 上海
+  California: 加利福尼亚州
+  New York: 纽约州
+  Connecticut: 康涅狄格州
+  New Jersey: 新泽西州
+  Massachusetts: 马萨诸塞州
+  Florida: 佛罗里达州
+  Georgia: 佐治亚州
+  North Carolina: 北卡罗来纳州
+  Tennessee: 田纳西州
+  Nevada: 内华达州
+  Utah: 犹他州
+  New Mexico: 新墨西哥州
+  Pennsylvania: 宾夕法尼亚州
+  District of Columbia: 哥伦比亚特区
+  Colorado: 科罗拉多州
+  Wyoming: 怀俄明州
+  Alaska: 阿拉斯加州
+  Hawaii: 夏威夷州
+  Kanto: 关东
+  Chubu: 中部
+  Kansai: 关西
+  Kyushu: 九州
+  Hokkaido: 北海道
+
+countries:
+  China: 中国
+  United States: 美国
+  Japan: 日本
+
+trips:
+  hawaii-2026: 夏威夷群岛之旅
+  hokkaido-winter-2025: 冬日北海道
+  rockies-yellowstone-2026: 落基山、大提顿与黄石
+  new-mexico-2025: 秋日新墨西哥
+  utah-national-parks-2025: 犹他国家公园之旅
+  kyushu-2025: 九州自驾游
+  smoky-mountains-2025: 亚特兰大与大烟山
+  orlando-2025: 奥兰多
+  graduation-japan-2024: 日本毕业旅行
+  pacific-coast-2024: 太平洋海岸公路自驾游
+  spring-break-japan-2024: 日本春假之旅
+  alaska-winter-2022: 冬日阿拉斯加

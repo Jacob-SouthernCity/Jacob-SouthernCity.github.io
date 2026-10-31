@@ -5,6 +5,7 @@ import { formatDateRange } from "@/lib/dates";
 import { flagEmoji } from "@/lib/geo";
 import type { Place, Trip, YearMonth } from "@/lib/content/schema";
 import { PlaceChip, TagDots } from "./place-tags";
+import { useI18n } from "../i18n-provider";
 
 type SelectionCardProps = {
   place: Place | null;
@@ -19,11 +20,12 @@ const cardClassName =
   "surface-glass rounded-2xl p-4";
 
 function DatedRow({ label, start, end }: { label: string; start: YearMonth; end: YearMonth | null }) {
+  const { locale } = useI18n();
   return (
     <li className="flex flex-wrap justify-between gap-x-3">
       <span>{label}</span>
       <span className="font-mono text-xs text-slate-500 tabular-nums dark:text-slate-400">
-        {formatDateRange(start, end)}
+        {formatDateRange(start, end, locale)}
       </span>
     </li>
   );
@@ -37,6 +39,7 @@ export default function SelectionCard({
   onSelectPlace,
   hint,
 }: SelectionCardProps) {
+  const { locale, t } = useI18n();
   const key = place
     ? `place-${place.id}`
     : trip
@@ -62,7 +65,7 @@ export default function SelectionCard({
                   <span aria-hidden>{flagEmoji(place.countryCode)} </span>
                   {place.name}
                   <span className="font-normal text-slate-500 dark:text-slate-400">
-                    {place.region && `, ${place.region}`}, {place.country}
+                    {[place.region, place.country].filter(Boolean).map((part) => `${t.separator}${part}`)}
                   </span>
                 </p>
                 <TagDots tags={place.tags} />
@@ -84,7 +87,7 @@ export default function SelectionCard({
               <div className="flex flex-wrap items-baseline justify-between gap-x-3">
                 <p className="font-semibold">{trip.name}</p>
                 <span className="font-mono text-xs text-slate-500 tabular-nums dark:text-slate-400">
-                  {formatDateRange(trip.start, trip.end)}
+                  {formatDateRange(trip.start, trip.end, locale)}
                 </span>
               </div>
               <p className="mt-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
@@ -94,8 +97,8 @@ export default function SelectionCard({
           ) : clusterPlaces.length > 0 ? (
             <div className={cardClassName}>
               <p className="font-semibold">
-                {clusterPlaces.length} places nearby
-                <span className="font-normal text-slate-500 dark:text-slate-400"> · pick one</span>
+                {t.places.nearby(clusterPlaces.length)}
+                <span className="font-normal text-slate-500 dark:text-slate-400"> · {t.places.pickOne}</span>
               </p>
               <ul className="mt-2 flex flex-wrap gap-1.5">
                 {clusterPlaces.map((item) => (

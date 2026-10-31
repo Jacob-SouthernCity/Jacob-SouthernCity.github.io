@@ -10,6 +10,7 @@ Everything shown on the site lives in these YAML files. Edit them and the site u
 | `skills.yaml` | Skill groups and chips |
 | `places.yaml` | Places on the travel globe |
 | `trips.yaml` | Trips: name, months, and the places visited in order |
+| `locales/zh.yaml`, `locales/ja.yaml` | Chinese (/zh) and Japanese (/ja) translations of the files above |
 
 ## Updating from the browser
 
@@ -29,3 +30,12 @@ If something is wrong (a date like `2024-8`, an unknown icon, a place id that do
 - **New project image:** put the file in `public/projects/` and reference it as `/projects/<file>`. Its size is read automatically.
 - **New icon:** icons come from `lib/icons.ts`; add one there if the name you want is missing.
 - **New resume:** replace `public/CV.pdf`.
+
+## Translations
+
+The English files are the source of truth. `locales/zh.yaml` and `locales/ja.yaml` hold only the translated text, keyed by the English id (projects and skill groups by their English title). Anything without a translation shows in English.
+
+- **When you add or change English text,** add or update the same entry in both locale files: experience titles and descriptions, project descriptions and link labels, skill group titles, place names and notes, new regions or countries, and trip names.
+- **When you rename or remove an id,** rename or remove it in the locale files too. The build fails on translations for ids that no longer exist.
+- Keep each translated text on one line; YAML's folded `>-` blocks add spaces between lines, which reads wrong in Chinese and Japanese.
+- Interface text (buttons, headings, hints) lives in `lib/i18n/messages.ts`; TypeScript fails the build if a language is missing a string.
