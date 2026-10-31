@@ -4,10 +4,10 @@
 name: Jingze Ma
 
 nameVersions:
-  - { label: Legal, name: Jingze Ma, badge: EN, lang: en }
-  - { label: English, name: Jacob Ma, badge: EN, lang: en }
-  - { label: Chinese, name: 马璟泽, badge: 中, lang: zh-Hans }
-  - { label: Japanese, name: 小島蓮や, badge: あ, lang: ja }
+  - { label: Legal name, name: Jingze Ma, lang: en }
+  - { label: English name, name: Jacob Ma, lang: en }
+  - { label: Chinese name, name: 马璟泽, lang: zh-Hans }
+  - { label: Japanese name, name: 小島蓮や, lang: ja }
 
 titles:
   - Software Engineer

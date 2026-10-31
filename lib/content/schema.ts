@@ -23,7 +23,6 @@ export const profileSchema = z.object({
       z.object({
         label: z.string().min(1),
         name: z.string().min(1),
-        badge: z.string().min(1),
         lang: z.string().min(2),
       })
     )
@@ -83,7 +82,7 @@ export const skillGroupSchema = z.object({
   skills: z.array(z.object({ name: z.string().min(1), icon: z.enum(iconNames) })).min(1),
 });
 
-export const placeTags = ["born", "lived", "studied", "worked", "visited"] as const;
+export const placeTags = ["lived", "studied", "worked", "visited"] as const;
 
 export const placeSchema = z.object({
   id,

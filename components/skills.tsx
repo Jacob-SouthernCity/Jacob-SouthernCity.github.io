@@ -52,13 +52,13 @@ export default function Skills({ skillGroups }: SkillsProps) {
     <section
       id="skills"
       ref={ref}
-      className="mb-28 w-full max-w-212 scroll-mt-28 sm:mb-40"
+      className="mb-24 w-full max-w-212 scroll-mt-28 sm:mb-32"
     >
-      <SectionHeading>My skills</SectionHeading>
+      <SectionHeading>Skills</SectionHeading>
       <div className="grid gap-5 sm:grid-cols-2">
         {skillGroups.map((group, index) => (
           <motion.div
-            className="rounded-2xl border border-black/5 bg-white/60 p-6 shadow-sm backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
+            className="surface rounded-2xl p-6"
             key={group.title}
             variants={fadeInAnimationVariants}
             initial="initial"
@@ -77,7 +77,7 @@ export default function Skills({ skillGroups }: SkillsProps) {
                 return (
                 <motion.li
                   variants={chipVariants}
-                  className="flex items-center gap-2 rounded-full bg-linear-to-br from-indigo-50 to-teal-50 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:from-indigo-100 hover:to-teal-100 dark:from-indigo-900/30 dark:to-teal-900/20 dark:text-slate-200"
+                  className="flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-200 dark:bg-white/5 dark:text-slate-200 dark:hover:bg-white/10"
                   key={skill.name}
                 >
                   <span className="text-base text-indigo-600 dark:text-indigo-300" aria-hidden>

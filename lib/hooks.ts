@@ -31,6 +31,31 @@ export function useCurrentMonthIndex() {
   return useSyncExternalStore(subscribeToNothing, getCurrentMonthIndex, () => null);
 }
 
+export function useIsHydrated() {
+  return useSyncExternalStore(
+    subscribeToNothing,
+    () => true,
+    () => false
+  );
+}
+
+export function useMediaQuery(query: string) {
+  const subscribe = useCallback(
+    (onChange: () => void) => {
+      const list = window.matchMedia(query);
+      list.addEventListener("change", onChange);
+      return () => list.removeEventListener("change", onChange);
+    },
+    [query]
+  );
+
+  return useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(query).matches,
+    () => false
+  );
+}
+
 const measureWidth = (element: HTMLElement) => element.getBoundingClientRect().width;
 
 export function useElementMeasure(

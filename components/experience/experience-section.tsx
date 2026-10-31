@@ -59,9 +59,9 @@ export default function Experience({ experiences }: ExperienceProps) {
     <section
       id="experience"
       ref={ref}
-      className="mb-28 w-full max-w-3xl scroll-mt-28 sm:mb-40"
+      className="mb-24 w-full max-w-3xl scroll-mt-28 sm:mb-32"
     >
-      <SectionHeading>My experience</SectionHeading>
+      <SectionHeading>Experience</SectionHeading>
 
       <div className="mb-6">
         <FilterTabs
