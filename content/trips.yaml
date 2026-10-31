@@ -1,0 +1,56 @@
+# Trips, newest first. places: place ids from places.yaml, in the order visited.
+# start/end: "YYYY-MM". Every place listed here shows as Visited on the globe.
+
+- id: rockies-yellowstone-2026
+  name: Rockies, Tetons and Yellowstone
+  start: "2026-05"
+  end: "2026-05"
+  places: [princeton, philadelphia, denver, rocky-mountain, jackson, grand-teton, yellowstone, philadelphia, washington-dc, new-york]
+
+- id: new-mexico-2025
+  name: New Mexico in the fall
+  start: "2025-10"
+  end: "2025-10"
+  places: [albuquerque, bisti-badlands, santa-fe, white-sands, las-cruces, carlsbad]
+
+- id: utah-national-parks-2025
+  name: Utah national parks
+  start: "2025-08"
+  end: "2025-09"
+  places: [las-vegas, zion, arches, bryce-canyon]
+
+- id: kyushu-2025
+  name: Kyushu road trip
+  start: "2025-05"
+  end: "2025-06"
+  places: [tokyo, fukuoka, hita, beppu, yufuin, aso, kumamoto, hitoyoshi, kagoshima, ibusuki, karatsu, nagasaki, unzen, kitakyushu]
+
+- id: smoky-mountains-2025
+  name: Atlanta and the Smoky Mountains
+  start: "2025-03"
+  end: "2025-03"
+  places: [atlanta, brevard, pigeon-forge, great-smoky-mountains]
+
+- id: orlando-2025
+  name: Orlando
+  start: "2025-01"
+  end: "2025-01"
+  places: [orlando]
+
+- id: graduation-japan-2024
+  name: Graduation trip to Japan
+  start: "2024-05"
+  end: "2024-06"
+  places: [tokyo, osaka, arima-onsen, kobe, kyoto, nagoya, uji, nara]
+
+- id: pacific-coast-2024
+  name: Pacific Coast Highway road trip
+  start: "2024-05"
+  end: "2024-05"
+  places: [san-diego, santa-barbara, san-luis-obispo, big-sur, monterey, carmel, half-moon-bay, san-francisco, yosemite]
+
+- id: spring-break-japan-2024
+  name: Spring break in Japan
+  start: "2024-03"
+  end: "2024-03"
+  places: [tokyo, yokohama, kamakura, hakone, higashiizu, lake-kawaguchi, lake-yamanaka]

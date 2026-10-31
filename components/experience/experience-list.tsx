@@ -3,11 +3,11 @@
 import clsx from "clsx";
 import { AnimatePresence, motion } from "motion/react";
 import { formatDateRange } from "@/lib/dates";
-import type { ExperienceData } from "@/lib/types";
+import type { Experience } from "@/lib/content/schema";
 import { experienceKindStyles } from "./experience-kind";
 
 type ExperienceListProps = {
-  items: readonly ExperienceData[];
+  items: readonly Experience[];
   highlightedId: string | null;
 };
 

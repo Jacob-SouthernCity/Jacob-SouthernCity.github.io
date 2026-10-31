@@ -1,0 +1,30 @@
+# Intro section, contact links and the resume download.
+# Wrap words in **double asterisks** in the bio to make them bold.
+
+name: Jingze Ma
+
+nameVersions:
+  - { label: Legal, name: Jingze Ma, badge: EN, lang: en }
+  - { label: English, name: Jacob Ma, badge: EN, lang: en }
+  - { label: Chinese, name: 马璟泽, badge: 中, lang: zh-Hans }
+  - { label: Japanese, name: 小島蓮や, badge: あ, lang: ja }
+
+titles:
+  - Software Engineer
+  - Game Developer
+  - Traveler
+
+bio: >-
+  Software Engineer at **Smule**, building across web, mobile, and platform.
+  I hold a Master's in **Computer Science from Yale** and a background in
+  **Game Development and Mathematics** from USC. I enjoy shipping products
+  people actually use, with a focus on user experience and performance.
+
+resume:
+  file: /CV.pdf
+  downloadName: Jingze_Ma_Resume.pdf
+
+contact:
+  email: jingzema2001@gmail.com
+  linkedIn: https://www.linkedin.com/in/jingze-ma/
+  gitHub: https://github.com/Jacob-SouthernCity

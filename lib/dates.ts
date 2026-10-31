@@ -1,4 +1,4 @@
-import type { YearMonth } from "./types";
+import type { YearMonth } from "./content/schema";
 
 const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
@@ -11,11 +11,12 @@ export function monthLabel(monthOfYear: number) {
   return MONTH_NAMES[monthOfYear];
 }
 
-export function formatYearMonth(yearMonth: YearMonth) {
+function formatYearMonth(yearMonth: YearMonth) {
   const [year, month] = yearMonth.split("-").map(Number);
   return `${MONTH_NAMES[month - 1]} ${year}`;
 }
 
 export function formatDateRange(start: YearMonth, end: YearMonth | null) {
+  if (end === start) return formatYearMonth(start);
   return `${formatYearMonth(start)} – ${end ? formatYearMonth(end) : "Present"}`;
 }

@@ -4,7 +4,10 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { IoMdClose } from "react-icons/io";
-import type { ProjectData, ProjectVideo } from "@/lib/types";
+import type { Project as ProjectData } from "@/lib/content/schema";
+import { icons } from "@/lib/icons";
+
+type ProjectVideo = NonNullable<ProjectData["video"]>;
 
 const desktopMediaClassName =
   "absolute hidden md:block top-8 -right-40 w-113 rounded-t-lg shadow-2xl transition group-hover:scale-[1.04] group-hover:-translate-x-3 group-hover:translate-y-3 group-hover:-rotate-2 group-hover:group-even:translate-x-3 group-hover:group-even:translate-y-3 group-hover:group-even:rotate-2 group-even:right-[initial] group-even:-left-40";
@@ -39,7 +42,7 @@ export default function Project({
   title,
   description,
   tags,
-  imageUrl,
+  image,
   video,
   links,
 }: ProjectData) {
@@ -99,7 +102,9 @@ export default function Project({
           <div className="pt-4 pb-7 px-5 md:pl-10 md:pr-2 md:pt-10 md:max-w-[50%] flex flex-col h-full md:group-even:ml-72">
             <div className="flex items-center gap-2 flex-wrap">
               <h3 className="text-2xl font-semibold">{title}</h3>
-              {links.map(({ icon: LinkIcon, url, label }) => (
+              {links.map(({ icon, url, label }) => {
+                const LinkIcon = icons[icon];
+                return (
                 <a
                   key={url}
                   href={url}
@@ -111,7 +116,8 @@ export default function Project({
                 >
                   <LinkIcon className="text-xl" />
                 </a>
-              ))}
+                );
+              })}
             </div>
 
             <p className="mt-2 leading-relaxed text-slate-700 dark:text-white/70">
@@ -126,7 +132,7 @@ export default function Project({
               />
             )}
 
-            {!video && imageUrl && (
+            {!video && image && (
               <button
                 type="button"
                 className="my-3 md:hidden"
@@ -134,7 +140,7 @@ export default function Project({
                 aria-label={`Enlarge ${title} screenshot`}
               >
                 <Image
-                  src={imageUrl}
+                  src={image}
                   alt={screenshotAlt}
                   quality={95}
                   className="w-full h-auto rounded-md shadow-md"
@@ -159,7 +165,7 @@ export default function Project({
               <ProjectTrailer title={title} video={video} className="rounded-lg" />
             </div>
           ) : (
-            imageUrl && (
+            image && (
               <button
                 type="button"
                 className={`${desktopMediaClassName} cursor-zoom-in`}
@@ -167,7 +173,7 @@ export default function Project({
                 aria-label={`Enlarge ${title} screenshot`}
               >
                 <Image
-                  src={imageUrl}
+                  src={image}
                   alt={screenshotAlt}
                   quality={95}
                   className="w-full h-auto rounded-lg"
@@ -179,7 +185,7 @@ export default function Project({
       </motion.div>
 
       <AnimatePresence>
-        {isModalOpen && imageUrl && (
+        {isModalOpen && image && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -208,7 +214,7 @@ export default function Project({
                 <IoMdClose className="text-2xl" />
               </button>
               <Image
-                src={imageUrl}
+                src={image}
                 alt={screenshotAlt}
                 quality={100}
                 className="w-full h-auto max-h-[90dvh] object-contain"

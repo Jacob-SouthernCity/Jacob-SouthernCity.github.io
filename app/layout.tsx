@@ -9,33 +9,29 @@ import ThemeSwitch from "@/components/theme-switch";
 import ThemeContextProvider from "@/context/theme-context";
 import MotionProvider from "@/components/motion-provider";
 import ScrollProgress from "@/components/scroll-progress";
+import { loadContent } from "@/lib/content/load";
 
 const geistSans = Geist({ subsets: ["latin"], variable: "--font-geist-sans" });
 const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" });
 
-const siteDescription =
-  "Jingze (Jacob) Ma is a software engineer at Smule working across web, mobile, and platform, with a background in game development.";
+export async function generateMetadata(): Promise<Metadata> {
+  const { profile, experiences } = await loadContent();
+  const currentRole = experiences.find((item) => item.kind === "work" && item.end === null);
+  const headline = currentRole?.title ?? profile.titles[0];
+  const title = `${profile.name} | ${headline}`;
+  const description = currentRole
+    ? `${profile.name} is a ${currentRole.title.toLowerCase()} at ${currentRole.organization}, building across web, mobile, and platform.`
+    : `${profile.name}, ${headline}.`;
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://www.majingze.com"),
-  title: "Jingze Ma | Software Engineer",
-  description: siteDescription,
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "Jingze Ma | Software Engineer",
-    description: siteDescription,
-    url: "/",
-    siteName: "Jingze Ma",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Jingze Ma | Software Engineer",
-    description: siteDescription,
-  },
-};
+  return {
+    metadataBase: new URL("https://www.majingze.com"),
+    title,
+    description,
+    alternates: { canonical: "/" },
+    openGraph: { title, description, url: "/", siteName: profile.name, type: "website" },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: [

@@ -1,7 +1,7 @@
 import type { IconType } from "react-icons";
 import { FaBriefcase } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import type { ExperienceKind } from "@/lib/types";
+import type { ExperienceKind } from "@/lib/content/schema";
 
 type ExperienceKindStyle = {
   label: string;
