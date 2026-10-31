@@ -4,7 +4,6 @@ import { LuGraduationCap } from "react-icons/lu";
 import type { ExperienceKind } from "@/lib/content/schema";
 
 type ExperienceKindStyle = {
-  label: string;
   icon: IconType;
   bar: string;
   dot: string;
@@ -13,14 +12,12 @@ type ExperienceKindStyle = {
 
 export const experienceKindStyles: Record<ExperienceKind, ExperienceKindStyle> = {
   work: {
-    label: "Work",
     icon: FaBriefcase,
     bar: "bg-indigo-500",
     dot: "bg-indigo-500",
     accentText: "text-indigo-600 dark:text-indigo-300",
   },
   education: {
-    label: "Education",
     icon: LuGraduationCap,
     bar: "bg-teal-500",
     dot: "bg-teal-500",

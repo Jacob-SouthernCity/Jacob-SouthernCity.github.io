@@ -114,6 +114,46 @@ export const tripSchema = z
     path: ["end"],
   });
 
+const text = z.string().min(1);
+
+export const localeOverlaySchema = z.strictObject({
+  profile: z
+    .strictObject({
+      nameVersionLabels: z.array(text).optional(),
+      titles: z.array(text).min(1).optional(),
+      bio: text.optional(),
+    })
+    .default({}),
+  experience: z
+    .record(
+      id,
+      z.strictObject({
+        title: text.optional(),
+        organization: text.optional(),
+        shortName: text.optional(),
+        location: text.optional(),
+        description: text.optional(),
+      })
+    )
+    .default({}),
+  projects: z
+    .record(
+      text,
+      z.strictObject({
+        title: text.optional(),
+        description: text.optional(),
+        linkLabels: z.array(text).optional(),
+      })
+    )
+    .default({}),
+  skills: z.record(text, text).default({}),
+  places: z.record(id, z.strictObject({ name: text.optional(), note: text.optional() })).default({}),
+  regions: z.record(text, text).default({}),
+  countries: z.record(text, text).default({}),
+  trips: z.record(id, text).default({}),
+});
+
+export type LocaleOverlay = z.infer<typeof localeOverlaySchema>;
 export type Profile = z.infer<typeof profileSchema>;
 export type ExperienceKind = (typeof experienceKinds)[number];
 export type Experience = z.infer<typeof experienceSchema>;
@@ -143,6 +183,7 @@ export type Place = Omit<PlaceSource, "countryCode" | "coordinates"> & {
 
 export type SiteContent = {
   profile: Profile;
+  displayName: string;
   experiences: Experience[];
   projects: Project[];
   skillGroups: SkillGroup[];

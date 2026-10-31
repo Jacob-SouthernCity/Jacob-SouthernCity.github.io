@@ -1,20 +1,22 @@
 import clsx from "clsx";
 import type { Place, PlaceTag } from "@/lib/content/schema";
+import { useI18n } from "../i18n-provider";
 
-export const tagStyles: Record<PlaceTag, { label: string; dot: string; rgb: [number, number, number] }> = {
-  lived: { label: "Lived", dot: "bg-amber-500", rgb: [0.96, 0.62, 0.04] },
-  studied: { label: "Studied", dot: "bg-teal-500", rgb: [0.08, 0.72, 0.65] },
-  worked: { label: "Worked", dot: "bg-indigo-500", rgb: [0.39, 0.4, 0.95] },
-  visited: { label: "Visited", dot: "bg-sky-500", rgb: [0.05, 0.65, 0.91] },
+export const tagStyles: Record<PlaceTag, { dot: string; rgb: [number, number, number] }> = {
+  lived: { dot: "bg-amber-500", rgb: [0.96, 0.62, 0.04] },
+  studied: { dot: "bg-teal-500", rgb: [0.08, 0.72, 0.65] },
+  worked: { dot: "bg-indigo-500", rgb: [0.39, 0.4, 0.95] },
+  visited: { dot: "bg-sky-500", rgb: [0.05, 0.65, 0.91] },
 };
 
 export function TagDots({ tags }: { tags: readonly PlaceTag[] }) {
+  const { t } = useI18n();
   return (
     <span className="flex shrink-0 items-center gap-1">
       {tags.map((tag) => (
         <span key={tag} className={`size-2 rounded-full ${tagStyles[tag].dot}`} aria-hidden />
       ))}
-      <span className="sr-only"> ({tags.map((tag) => tagStyles[tag].label).join(", ")})</span>
+      <span className="sr-only"> ({tags.map((tag) => t.places.tags[tag]).join(", ")})</span>
     </span>
   );
 }
@@ -28,13 +30,14 @@ type TagFilterChipsProps = {
 };
 
 export function TagFilterChips({ tags, value, onChange }: TagFilterChipsProps) {
+  const { t } = useI18n();
   const options: { value: TagFilter; label: string; dot?: string }[] = [
-    { value: "all", label: "All" },
-    ...tags.map((tag) => ({ value: tag, label: tagStyles[tag].label, dot: tagStyles[tag].dot })),
+    { value: "all", label: t.places.all },
+    ...tags.map((tag) => ({ value: tag, label: t.places.tags[tag], dot: tagStyles[tag].dot })),
   ];
 
   return (
-    <div className="flex flex-wrap gap-1.5" role="group" aria-label="Filter places">
+    <div className="flex flex-wrap gap-1.5" role="group" aria-label={t.places.filterLabel}>
       {options.map((option) => (
         <button
           key={option.value}

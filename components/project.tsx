@@ -6,6 +6,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "motion/react";
 import { IoMdClose } from "react-icons/io";
 import type { Project as ProjectData } from "@/lib/content/schema";
 import { icons } from "@/lib/icons";
+import { useI18n } from "./i18n-provider";
 
 type ProjectVideo = NonNullable<ProjectData["video"]>;
 
@@ -21,19 +22,20 @@ function ProjectTrailer({
   video: ProjectVideo;
   className: string;
 }) {
+  const { t } = useI18n();
   return (
     <video
       controls
       playsInline
       preload="none"
       poster={video.poster}
-      aria-label={`${title} trailer`}
+      aria-label={t.projects.trailer(title)}
       className={`aspect-video w-full bg-black object-cover ${className}`}
     >
       {video.sources.map(({ src, type }) => (
         <source key={src} src={src} type={type} />
       ))}
-      Your browser does not support HTML5 video.
+      {t.projects.videoUnsupported}
     </video>
   );
 }
@@ -55,6 +57,7 @@ export default function Project({
   const opacityProgress = useTransform(scrollYProgress, [0, 1], [0.6, 1]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useI18n();
   const modalTriggerRef = useRef<HTMLElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const openModal = (event: MouseEvent<HTMLElement>) => {
@@ -86,7 +89,7 @@ export default function Project({
     };
   }, [isModalOpen]);
 
-  const screenshotAlt = `${title} project screenshot`;
+  const screenshotAlt = t.projects.screenshotAlt(title);
 
   return (
     <>
@@ -137,7 +140,7 @@ export default function Project({
                 type="button"
                 className="my-3 md:hidden"
                 onClick={openModal}
-                aria-label={`Enlarge ${title} screenshot`}
+                aria-label={t.projects.enlargeScreenshot(title)}
               >
                 <Image
                   src={image}
@@ -170,7 +173,7 @@ export default function Project({
                 type="button"
                 className={`${desktopMediaClassName} cursor-zoom-in`}
                 onClick={openModal}
-                aria-label={`Enlarge ${title} screenshot`}
+                aria-label={t.projects.enlargeScreenshot(title)}
               >
                 <Image
                   src={image}
@@ -208,7 +211,7 @@ export default function Project({
                 className="absolute top-4 right-4 z-10 p-2 bg-black/40 backdrop-blur-xs rounded-full text-white hover:bg-black/60 transition-colors"
                 ref={closeButtonRef}
                 onClick={closeModal}
-                aria-label="Close screenshot"
+                aria-label={t.projects.closeScreenshot}
                 autoFocus
               >
                 <IoMdClose className="text-2xl" />

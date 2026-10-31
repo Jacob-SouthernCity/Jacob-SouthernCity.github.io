@@ -11,6 +11,7 @@ import { TagFilterChips, tagStyles, type TagFilter } from "./place-tags";
 import { angularDistance, centroid, type LatLng } from "@/lib/geo";
 import { useSectionInView } from "@/lib/hooks";
 import { prefersReducedMotion } from "@/lib/motion";
+import { useI18n } from "../i18n-provider";
 import { placeTags, type Place, type Trip } from "@/lib/content/schema";
 
 type View = "places" | "trips";
@@ -36,11 +37,6 @@ function placesFor(ids: readonly string[], placesById: ReadonlyMap<string, Place
   return ids.map((id) => placesById.get(id)).filter((place) => place !== undefined);
 }
 
-const viewOptions: readonly FilterOption<View>[] = [
-  { value: "places", label: "Places" },
-  { value: "trips", label: "Trips" },
-];
-
 type PlacesSectionProps = {
   places: readonly Place[];
   trips: readonly Trip[];
@@ -48,6 +44,11 @@ type PlacesSectionProps = {
 
 export default function PlacesSection({ places, trips }: PlacesSectionProps) {
   const { ref } = useSectionInView("Places");
+  const { t } = useI18n();
+  const viewOptions: FilterOption<View>[] = [
+    { value: "places", label: t.places.views.places },
+    { value: "trips", label: t.places.views.trips },
+  ];
   const globeRef = useRef<HTMLDivElement>(null);
   const [view, setView] = useState<View>("places");
   const [tagFilter, setTagFilter] = useState<TagFilter>("all");
@@ -142,16 +143,15 @@ export default function PlacesSection({ places, trips }: PlacesSectionProps) {
 
   return (
     <section id="places" ref={ref} className="mb-24 w-full max-w-5xl scroll-mt-28 sm:mb-32">
-      <SectionHeading>Places I&apos;ve been</SectionHeading>
+      <SectionHeading>{t.places.heading}</SectionHeading>
 
       <p className="-mt-2 mb-6 text-center font-mono text-sm text-slate-500 tabular-nums dark:text-slate-400">
-        {places.length} places · {countryCount} {countryCount === 1 ? "country" : "countries"} · {trips.length}{" "}
-        {trips.length === 1 ? "trip" : "trips"}
+        {t.places.summary(places.length, countryCount, trips.length)}
       </p>
 
       <div className="mb-8">
         <FilterTabs
-          label="Show places or trips"
+          label={t.places.viewLabel}
           layoutId="places-view"
           options={viewOptions}
           value={view}
@@ -169,7 +169,7 @@ export default function PlacesSection({ places, trips }: PlacesSectionProps) {
             arcs={arcs}
             focus={focus}
             zoom={zoom}
-            label={`Globe marking ${places.length} places I've been across ${countryCount} countries`}
+            label={t.places.globeLabel(places.length, countryCount)}
             onSelect={handleGlobeSelect}
           />
           <SelectionCard
@@ -180,8 +180,8 @@ export default function PlacesSection({ places, trips }: PlacesSectionProps) {
             onSelectPlace={showPlace}
             hint={
               view === "places"
-                ? "Drag the globe, tap a dot, or pick a place below."
-                : "Pick a trip to see its route on the globe."
+                ? t.places.hintPlaces
+                : t.places.hintTrips
             }
           />
         </div>

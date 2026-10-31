@@ -10,17 +10,9 @@ import { toMonthIndex } from "@/lib/dates";
 import { useSectionInView } from "@/lib/hooks";
 import { prefersReducedMotion } from "@/lib/motion";
 import type { Experience as ExperienceItem, ExperienceKind } from "@/lib/content/schema";
+import { useI18n } from "../i18n-provider";
 
 type ExperienceFilter = "all" | ExperienceKind;
-
-const filterOptions: readonly FilterOption<ExperienceFilter>[] = [
-  { value: "all", label: "All" },
-  ...(["work", "education"] as const).map((kind) => ({
-    value: kind,
-    label: experienceKindStyles[kind].label,
-    dotClassName: experienceKindStyles[kind].dot,
-  })),
-];
 
 const HIGHLIGHT_DURATION_MS = 1600;
 
@@ -30,6 +22,15 @@ type ExperienceProps = {
 
 export default function Experience({ experiences }: ExperienceProps) {
   const { ref } = useSectionInView("Experience");
+  const { t } = useI18n();
+  const filterOptions: FilterOption<ExperienceFilter>[] = [
+    { value: "all", label: t.experience.all },
+    ...(["work", "education"] as const).map((kind) => ({
+      value: kind,
+      label: t.experience.kinds[kind],
+      dotClassName: experienceKindStyles[kind].dot,
+    })),
+  ];
   const [filter, setFilter] = useState<ExperienceFilter>("all");
   const [highlightedId, setHighlightedId] = useState<string | null>(null);
 
@@ -61,11 +62,11 @@ export default function Experience({ experiences }: ExperienceProps) {
       ref={ref}
       className="mb-24 w-full max-w-3xl scroll-mt-28 sm:mb-32"
     >
-      <SectionHeading>Experience</SectionHeading>
+      <SectionHeading>{t.experience.heading}</SectionHeading>
 
       <div className="mb-6">
         <FilterTabs
-          label="Filter experience"
+          label={t.experience.filterLabel}
           layoutId="experience-filter"
           options={filterOptions}
           value={filter}

@@ -1,0 +1,209 @@
+# Japanese translations, shown at /ja.
+# Only translated fields live here; anything missing falls back to the English content.
+# Keys are ids from the English files (project and skill groups use their English title).
+# The build fails if a key no longer exists in the English content.
+# Keep each text on one line: YAML's folded blocks (>-) put spaces between lines.
+
+profile:
+  nameVersionLabels: [正式な氏名, 英語名, 中国語名, 日本語名]
+  titles: [ソフトウェアエンジニア, ゲーム開発者, 旅人]
+  bio: "**Smule** のソフトウェアエンジニアとして、Web・モバイル・プラットフォームを横断して開発しています。**イェール大学でコンピュータサイエンス**の修士号を取得し、南カリフォルニア大学では**ゲーム開発と数学**を学びました。実際に使われるプロダクトを届けることが好きで、ユーザー体験とパフォーマンスを大切にしています。"
+
+experience:
+  smule:
+    title: ソフトウェアエンジニア
+    description: "Smule の各プロダクトに携わるフルタイムのエンジニアです。smule.com の Web アプリと iOS・Android 版 Smule Sing アプリの機能開発に加え、それを支えるバックエンドサービスも担当しています。"
+  smule-intern:
+    title: 機械学習エンジニア（インターン）
+    description: "機械学習エンジニアのインターンとして Smule に参加し、その後フルタイムのソフトウェアエンジニアになりました。"
+  vestmark:
+    title: アソシエイトソフトウェアエンジニア
+    location: マサチューセッツ州ウェイクフィールド
+    description: "Vestmark の資産運用プラットフォーム VestmarkONE で、ポートフォリオのリバランスと関連機能のバックエンド API を開発しました。"
+  yale:
+    title: コンピュータサイエンス修士
+    organization: イェール大学
+    shortName: イェール
+    location: コネチカット州ニューヘイブン
+    description: "分散システムの構築、データベースシステム、フルスタック Web プログラミング、ユーザーインターフェースデザインなどを履修しました。"
+  ebaotech:
+    title: ソフトウェアエンジニア（インターン）
+    location: 上海
+    description: "LLM を使ったプログラミング言語翻訳のパイプラインを設計しました。PyTorch と Hugging Face で ChatGLM v2 などのモデルをファインチューニングし、保険データベースを構築して AWS SageMaker でモデルを学習させました。"
+  nplace:
+    title: ソフトウェアエンジニア（インターン）
+    location: 上海
+    description: "データセンサーコンバーター向けに適応的なダウンサンプリングを開発し、精度を保ちながらスレッドの負荷を減らしました。3D の Bresenham アルゴリズムを実装し、Zaichang 3D スキャンソフトウェアの開発に参加しました。"
+  usc-cs:
+    title: コンピュータサイエンス（ゲーム）学士
+    organization: 南カリフォルニア大学
+    location: カリフォルニア州ロサンゼルス
+    description: "最優等（Summa Cum Laude）で卒業。ゲームエンジン、ゲーム物理、イマーシブゲームデザイン、ゲーム AI などゲーム開発の科目を履修しました。"
+  usc-math:
+    title: 計算・応用数学学士
+    organization: 南カリフォルニア大学
+    location: カリフォルニア州ロサンゼルス
+    description: "コンピュータサイエンスと並ぶ第二専攻として、数値解析、機械学習、統計学、線形代数を履修しました。"
+  rochester:
+    title: コンピュータサイエンス学士
+    organization: ロチェスター大学
+    shortName: ロチェスター
+    location: ニューヨーク州ロチェスター
+    description: "USC に編入する前に、どちらも Java で教えられるコンピュータサイエンス入門（CSC 171）とデータ構造とアルゴリズム（CSC 172）を履修しました。"
+
+projects:
+  PSN README Card:
+    description: "GitHub プロフィール用の PlayStation Network トロフィーカードです。Vercel 上の小さなサーバーレス関数が、トロフィーレベル、トロフィー数、PS Plus の加入状況、最近遊んだゲームを SVG として描画し、README に画像と同じように埋め込めます。"
+    linkLabels: [GitHub で見る]
+  Kazumi TV:
+    description: "オープンソースのアニメアプリ Kazumi を Android TV と Google TV に移植しました。リモコンでのフォーカス操作、十字キーでのコメント閲覧、TV ランチャー用バナー、ネットワークのフォールバックを追加し、スマートフォンとデスクトップでの動作はそのままにしています。"
+    linkLabels: [GitHub で見る]
+  Lake Minnewaska:
+    description: "30 人のチームで Unity を使って開発した釣りシミュレーションゲームです。ゲームプレイと AI のエンジニアとして、釣りのメカニクス、ビヘイビアツリーによる魚の行動 AI、主要なゲームプレイ機能を設計しました。"
+    linkLabels: [Steam で見る]
+  Roamy Trip:
+    description: "ホテル探しと旅行計画にソーシャル機能を組み合わせたフルスタックアプリです。世界中のホテルの場所をインタラクティブな地図で表示し、レビューの共有や友達とのつながりに対応しています。"
+
+skills:
+  Languages: プログラミング言語
+  "Web & Mobile": Web とモバイル
+  "Backend, Data & ML": バックエンド・データ・機械学習
+  "Games & Tools": ゲームとツール
+
+places:
+  nanjing: { name: 南京, note: 故郷 }
+  shanghai: { name: 上海 }
+  los-angeles: { name: ロサンゼルス, note: 現在の拠点 }
+  rochester: { name: ロチェスター }
+  new-york: { name: ニューヨーク }
+  new-haven: { name: ニューヘイブン }
+  princeton: { name: プリンストン }
+  boston: { name: ボストン }
+  wakefield: { name: ウェイクフィールド }
+  san-diego: { name: サンディエゴ }
+  santa-barbara: { name: サンタバーバラ }
+  san-luis-obispo: { name: サンルイスオビスポ }
+  big-sur: { name: ビッグサー }
+  monterey: { name: モントレー }
+  carmel: { name: カーメル }
+  half-moon-bay: { name: ハーフムーンベイ }
+  san-francisco: { name: サンフランシスコ }
+  yosemite: { name: ヨセミテ国立公園 }
+  orlando: { name: オーランド }
+  atlanta: { name: アトランタ }
+  brevard: { name: ブレバード }
+  pigeon-forge: { name: ピジョンフォージ }
+  great-smoky-mountains: { name: グレート・スモーキー山脈国立公園 }
+  las-vegas: { name: ラスベガス }
+  zion: { name: ザイオン国立公園 }
+  arches: { name: アーチーズ国立公園 }
+  bryce-canyon: { name: ブライスキャニオン国立公園 }
+  albuquerque: { name: アルバカーキ }
+  bisti-badlands: { name: ビスティ・バッドランズ }
+  santa-fe: { name: サンタフェ }
+  white-sands: { name: ホワイトサンズ国立公園 }
+  las-cruces: { name: ラスクルーセス }
+  carlsbad: { name: カールスバッド }
+  philadelphia: { name: フィラデルフィア }
+  washington-dc: { name: ワシントン }
+  denver: { name: デンバー }
+  rocky-mountain: { name: ロッキーマウンテン国立公園 }
+  jackson: { name: ジャクソン }
+  grand-teton: { name: グランドティトン国立公園 }
+  yellowstone: { name: イエローストーン国立公園 }
+  anchorage: { name: アンカレッジ }
+  matanuska-glacier: { name: マタヌスカ氷河 }
+  fairbanks: { name: フェアバンクス }
+  chena-hot-springs: { name: チナ温泉 }
+  north-pole: { name: ノースポール }
+  arctic-circle: { name: 北極圏 }
+  honolulu: { name: ホノルル }
+  wailea: { name: ワイレア }
+  hana: { name: ハナ }
+  waikoloa: { name: ワイコロア }
+  tokyo: { name: 東京 }
+  yokohama: { name: 横浜 }
+  kamakura: { name: 鎌倉 }
+  hakone: { name: 箱根 }
+  higashiizu: { name: 東伊豆 }
+  lake-kawaguchi: { name: 河口湖 }
+  lake-yamanaka: { name: 山中湖 }
+  nagoya: { name: 名古屋 }
+  osaka: { name: 大阪 }
+  arima-onsen: { name: 有馬温泉 }
+  kobe: { name: 神戸 }
+  kyoto: { name: 京都 }
+  uji: { name: 宇治 }
+  nara: { name: 奈良 }
+  fukuoka: { name: 福岡 }
+  hita: { name: 日田 }
+  beppu: { name: 別府 }
+  yufuin: { name: 由布院 }
+  aso: { name: 阿蘇 }
+  kumamoto: { name: 熊本 }
+  hitoyoshi: { name: 人吉 }
+  kagoshima: { name: 鹿児島 }
+  ibusuki: { name: 指宿 }
+  karatsu: { name: 唐津 }
+  nagasaki: { name: 長崎 }
+  unzen: { name: 雲仙 }
+  kitakyushu: { name: 北九州 }
+  hakodate: { name: 函館 }
+  noboribetsu: { name: 登別 }
+  lake-toya: { name: 洞爺湖 }
+  sapporo: { name: 札幌 }
+  kushiro: { name: 釧路 }
+  lake-mashu: { name: 摩周湖 }
+  lake-kussharo: { name: 屈斜路湖 }
+  lake-akan: { name: 阿寒湖 }
+  abashiri: { name: 網走 }
+  biei: { name: 美瑛 }
+  furano: { name: 富良野 }
+  otaru: { name: 小樽 }
+  jozankei: { name: 定山渓 }
+
+regions:
+  Jiangsu: 江蘇省
+  Shanghai: 上海
+  California: カリフォルニア州
+  New York: ニューヨーク州
+  Connecticut: コネチカット州
+  New Jersey: ニュージャージー州
+  Massachusetts: マサチューセッツ州
+  Florida: フロリダ州
+  Georgia: ジョージア州
+  North Carolina: ノースカロライナ州
+  Tennessee: テネシー州
+  Nevada: ネバダ州
+  Utah: ユタ州
+  New Mexico: ニューメキシコ州
+  Pennsylvania: ペンシルベニア州
+  District of Columbia: コロンビア特別区
+  Colorado: コロラド州
+  Wyoming: ワイオミング州
+  Alaska: アラスカ州
+  Hawaii: ハワイ州
+  Kanto: 関東
+  Chubu: 中部
+  Kansai: 関西
+  Kyushu: 九州
+  Hokkaido: 北海道
+
+countries:
+  China: 中国
+  United States: アメリカ
+  Japan: 日本
+
+trips:
+  hawaii-2026: ハワイの島めぐり
+  hokkaido-winter-2025: 冬の北海道
+  rockies-yellowstone-2026: ロッキー、ティトン、イエローストーン
+  new-mexico-2025: 秋のニューメキシコ
+  utah-national-parks-2025: ユタの国立公園めぐり
+  kyushu-2025: 九州ドライブ旅行
+  smoky-mountains-2025: アトランタとスモーキー山脈
+  orlando-2025: オーランド
+  graduation-japan-2024: 日本への卒業旅行
+  pacific-coast-2024: パシフィック・コースト・ハイウェイのドライブ旅行
+  spring-break-japan-2024: 日本での春休み旅行
+  alaska-winter-2022: 冬のアラスカ

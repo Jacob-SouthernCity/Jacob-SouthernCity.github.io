@@ -8,6 +8,7 @@ import { formatDateRange, monthLabel, toMonthIndex } from "@/lib/dates";
 import { useCurrentMonthIndex, useElementMeasure } from "@/lib/hooks";
 import type { Experience } from "@/lib/content/schema";
 import { experienceKindStyles } from "./experience-kind";
+import { useI18n } from "../i18n-provider";
 
 const MAX_PX_PER_MONTH = 96;
 const MONTH_LINE_PX = 14;
@@ -71,6 +72,7 @@ type Tooltip = {
 
 function ExperienceTooltip({ item, x, y }: { item: Experience; x: number; y: number }) {
   const style = experienceKindStyles[item.kind];
+  const { locale } = useI18n();
   return (
     <motion.div
       className="pointer-events-none absolute z-20 w-60 -translate-x-1/2 -translate-y-full pb-2"
@@ -88,7 +90,7 @@ function ExperienceTooltip({ item, x, y }: { item: Experience; x: number; y: num
         </p>
         <p className="mt-0.5 text-sm text-slate-700 dark:text-slate-200">{item.title}</p>
         <p className="mt-1 font-mono text-xs text-slate-500 tabular-nums dark:text-slate-400">
-          {formatDateRange(item.start, item.end)}
+          {formatDateRange(item.start, item.end, locale)}
           {item.location && ` · ${item.location}`}
         </p>
       </div>
@@ -101,6 +103,7 @@ const zoomButtonClassName =
 
 export default function ExperienceChart({ items, onSelect }: ExperienceChartProps) {
   const shouldReduceMotion = useReducedMotion();
+  const { locale, t } = useI18n();
   const scrollRef = useRef<HTMLDivElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const longPressRef = useRef<{ timer: number; fired: boolean } | null>(null);
@@ -258,7 +261,7 @@ export default function ExperienceChart({ items, onSelect }: ExperienceChartProp
     >
       <div className="mb-3 flex items-center justify-between gap-3">
         <p className="hidden text-xs text-slate-500 sm:block dark:text-slate-400">
-          Hover a bar for details · Pinch or Ctrl + scroll to zoom
+          {t.experience.chartHint}
         </p>
         <div className="ml-auto flex items-center gap-0.5 rounded-full border border-black/5 bg-white/70 p-0.5 dark:border-white/10 dark:bg-white/5">
           <button
@@ -266,7 +269,7 @@ export default function ExperienceChart({ items, onSelect }: ExperienceChartProp
             className={zoomButtonClassName}
             onClick={() => zoomTo(zoom / ZOOM_STEP)}
             disabled={!isZoomed}
-            aria-label="Zoom out"
+            aria-label={t.experience.zoomOut}
           >
             <FiMinus />
           </button>
@@ -278,7 +281,7 @@ export default function ExperienceChart({ items, onSelect }: ExperienceChartProp
             className={zoomButtonClassName}
             onClick={() => zoomTo(zoom * ZOOM_STEP)}
             disabled={zoom >= maxZoom - 0.001}
-            aria-label="Zoom in"
+            aria-label={t.experience.zoomIn}
           >
             <FiPlus />
           </button>
@@ -287,7 +290,7 @@ export default function ExperienceChart({ items, onSelect }: ExperienceChartProp
             className={zoomButtonClassName}
             onClick={() => zoomTo(1)}
             disabled={!isZoomed}
-            aria-label="Fit timeline to view"
+            aria-label={t.experience.fitTimeline}
           >
             <FiMaximize2 className="text-[0.8rem]" />
           </button>
@@ -299,7 +302,7 @@ export default function ExperienceChart({ items, onSelect }: ExperienceChartProp
         className="touch-pan-x touch-pan-y overflow-x-auto overscroll-x-contain rounded-md px-2 [scrollbar-width:thin] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-indigo-500"
         tabIndex={isZoomed ? 0 : -1}
         role="region"
-        aria-label="Experience timeline"
+        aria-label={t.experience.timelineLabel}
       >
         <div className="relative" style={{ width: `${zoom * 100}%` }}>
           <div
@@ -339,7 +342,7 @@ export default function ExperienceChart({ items, onSelect }: ExperienceChartProp
                       className={`absolute top-0 -translate-x-1/2 whitespace-nowrap ${month % 12 === 0 ? "font-medium text-slate-600 dark:text-slate-300" : ""}`}
                       style={{ left: `${toPercent(month + 0.5)}%` }}
                     >
-                      {monthLabel(month % 12)}
+                      {monthLabel(month % 12, locale)}
                     </span>
                   ))}
                 </motion.div>
@@ -374,7 +377,7 @@ export default function ExperienceChart({ items, onSelect }: ExperienceChartProp
                   const description = [
                     item.title,
                     item.organization,
-                    formatDateRange(item.start, item.end),
+                    formatDateRange(item.start, item.end, locale),
                     item.location,
                   ]
                     .filter(Boolean)

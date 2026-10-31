@@ -4,6 +4,7 @@ import SectionHeading from "./section-heading";
 import type { SkillGroup } from "@/lib/content/schema";
 import { icons } from "@/lib/icons";
 import { useSectionInView } from "@/lib/hooks";
+import { useI18n } from "./i18n-provider";
 import { motion } from "motion/react";
 
 const chipListVariants = {
@@ -47,6 +48,7 @@ type SkillsProps = {
 
 export default function Skills({ skillGroups }: SkillsProps) {
   const { ref } = useSectionInView("Skills");
+  const { t } = useI18n();
 
   return (
     <section
@@ -54,7 +56,7 @@ export default function Skills({ skillGroups }: SkillsProps) {
       ref={ref}
       className="mb-24 w-full max-w-212 scroll-mt-28 sm:mb-32"
     >
-      <SectionHeading>Skills</SectionHeading>
+      <SectionHeading>{t.skills.heading}</SectionHeading>
       <div className="grid gap-5 sm:grid-cols-2">
         {skillGroups.map((group, index) => (
           <motion.div

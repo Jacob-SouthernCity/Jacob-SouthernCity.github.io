@@ -29,6 +29,11 @@ const nextConfig: NextConfig = {
   images: {
     qualities: [75, 95, 100],
   },
+  redirects: async () => [
+    { source: "/en", destination: "/", permanent: true },
+    { source: "/en/:path*", destination: "/:path*", permanent: true },
+  ],
+  rewrites: async () => [{ source: "/", destination: "/en" }],
   headers: async () => [
     {
       source: "/:path*",

@@ -6,6 +6,8 @@ import { motion, AnimatePresence } from "motion/react";
 import { HiDownload } from "react-icons/hi";
 import { LuLanguages } from "react-icons/lu";
 import { useSectionInView } from "@/lib/hooks";
+import { localeInfo } from "@/lib/i18n/config";
+import { useI18n } from "./i18n-provider";
 import type { ReactNode } from "react";
 import type { Profile } from "@/lib/content/schema";
 import SocialLinks, { primaryButtonClassName } from "./social-links";
@@ -32,7 +34,10 @@ type IntroProps = {
 export default function Intro({ profile }: IntroProps) {
   const { ref } = useSectionInView("Home");
   const { nameVersions, contact, resume } = profile;
-  const [currentNameIndex, setCurrentNameIndex] = useState(0);
+  const { locale, t } = useI18n();
+  const [currentNameIndex, setCurrentNameIndex] = useState(() =>
+    Math.max(0, nameVersions.findIndex((version) => version.lang === localeInfo[locale].htmlLang))
+  );
   const currentName = nameVersions[currentNameIndex];
   const nextName = nameVersions[(currentNameIndex + 1) % nameVersions.length];
 
@@ -59,7 +64,7 @@ export default function Intro({ profile }: IntroProps) {
           >
             <Image
               src="/jingzema.jpg"
-              alt={`${profile.name} portrait`}
+              alt={t.intro.portraitAlt(profile.name)}
               width={240}
               height={240}
               quality={95}
@@ -113,8 +118,8 @@ export default function Intro({ profile }: IntroProps) {
               type="button"
               onClick={cycleNameVersion}
               className="absolute top-1/2 left-full ml-2 flex size-9 -translate-y-1/2 items-center justify-center rounded-full border border-slate-200 bg-white text-lg text-slate-600 shadow-sm transition hover:text-indigo-600 hover:shadow-md focus-visible:outline-2 focus-visible:outline-indigo-500 active:scale-95 pointer-coarse:size-10 sm:ml-4 sm:size-11 sm:text-xl dark:border-white/10 dark:bg-slate-900 dark:text-slate-300 dark:hover:text-indigo-300"
-              title={`Show my ${nextName.label}`}
-              aria-label={`Show my ${nextName.label}`}
+              title={t.intro.showName(nextName.label)}
+              aria-label={t.intro.showName(nextName.label)}
             >
               <LuLanguages aria-hidden />
             </button>
@@ -158,7 +163,7 @@ export default function Intro({ profile }: IntroProps) {
         }}
       >
         <a className={primaryButtonClassName} href={resume.file} download={resume.downloadName}>
-          Download Resume
+          {t.intro.downloadResume}
           <HiDownload className="opacity-70 transition group-hover:translate-y-0.5" aria-hidden />
         </a>
         <SocialLinks linkedIn={contact.linkedIn} gitHub={contact.gitHub} />

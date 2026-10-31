@@ -8,6 +8,7 @@ import clsx from "clsx";
 import { useActiveSectionContext } from "@/context/active-section-context";
 import { FaHome, FaCode, FaTools, FaBriefcase, FaGlobeAmericas, FaEnvelope } from "react-icons/fa";
 import type { SectionName } from "@/lib/types";
+import { useI18n } from "./i18n-provider";
 
 const iconClassName =
   "text-3xl transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:scale-110";
@@ -24,6 +25,7 @@ const sectionIcons: Record<SectionName, ReactNode> = {
 export default function Header() {
   const { activeSection, setActiveSection, setTimeOfLastClick } =
     useActiveSectionContext();
+  const { t } = useI18n();
 
   return (
     <header className="z-999 relative">
@@ -56,8 +58,8 @@ export default function Header() {
                   setActiveSection(link.name);
                   setTimeOfLastClick(Date.now());
                 }}
-                title={link.name}
-                aria-label={link.name}
+                title={t.nav[link.name]}
+                aria-label={t.nav[link.name]}
                 aria-current={activeSection === link.name ? "location" : undefined}
               >
                 {sectionIcons[link.name]}

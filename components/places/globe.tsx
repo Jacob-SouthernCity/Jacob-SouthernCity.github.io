@@ -13,6 +13,7 @@ import {
   screenRadiansPerPixel,
   type Rotation,
 } from "@/lib/globe-math";
+import { useI18n } from "../i18n-provider";
 
 type RGB = [number, number, number];
 
@@ -113,6 +114,7 @@ export default function Globe({ markers, arcs = [], focus, zoom = 1, label, onSe
   const themeName = resolvedTheme === "dark" ? "dark" : resolvedTheme ? "light" : null;
   const shouldReduceMotion = useReducedMotion();
   const hasWebGL = useSyncExternalStore(subscribeToNothing, supportsWebGL, () => true);
+  const { t } = useI18n();
 
   const points = useMemo<GlobePoint[]>(() => {
     const maxAngle = size ? CLUSTER_RADIUS_PX * screenRadiansPerPixel(size, zoom) : 0;
@@ -282,7 +284,7 @@ export default function Globe({ markers, arcs = [], focus, zoom = 1, label, onSe
     <div ref={containerRef} className="relative mx-auto aspect-square w-full max-w-[28rem]">
       {!hasWebGL && (
         <p className="flex size-full items-center justify-center rounded-full border border-dashed border-slate-300 p-8 text-center text-sm text-slate-500 dark:border-white/15 dark:text-slate-400">
-          The interactive globe needs WebGL, which this browser does not support. Every place is still listed here.
+          {t.places.webglFallback}
         </p>
       )}
       <canvas

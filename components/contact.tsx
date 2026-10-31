@@ -3,6 +3,7 @@
 import SectionHeading from "./section-heading";
 import { motion } from "motion/react";
 import { useSectionInView } from "@/lib/hooks";
+import { useI18n } from "./i18n-provider";
 import type { Profile } from "@/lib/content/schema";
 import { FaEnvelope } from "react-icons/fa";
 import SocialLinks, { primaryButtonClassName } from "./social-links";
@@ -13,6 +14,7 @@ type ContactProps = {
 
 export default function Contact({ contact }: ContactProps) {
   const { ref } = useSectionInView("Contact");
+  const { t } = useI18n();
 
   return (
     <motion.section
@@ -32,11 +34,10 @@ export default function Contact({ contact }: ContactProps) {
         once: true,
       }}
     >
-      <SectionHeading>Get in touch</SectionHeading>
+      <SectionHeading>{t.contact.heading}</SectionHeading>
 
       <p className="mt-6 mb-8 text-lg text-slate-600 dark:text-slate-300">
-        Whether it's a role, a project, or just to say hi, email is the best way
-        to reach me.
+        {t.contact.blurb}
       </p>
 
       <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
